@@ -21,13 +21,23 @@ namespace Formulario
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// boton que lleval al formLocal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLocal_Click(object sender, EventArgs e)
         {
             FormLocal formLocal = new FormLocal(local);
             formLocal.ShowDialog();
         }
 
+
+        /// <summary>
+        /// boton que lleva al formEstadisticas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnEstadisticas_Click(object sender, EventArgs e)
         {
             FormEstadisticas formEstadisticas = new FormEstadisticas(local);

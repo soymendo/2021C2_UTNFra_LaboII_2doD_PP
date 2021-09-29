@@ -303,100 +303,100 @@ namespace Entidades.Clases_generales
             return retorno;
         }
 
-        //----------------------------------------------------------------------------------
-        /// <summary>
-        /// veo si la ccompu esta en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        /// </summary>
-        /// <param name="l"></param>
-        /// <param name="m"></param>
-        /// <returns></returns>
-        public static bool AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        {
-            bool retorno = false;
+        //------------------------------------------------------------------VVVVVVVVVVEEEEEEEEEEERRRRRRRRRRRRRRRRRRR-------------------------------------------------------------------------------
+        ///// <summary>
+        ///// veo si la ccompu esta en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
+        ///// </summary>
+        ///// <param name="l"></param>
+        ///// <param name="m"></param>
+        ///// <returns></returns>
+        //public static bool AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
+        //{
+        //    bool retorno = false;
 
-            foreach (Computadora item in l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones)
-            {
-                if (item.PetisionesDePc == c.PetisionesDePc)
-                {
-                    retorno = true;
-                }
-            }
+        //    foreach (Computadora item in l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones)
+        //    {
+        //        if (item.PetisionesDePc == c.PetisionesDePc)
+        //        {
+        //            retorno = true;
+        //        }
+        //    }
 
-            return retorno;
-        }
+        //    return retorno;
+        //}
 
-        /// <summary>
-        /// Devuelve true si guardo la compu en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        /// </summary>
-        /// <param name="l"></param>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static bool GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        {
+        ///// <summary>
+        ///// Devuelve true si guardo la compu en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
+        ///// </summary>
+        ///// <param name="l"></param>
+        ///// <param name="c"></param>
+        ///// <returns></returns>
+        //public static bool GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
+        //{
 
-            bool retorno = false;
+        //    bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c)))
-            {
-                foreach (Computadora item in l.ListaCompusDisponibles)
-                {
-                    if (item.PetisionesDePc == c.PetisionesDePc)
-                    {
-                        l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(item);
-                        retorno = true;
-                    }
-                }
-                //l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(c);
-                // retorno = true;
-            }
+        //    if (!(Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c)))
+        //    {
+        //        foreach (Computadora item in l.ListaCompusDisponibles)
+        //        {
+        //            if (item.PetisionesDePc == c.PetisionesDePc)
+        //            {
+        //                l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(item);
+        //                retorno = true;
+        //            }
+        //        }
+        //        //l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(c);
+        //        // retorno = true;
+        //    }
 
-            return retorno;
-        }
+        //    return retorno;
+        //}
 
 
-        /// <summary>
-        /// Devuelve true si guardo la compu en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        /// </summary>
-        /// <param name="l"></param>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static bool GuardarCompuSolamenteEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        {
+        ///// <summary>
+        ///// Devuelve true si guardo la compu en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
+        ///// </summary>
+        ///// <param name="l"></param>
+        ///// <param name="c"></param>
+        ///// <returns></returns>
+        //public static bool GuardarCompuSolamenteEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
+        //{
 
-            bool retorno = false;
+        //    bool retorno = false;
 
-           // if (!(Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c)))
-           // {
+        //   // if (!(Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c)))
+        //   // {
                 
-                l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(c);
+        //        l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(c);
                  
-                retorno = true;
-          //  }
+        //        retorno = true;
+        //  //  }
 
-            return retorno;
-        }
+        //    return retorno;
+        //}
 
 
 
-        /// <summary>
-        /// Elimina la compu de ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        /// </summary>
-        /// <param name="l"></param>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static bool EliminarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        {
-            bool retorno = false;
-            if (Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c))
-            {
-                l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Remove(c);
-                retorno = true;
-            }
+        ///// <summary>
+        ///// Elimina la compu de ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
+        ///// </summary>
+        ///// <param name="l"></param>
+        ///// <param name="c"></param>
+        ///// <returns></returns>
+        //public static bool EliminarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
+        //{
+        //    bool retorno = false;
+        //    if (Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c))
+        //    {
+        //        l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Remove(c);
+        //        retorno = true;
+        //    }
 
-            return retorno;
-        }
+        //    return retorno;
+        //}
 
-        //---------------------------------------------------------------------------------
+        //------------------------------------------------------------------VVVVVVVVVVEEEEEEEEEEERRRRRRRRRRRRRRRRRRR-------------------------------------------------------------------------------
 
 
         /// <summary>
@@ -921,7 +921,7 @@ namespace Entidades.Clases_generales
             if(Local.AlmacenadoEnListaCompusDisponibles(l,c))
             {
                 Local.EliminarCompuEnListaCompusDisponibles(l, c);
-                Local.EliminarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c);
+               // Local.EliminarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c);
                 Local.GuardarCompuEnListaCompusOcupadas(l, c);
 
 
@@ -996,7 +996,7 @@ namespace Entidades.Clases_generales
                 Local.GuardarCompuEnListaCompusDisponibles(l, c);
                 Local.GuardarCompuEnListaCompusFinalizadas(l, c);
                 //Local.GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c);
-                Local.GuardarCompuSolamenteEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l,c);
+        //       Local.GuardarCompuSolamenteEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l,c);
 
                 c.TiempoFinal = DateTime.Now;
                 c.sw.Stop();
@@ -1135,7 +1135,7 @@ namespace Entidades.Clases_generales
         {
            
 
-            IEnumerable<Computadora> ListaPCOrdenadas = this.ListaCompusFinalizadas.OrderByDescending(user => user.TiempoDeUso);
+            IEnumerable<Computadora> ListaPCOrdenadas = this.ListaCompusFinalizadas.OrderByDescending(user => user.TiempoTotalDeUso);
             StringBuilder sb = new StringBuilder();
             foreach (Computadora item in ListaPCOrdenadas)
             {
@@ -1273,7 +1273,7 @@ namespace Entidades.Clases_generales
 
             foreach (Computadora item in this.ListaCompusDisponibles)
             {
-                if (item.PetisionesDePc == c.PetisionesDePc /*|| c.PetisionesDePc.Juegos.ToString()=="todos"*/)
+                if (item.PetisionesDePc == c.PetisionesDePc )
                 {
                     sb.AppendLine(item.Mostrar());
                 }
@@ -1343,7 +1343,6 @@ namespace Entidades.Clases_generales
             return sb.ToString();
         }
 
-        //---------------------------------------------------------------------------------
         /// <summary>
         /// Muestra las cabinas disponibles
         /// </summary>
@@ -1378,11 +1377,6 @@ namespace Entidades.Clases_generales
             }
             return sb.ToString();
         }
-
-
-
-        //--------------------------------------------------------------------------------
-
 
 
         /// <summary>

@@ -48,7 +48,6 @@ namespace Formulario
             this.lblJuego = new System.Windows.Forms.Label();
             this.cmbJuego = new System.Windows.Forms.ComboBox();
             this.lsbListaClientes = new System.Windows.Forms.ListBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnAsignar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTelefono = new System.Windows.Forms.Label();
@@ -64,7 +63,6 @@ namespace Formulario
             this.lblListaCompusDisponibles = new System.Windows.Forms.Label();
             this.lblListaCompusOcupadas = new System.Windows.Forms.Label();
             this.tiempoActualDeUso = new System.Windows.Forms.Button();
-            this.lblColaClientes = new System.Windows.Forms.Label();
             this.lblListaClientes = new System.Windows.Forms.Label();
             this.lsbCabinasDisponibles = new System.Windows.Forms.ListBox();
             this.lsbCasbinasOcupadas = new System.Windows.Forms.ListBox();
@@ -246,14 +244,6 @@ namespace Formulario
             this.lsbListaClientes.TabIndex = 18;
             this.lsbListaClientes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbListaClientes_MouseDoubleClick);
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(303, 298);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(336, 291);
-            this.richTextBox1.TabIndex = 19;
-            this.richTextBox1.Text = "";
-            // 
             // btnAsignar
             // 
             this.btnAsignar.Location = new System.Drawing.Point(187, 289);
@@ -323,7 +313,6 @@ namespace Formulario
             this.lblGuion.Size = new System.Drawing.Size(12, 15);
             this.lblGuion.TabIndex = 40;
             this.lblGuion.Text = "-";
-            this.lblGuion.Click += new System.EventHandler(this.lblGuion_Click);
             // 
             // txtLocal
             // 
@@ -365,7 +354,7 @@ namespace Formulario
             // 
             // rtbInfoMaquinas
             // 
-            this.rtbInfoMaquinas.Location = new System.Drawing.Point(702, 41);
+            this.rtbInfoMaquinas.Location = new System.Drawing.Point(391, 364);
             this.rtbInfoMaquinas.Name = "rtbInfoMaquinas";
             this.rtbInfoMaquinas.Size = new System.Drawing.Size(186, 244);
             this.rtbInfoMaquinas.TabIndex = 28;
@@ -398,15 +387,6 @@ namespace Formulario
             this.tiempoActualDeUso.Text = "Tiempo actual de uso";
             this.tiempoActualDeUso.UseVisualStyleBackColor = true;
             this.tiempoActualDeUso.Click += new System.EventHandler(this.tiempoActualDeUso_Click);
-            // 
-            // lblColaClientes
-            // 
-            this.lblColaClientes.AutoSize = true;
-            this.lblColaClientes.Location = new System.Drawing.Point(303, 270);
-            this.lblColaClientes.Name = "lblColaClientes";
-            this.lblColaClientes.Size = new System.Drawing.Size(90, 15);
-            this.lblColaClientes.TabIndex = 32;
-            this.lblColaClientes.Text = "Cola de clientes";
             // 
             // lblListaClientes
             // 
@@ -478,7 +458,7 @@ namespace Formulario
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(702, 4);
+            this.lblInfo.Location = new System.Drawing.Point(389, 310);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(94, 15);
             this.lblInfo.TabIndex = 40;
@@ -487,7 +467,7 @@ namespace Formulario
             // lblInfoclic
             // 
             this.lblInfoclic.AutoSize = true;
-            this.lblInfoclic.Location = new System.Drawing.Point(702, 23);
+            this.lblInfoclic.Location = new System.Drawing.Point(389, 331);
             this.lblInfoclic.Name = "lblInfoclic";
             this.lblInfoclic.Size = new System.Drawing.Size(106, 15);
             this.lblInfoclic.TabIndex = 41;
@@ -507,7 +487,6 @@ namespace Formulario
             this.Controls.Add(this.lsbCasbinasOcupadas);
             this.Controls.Add(this.lsbCabinasDisponibles);
             this.Controls.Add(this.lblListaClientes);
-            this.Controls.Add(this.lblColaClientes);
             this.Controls.Add(this.tiempoActualDeUso);
             this.Controls.Add(this.lblListaCompusOcupadas);
             this.Controls.Add(this.lblListaCompusDisponibles);
@@ -517,7 +496,6 @@ namespace Formulario
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAsignar);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.lsbListaClientes);
             this.Controls.Add(this.txtDni);
             this.Controls.Add(this.lblDni);
@@ -534,7 +512,6 @@ namespace Formulario
             this.Name = "FormLocal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLocal";
-            this.Load += new System.EventHandler(this.FormLocal_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -565,7 +542,6 @@ namespace Formulario
         private System.Windows.Forms.Label lblJuego;
         private System.Windows.Forms.ComboBox cmbJuego;
         private System.Windows.Forms.ListBox lsbListaClientes;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTelefono;
@@ -576,7 +552,6 @@ namespace Formulario
         private System.Windows.Forms.Label lblListaCompusDisponibles;
         private System.Windows.Forms.Label lblListaCompusOcupadas;
         private System.Windows.Forms.Button tiempoActualDeUso;
-        private System.Windows.Forms.Label lblColaClientes;
         private System.Windows.Forms.Label lblListaClientes;
         private System.Windows.Forms.ListBox lsbCabinasDisponibles;
         private System.Windows.Forms.ListBox lsbCasbinasOcupadas;

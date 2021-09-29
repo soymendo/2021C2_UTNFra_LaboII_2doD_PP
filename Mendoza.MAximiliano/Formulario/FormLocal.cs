@@ -19,10 +19,7 @@ namespace Formulario
     public partial class FormLocal : Form
     {
         Local local = new Local(20);
-        Cliente cliAux;//pasa al otor form
-        Computadora aux; //GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        Computadora auxListaUnica;//le paso la compu al form
-        //Computadora Devuelta;
+        Computadora compAux;
         Cabina cabinaAux;
 
         string numeroDeTelefono;
@@ -30,31 +27,23 @@ namespace Formulario
         string localTelefono;
         string numeroTelefono;
 
-        public Computadora CompuAux
-        {
-            get { return this.aux; }
-        }
+        
 
-        //List<Cliente> aux = new List<Cliente>();
-
+       
+        /// <summary>
+        /// Constructor qu erecibe un local
+        /// </summary>
+        /// <param name="loc"></param>
         public FormLocal(Local loc)
         {
             InitializeComponent();
-
-            //Thread.Sleep(4000);
-            //MessageBox.Show($"ALGO ESTA PASANDO", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
 
             this.local = loc;
             cmbSofware.DataSource = Enum.GetValues(typeof(Petisiones.SoftwareInstalado));
             cmbPerisfericos.DataSource = Enum.GetValues(typeof(Petisiones.PeriféricosDisponibles));
             cmbJuego.DataSource = Enum.GetValues(typeof(Petisiones.JuegosDisponibles));
 
-            //cmbSofware.Text = "";
-            //cmbJuego.Text = "";
-            //cmbPerisfericos.Text = "";
-
-            //lsbCompusDisponibles.DataSource = null;
+         
             lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
             lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
 
@@ -63,10 +52,7 @@ namespace Formulario
 
             lsbListaClientes.DataSource = null;
             lsbListaClientes.DataSource = local.Lista_Clientes;
-
-            richTextBox1.Text = local.MostrarClientesDisponiblesCola();
-            //txtTelefono.Enabled = false;
-
+         
             txtArea.Enabled = false;
             txtLocal.Enabled = false;
             txtNumero.Enabled = false;
@@ -76,6 +62,11 @@ namespace Formulario
         }
 
 
+        /// <summary>
+        /// control radiobutton computadora
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtComputadora_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -89,9 +80,15 @@ namespace Formulario
                 cmbSofware.Enabled = true;
                 cmbPerisfericos.Enabled = true;
                 cmbJuego.Enabled = true;
-                //txtTelefono.Enabled = false;
+               
             }
         }
+
+        /// <summary>
+        /// control radiobutton cabina
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtCabina_CheckedChanged(object sender, EventArgs e)
         {
             if(rbtCabina.Checked)
@@ -100,19 +97,25 @@ namespace Formulario
                 txtLocal.Enabled = true;
                 txtNumero.Enabled = true;
 
-                //txtTelefono.Enabled = true;
+                
                 cmbSofware.Enabled = false;
                 cmbPerisfericos.Enabled = false;
                 cmbJuego.Enabled = false;
             }
         }
+
+
+        /// <summary>
+        /// Boton que crea un cliente y lo asigna a una cola y a un listbox visible en el form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
             
             if(rbtComputadora.Checked==false && rbtCabina.Checked==false)
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             else
             {
@@ -127,20 +130,11 @@ namespace Formulario
                     {
                         MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    if (Local.GuardarClienteEnColaClientes(local, clienteCompu))
-                    {
-                        //MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        aux = new Computadora(clienteCompu.PetisionesDePc.Sofware, clienteCompu.PetisionesDePc.Periféricos, clienteCompu.PetisionesDePc.Juegos);//usado para buscar la pc compatible
-                        if (Local.GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(local, aux)) { }
-                    
-                    }
-
-
-                   
+                    if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
+                            
                     lsbListaClientes.DataSource = null;
                     lsbListaClientes.DataSource = local.Lista_Clientes;
                 }
-
 
                 if( rbtCabina.Checked)
                 {
@@ -152,7 +146,6 @@ namespace Formulario
                     if(this.area!="" && this.localTelefono!=""&& this.numeroTelefono!="")
                     {
                        
-                            //Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), txtTelefono.Text);
                             Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), this.numeroDeTelefono);
 
                             if (Local.GuardarClienteEnListaClientes(local, clienteCabina)) { MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
@@ -160,70 +153,25 @@ namespace Formulario
 
                             lsbListaClientes.DataSource = null;
                             lsbListaClientes.DataSource = local.Lista_Clientes;
-                      
-
+          
                     }
                     else
                     {
                         MessageBox.Show("Numero incorrecto!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                   
-                   
+                    }                                  
                 }
-
-
             }
-
-            richTextBox1.Text = local.MostrarClientesDisponiblesCola();
-            //richTextBox2.Text = clienteCabina
-
         }
 
-        private void btnEliminar_Click(object sender, EventArgs e)
-        {
-           
-               
-          }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void cmbSofware_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void cmbPerisfericos_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-        private void cmbJuego_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = true;
-        }
-
-
-
-
-
-
-
+        
+      
        
+
+        /// <summary>
+        /// boton que asigna la maquina segun su instancia
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAsignar_Click(object sender, EventArgs e)
         {
             if (local.Cola_Clientes.Count == 0)
@@ -234,11 +182,6 @@ namespace Formulario
             {
                 Cliente cliente = local.Cola_Clientes.Peek();
 
-                //cabinaAux = new Cabina(cliente.NumeroAMarcar);
-                //MessageBox.Show($"Numero de cabina: {cabinaAux.NumeroAMarcar}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-
-
                 if (cliente.PetisionesDePc is null)
                 {
                     cabinaAux = new Cabina(cliente.NumeroAMarcar);
@@ -248,13 +191,10 @@ namespace Formulario
                 }
                 else
                 {
-                    auxListaUnica = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Periféricos, cliente.PetisionesDePc.Juegos);
-                    FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, auxListaUnica);
+                    compAux = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Periféricos, cliente.PetisionesDePc.Juegos);
+                    FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, compAux);
                     buscaCompu.ShowDialog();
                 }
-
-
-
 
                 lsbCompusDisponibles.DataSource = null;
                 lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
@@ -274,19 +214,15 @@ namespace Formulario
                 lsbListaClientes.DataSource = null;
                 lsbListaClientes.DataSource = local.Lista_Clientes;
 
-                //local.Cola_Clientes = buscaCompu.GetColaClientes;
-                richTextBox1.Text = local.MostrarClientesDisponiblesCola();
-
-
             }
-
-
-
-
         }
 
 
-
+        /// <summary>
+        /// boton que finaliza una compu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFinalizarTarea_Click(object sender, EventArgs e)
         {
             if (lsbCompusOcupadas.SelectedItem is null)
@@ -300,7 +236,6 @@ namespace Formulario
                 if (Local.FinalizarTareaCompu(local, comp))
                 {
                     MessageBox.Show($"Finalizado con exito!! tiempo de uso: {comp.TiempoDeUso} Costo de uso: {comp.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //if (Local.GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(local, comp)) { }
                 }
 
                 lsbCompusDisponibles.DataSource = null;
@@ -308,18 +243,51 @@ namespace Formulario
 
                 lsbCompusOcupadas.DataSource = null;
                 lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
+            }            
+        }
 
 
-                //richTextBox2.Text = local.MostrarCompusDisponiblesParaElClienteSegunsSusPetisiones(aux);
-               // richTextBox2.Text = local.MostrarListaCompusDisponiblesParaElClienteSegunsSusPetisiones(aux);
+        /// <summary>
+        /// finaliza la tarea de la cabina seleccionada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnFinalizarTareaCabina_Click(object sender, EventArgs e)
+        {
+            if (lsbCasbinasOcupadas.SelectedItem is null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
 
-            
+                if (Local.FinalizarTareaCabina(local, cab))
+                {
+                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show($"No funca!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                lsbCabinasDisponibles.DataSource = null;
+                lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+
+                lsbCasbinasOcupadas.DataSource = null;
+                lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+
+            }               
         }
 
 
 
-     
+
+        /// <summary>
+        /// boton que muestra el tiempo actual de uso de la compu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void tiempoActualDeUso_Click(object sender, EventArgs e)
         {
             if (lsbCompusOcupadas.SelectedItem is null)
@@ -334,67 +302,36 @@ namespace Formulario
                 MessageBox.Show($" tiempo de uso: {comp.TiempoDeUso/*TiempoActualDeUso*/} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            
-        }
-      
-        private void btnFinalizarTareaCabina_Click(object sender, EventArgs e)
-        {
-            if (lsbCasbinasOcupadas.SelectedItem is null)
-            {
-                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
-
-                if (Local.FinalizarTareaCabina(local, cab))
-                {
-
-                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                }
-                else
-                {
-                    MessageBox.Show($"No funca!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-
-                lsbCabinasDisponibles.DataSource = null;
-                lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
-
-                lsbCasbinasOcupadas.DataSource = null;
-                lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
-
-            }
-
-
-
-
-           
-                
 
         }
 
+
+
+        /// <summary>
+        /// boton que mestra el tiempo actual de uso de la cabina
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnTiempoActualDeUsoCabina_Click(object sender, EventArgs e)
         {
-
             if (lsbCasbinasOcupadas.SelectedItem is null)
             {
                 MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            {
-       
+            {      
                 Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
                 cab.TiempoFinal = DateTime.Now;
                 MessageBox.Show($" tiempo de uso: {cab.TiempoDeUso} destino: {cab.Destino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             }
-
-
         }
 
 
-
+        /// <summary>
+        /// al hacer doble clic  muestra la info del cliente en un form nuevo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lsbListaClientes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Cliente c;
@@ -413,18 +350,12 @@ namespace Formulario
 
 
 
-        private void FormLocal_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void lblGuion_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
+        /// <summary>
+        /// al hacer doble clic  muestra la info de la computadora en el richtextbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lsbCompusDisponibles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
 
@@ -434,6 +365,12 @@ namespace Formulario
             rtbInfoMaquinas.Text = c.Mostrar();
         }
 
+
+        /// <summary>
+        /// al hacer doble clic  muestra la info de la computadora en el richtextbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lsbCompusOcupadas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Computadora c;
@@ -442,6 +379,11 @@ namespace Formulario
             rtbInfoMaquinas.Text = c.Mostrar();
         }
 
+        /// <summary>
+        /// al hacer doble clic  muestra la info de la cabina en el richtextbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lsbCabinasDisponibles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Cabina c;
@@ -450,6 +392,12 @@ namespace Formulario
             rtbInfoMaquinas.Text = c.Mostrar();
         }
 
+
+        /// <summary>
+        /// al hacer doble clic  muestra la info de la cabina en el richtextbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lsbCsbinasOcupadas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Cabina c;
@@ -457,5 +405,38 @@ namespace Formulario
 
             rtbInfoMaquinas.Text = c.Mostrar();
         }
+
+
+
+        /// <summary>
+        /// bloque de combobox sofware
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbSofware_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// bloque de combobox perisfericos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbPerisfericos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        /// <summary>
+        /// bloque de combobox juegos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cmbJuego_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
     }
 }
