@@ -35,6 +35,9 @@ namespace Formulario
             // 
             // lsbCabinasDisponibles
             // 
+            this.lsbCabinasDisponibles.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lsbCabinasDisponibles.FormattingEnabled = true;
             this.lsbCabinasDisponibles.ItemHeight = 15;
             this.lsbCabinasDisponibles.Location = new System.Drawing.Point(69, 74);
@@ -44,6 +47,9 @@ namespace Formulario
             // 
             // btnAsignar
             // 
+            this.btnAsignar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAsignar.Location = new System.Drawing.Point(385, 74);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(110, 40);

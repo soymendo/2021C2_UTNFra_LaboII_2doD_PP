@@ -23,27 +23,51 @@ namespace Formulario
             this.local = l;
         }
 
+        /// <summary>
+        /// boton que muestra ListaPcOrdenadasPorTiempoDeUso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
-        {
-           
-            rtbEstadisticas.Text = local.ListaPcOrdenadasPorTiempoDeUso(local);
+        {          
+            rtbEstadisticas.Text = local.ListaPcOrdenadasPorTiempoDeUso(local);          
         }
 
+        /// <summary>
+        /// boton que muestra ListaCabinasOrdenadasPorTiempoDeUso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCabinasOrdenadasPorTiempoDeUso_Click(object sender, EventArgs e)
         {
             rtbEstadisticas.Text = local.ListaCabinasOrdenadasPorTiempoDeUso(local);
         }
 
+        /// <summary>
+        /// boton que muestra GananciasTotales
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnGananciasTotales_Click(object sender, EventArgs e)
         {
             rtbEstadisticas.Text = local.GananciasTotales();
         }
 
+        /// <summary>
+        /// boton que muestra Horas_totales_Y_La_Recaudación_Por_Tipo_De_Llamada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHorasTotales_Click(object sender, EventArgs e)
         {
             rtbEstadisticas.Text = local.Horas_totales_Y_La_Recaudación_Por_Tipo_De_Llamada();
         }
 
+        /// <summary>
+        /// boton que muestra PetisionesMasPedidas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMasPedidos_Click(object sender, EventArgs e)
         {
             rtbEstadisticas.Text = local.PetisionesMasPedidas();
