@@ -18,7 +18,7 @@ namespace Formulario
         List<Computadora> listaUnica = new List<Computadora>();
         Computadora compuADevolver = new Computadora();
 
-
+        bool listaVacia;
        
 
 
@@ -38,10 +38,10 @@ namespace Formulario
             // richTextBox1.Text = (local.MostrarCompusDisponiblesParaElClienteSegunsSusPetisiones(c));
             //lsbListaDeCompusCompatibles.DataSource = null;
 
-            if (GuardarListaUnica(l,c))
-            {
-                
-            } 
+            if (GuardarListaUnica(l, c)) { listaVacia = true; } else { listaVacia = false; }
+
+
+
             //else
             //{ 
             //    MessageBox.Show("Sin coincidencia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); 
@@ -53,22 +53,23 @@ namespace Formulario
             //l.Lista_CompusOcupadas = local.Lista_CompusOcupadas;
             lsbListaDeCompusCompatibles.DataSource = ListaUnica;
 
-            //if (lsbListaDeCompusCompatibles.DataSource is null)
-            //{
-            //    lsbListaDeCompusCompatibles.DataSource = null;
-            //    lsbListaDeCompusCompatibles.DataSource = local.Lista_CompusDisponibles;
-            //}
+          
             rtbPeticiones.Text = $"{local.Cola_Clientes.Peek()}\n Peticiones: \n {c.PetisionesDePc}";
         }
 
 
         private void btnAsignar_Click(object sender, EventArgs e)
         {
+            if(listaVacia==false)
+            {
+                MessageBox.Show("SLsita vacia", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-           
-
+            }
+            else
+            {
                 Cliente cli = local.Cola_Clientes.Peek();
                 Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
+
 
                 if (MessageBox.Show($"¿Seguro de querer asignar la computadora a  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -89,14 +90,13 @@ namespace Formulario
                 lsbListaDeCompusCompatibles.DataSource = ListaUnica;
                 rtbPeticiones.Text = null;
 
-            
+
+                //richTextBox1.Text = local.MostrarCompusDisponiblesParaElClienteSegunsSusPetisiones(c);
+                //richTextBox1.Text = local.MostrarCompusDisponibles();
+                //richTextBox1.Text = local.MostrarCompusOcupadas();
+            }
 
 
-
-
-            //richTextBox1.Text = local.MostrarCompusDisponiblesParaElClienteSegunsSusPetisiones(c);
-            //richTextBox1.Text = local.MostrarCompusDisponibles();
-            //richTextBox1.Text = local.MostrarCompusOcupadas();
         }
 
 
