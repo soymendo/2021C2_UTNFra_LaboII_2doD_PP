@@ -51,8 +51,12 @@ namespace Formulario
             //cmbJuego.Text = "";
             //cmbPerisfericos.Text = "";
 
+            //lsbCompusDisponibles.DataSource = null;
             lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
             lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+
+            lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
+            lsbCsbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
             //txtTelefono.Enabled = false;
 
             txtArea.Enabled = false;
