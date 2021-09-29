@@ -236,7 +236,10 @@ namespace Formulario
                 {
                     auxListaUnica = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Periféricos, cliente.PetisionesDePc.Juegos);
                     FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, auxListaUnica);
-                    buscaCompu.ShowDialog();
+                   
+                    buscaCompu.Show();
+                  
+                    //buscaCompu.ShowDialog();
                 }
 
 
