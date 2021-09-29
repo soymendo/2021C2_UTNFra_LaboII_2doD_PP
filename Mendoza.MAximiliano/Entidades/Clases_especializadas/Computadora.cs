@@ -10,75 +10,15 @@ namespace Entidades.Clases_especializadas
 {
     public class  Computadora: Maquinas
     {
+        //----------------Atributos-------------------------------------
         private Petisiones petisiones;
-       public Stopwatch sw = new Stopwatch();//saber tiempo de uso
 
+
+
+        //--------------Constructores---------------------------------
         /// <summary>
-        /// indica el tiempo de uso de la compu
+        /// Constructor sin parametros
         /// </summary>
-        public override double TiempoDeUso
-        {
-            get
-            {
-                double retorno;
-
-                TimeSpan diferenciasSegundos = this.TiempoFinal - this.TiempoInicial;
-
-                double seg = diferenciasSegundos.Seconds;
-                double min = diferenciasSegundos.Minutes;
-
-                retorno = (min * 60) + seg;
-
-                return retorno;
-            }
-
-        }
-
-        /// <summary>
-        /// devuelve el tiempo de uso actual
-        /// https://www.youtube.com/watch?v=mRZPY2RyGrU
-        /// </summary>
-        public double TiempoActualDeUso
-        {
-            get 
-            {
-                double retorno;
-
-                TimeSpan tiempoActual = new TimeSpan(0, (int)sw.Elapsed.Minutes, (int)sw.Elapsed.Seconds);
-                double seg = tiempoActual.Seconds;
-                double min = tiempoActual.Minutes;
-                retorno = (min * 60) + seg;
-                    
-                return retorno;
-                    
-            }
-        }
-
-
-
-        /// <summary>
-        /// indica el tipo de maquina
-        /// </summary>
-        public override Tipo TipoDeMaquina
-        {
-            get { return Tipo.Computadora; }
-        }
-
-        /// <summary>
-        /// propiedad para saber las petisiones
-        /// </summary>
-        public Petisiones PetisionesDePc
-        {
-            get { return this.petisiones; }
-            set { this.petisiones = value; }
-        }
-
-
-
-
-        //-------------Constructores-----------------
-
-
         public Computadora()
         {
 
@@ -104,7 +44,7 @@ namespace Entidades.Clases_especializadas
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
         public Computadora(string nombre, Petisiones.SoftwareInstalado software, Petisiones.PeriféricosDisponibles periféricos, Petisiones.JuegosDisponibles juegos)
-        :this(nombre, new Petisiones(software, periféricos, juegos))
+        : this(nombre, new Petisiones(software, periféricos, juegos))
         {
 
         }
@@ -115,13 +55,13 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         /// <param name="petisiones"></param>
         public Computadora(Petisiones petisiones)
-        :this()
+        : this()
         {
             this.petisiones = petisiones;
         }
-       
+
         /// <summary>
-        /// constructor , el cliente lo pide
+        /// constructor. le paso las peticiones del cliente
         /// </summary>
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
@@ -133,7 +73,73 @@ namespace Entidades.Clases_especializadas
         }
 
 
-      
+
+
+
+        //----------Propiedades-----------------------------------------
+
+
+        /// <summary>
+        /// indica el tiempo de uso de la compu
+        /// </summary>
+        public override double TiempoDeUso
+        {
+            get
+            {
+                double retorno;
+
+                TimeSpan diferenciasSegundos = this.TiempoFinal - this.TiempoInicial;
+
+                double seg = diferenciasSegundos.Seconds;
+                double min = diferenciasSegundos.Minutes;
+
+                retorno = (min * 60) + seg;
+
+                return retorno;
+            }
+
+        }
+
+        /// <summary>
+        /// devuelve el tiempo de uso total de la Computadora
+        /// https://www.youtube.com/watch?v=mRZPY2RyGrU
+        /// </summary>
+        public double TiempoTotalDeUso
+        {
+            get 
+            {
+                double retorno;
+
+                TimeSpan tiempoActual = new TimeSpan(0, (int)sw.Elapsed.Minutes, (int)sw.Elapsed.Seconds);
+                double seg = tiempoActual.Seconds;
+                double min = tiempoActual.Minutes;
+                retorno = (min * 60) + seg;
+                    
+                return retorno;
+                    
+            }
+        }
+
+        /// <summary>
+        /// indica el tipo de maquina
+        /// </summary>
+        public override Tipo TipoDeMaquina
+        {
+            get { return Tipo.Computadora; }
+        }
+
+        /// <summary>
+        /// propiedad para saber las petisiones
+        /// </summary>
+        public Petisiones PetisionesDePc
+        {
+            get { return this.petisiones; }
+            set { this.petisiones = value; }
+        }
+
+
+
+      //-----Metodos----------------------------------------------------------------------------------------------   
 
         /// <summary>
         /// Calcula el costo segun el tiempo transcurrido
@@ -175,6 +181,7 @@ namespace Entidades.Clases_especializadas
         }
 
 
+        //---------Sobrecargas-----------------------------------------------------------
 
         /// <summary>
         /// Iguales si tienen mismo nombre
@@ -201,7 +208,7 @@ namespace Entidades.Clases_especializadas
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{this.Identificador}");
-          
+
             return sb.ToString();
         }
 

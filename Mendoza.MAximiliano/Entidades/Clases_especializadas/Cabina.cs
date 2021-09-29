@@ -26,10 +26,11 @@ namespace Entidades.Clases_especializadas
         private string numeroAMarcar;
         private TipoLlamada tipoLlamada;
 
-        public Stopwatch sw = new Stopwatch();
+      
+        //------Propiedades----------------------
 
         /// <summary>
-        /// devuelbe el tipo de maquina
+        /// devuelve el tipo de maquina
         /// </summary>
         public override Tipo TipoDeMaquina
         {
@@ -44,7 +45,9 @@ namespace Entidades.Clases_especializadas
             get { return this.tipoLlamada; }
         }
 
-
+        /// <summary>
+        /// especifica que tipo de telefono es
+        /// </summary>
         public TipoTelefono TipoDeTelefono
         {
             get { return this.tipoTelefono; }
@@ -57,8 +60,6 @@ namespace Entidades.Clases_especializadas
             get { return this.marca; }
             set { this.marca = value; }
         }
-
-
 
 
         /// <summary>
@@ -99,9 +100,6 @@ namespace Entidades.Clases_especializadas
         }
 
 
-
-
-
         /// <summary>
         /// devuelve el tiempo de uso actual
         /// https://www.youtube.com/watch?v=mRZPY2RyGrU
@@ -123,7 +121,7 @@ namespace Entidades.Clases_especializadas
         }
 
 
-
+        //------------Constructores-----------------------------------
         /// <summary>
         /// constructor
         /// </summary>
@@ -154,12 +152,19 @@ namespace Entidades.Clases_especializadas
         }
 
    
-
+        /// <summary>
+        /// Constructor deonde le paso un string de numero
+        /// </summary>
+        /// <param name="numeroAMarcar"></param>
         public Cabina(string numeroAMarcar)
         {
             this.numeroAMarcar = numeroAMarcar;
         }
 
+
+
+
+        //-------Metodos-------------------------------------------------------------------
 
         // <summary>
         /// calcula el costo de todas las llamas hechas
@@ -206,11 +211,8 @@ namespace Entidades.Clases_especializadas
                 retono = TipoLlamada.local.ToString();
             }
 
-            //retono = this.NumeroAMarcar;
-
             return retono;
         }
-
 
 
         /// <summary>
@@ -268,7 +270,7 @@ namespace Entidades.Clases_especializadas
         }
 
 
-
+        //---------Sobrecargas----------------------------------------
 
         /// <summary>
         /// dos cabinas son iguales si tienen el mismo nombre

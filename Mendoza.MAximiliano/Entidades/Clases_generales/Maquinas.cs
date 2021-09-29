@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,21 +11,22 @@ namespace Entidades.Clases_generales
     {
         Telefono, Computadora
     }
+
+
     public abstract class Maquinas
     {
         //----------------------Atributos--------------------------------------
         private string identificador;
-        private Tipo tipo;
         private DateTime tiempoInicial;
         private DateTime tiempoFinal;
-
+        public Stopwatch sw = new Stopwatch();
 
 
 
         //--------------------Propiedades--------------------------------------
-      /// <summary>
-      /// indica el tiempo inicial desde que entra a la lista de disponibles
-      /// </summary>
+        /// <summary>
+        /// indica el tiempo inicial desde que entra a la lista de disponibles
+        /// </summary>
         public DateTime TiempoInicial
         {
             get { return this.tiempoInicial; }
@@ -41,7 +43,9 @@ namespace Entidades.Clases_generales
         }
 
 
-
+        /// <summary>
+        /// Devuelve el nombre de la maquina
+        /// </summary>
         public string Identificador
         {
             get { return this.identificador; }
@@ -60,17 +64,24 @@ namespace Entidades.Clases_generales
 
 
         //--------------Constructores---------------------------------------
+        /// <summary>
+        /// Constructor sin parametros
+        /// </summary>
         public Maquinas()
         {
 
         }
 
+        /// <summary>
+        /// conntructor donde recibe un nombre
+        /// </summary>
+        /// <param name="nombre"></param>
         public Maquinas(string nombre)
         {
             this.identificador = nombre;
         }
 
-
+        //-----------------Metodos------------------------------------------------------
         /// <summary>
         /// Muestra tipo de maquina y su nombre
         /// </summary>

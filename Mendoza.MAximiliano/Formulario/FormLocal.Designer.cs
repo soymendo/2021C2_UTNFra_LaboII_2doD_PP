@@ -60,18 +60,20 @@ namespace Formulario
             this.txtArea = new System.Windows.Forms.TextBox();
             this.rbtComputadora = new System.Windows.Forms.RadioButton();
             this.rbtCabina = new System.Windows.Forms.RadioButton();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.rtbInfoMaquinas = new System.Windows.Forms.RichTextBox();
             this.lblListaCompusDisponibles = new System.Windows.Forms.Label();
             this.lblListaCompusOcupadas = new System.Windows.Forms.Label();
             this.tiempoActualDeUso = new System.Windows.Forms.Button();
             this.lblColaClientes = new System.Windows.Forms.Label();
             this.lblListaClientes = new System.Windows.Forms.Label();
             this.lsbCabinasDisponibles = new System.Windows.Forms.ListBox();
-            this.lsbCsbinasOcupadas = new System.Windows.Forms.ListBox();
+            this.lsbCasbinasOcupadas = new System.Windows.Forms.ListBox();
             this.btnFinalizarTareaCabina = new System.Windows.Forms.Button();
             this.btnTiempoActualDeUsoCabina = new System.Windows.Forms.Button();
             this.lblCabinasDisponibles = new System.Windows.Forms.Label();
             this.lblCabinasOcupadas = new System.Windows.Forms.Label();
+            this.lblInfo = new System.Windows.Forms.Label();
+            this.lblInfoclic = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +86,7 @@ namespace Formulario
             this.lsbCompusDisponibles.Name = "lsbCompusDisponibles";
             this.lsbCompusDisponibles.Size = new System.Drawing.Size(140, 244);
             this.lsbCompusDisponibles.TabIndex = 0;
+            this.lsbCompusDisponibles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbCompusDisponibles_MouseDoubleClick);
             // 
             // lsbCompusOcupadas
             // 
@@ -93,6 +96,7 @@ namespace Formulario
             this.lsbCompusOcupadas.Name = "lsbCompusOcupadas";
             this.lsbCompusOcupadas.Size = new System.Drawing.Size(140, 244);
             this.lsbCompusOcupadas.TabIndex = 1;
+            this.lsbCompusOcupadas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbCompusOcupadas_MouseDoubleClick);
             // 
             // btnFinalizarTarea
             // 
@@ -359,13 +363,13 @@ namespace Formulario
             this.rbtCabina.UseVisualStyleBackColor = true;
             this.rbtCabina.CheckedChanged += new System.EventHandler(this.rbtCabina_CheckedChanged);
             // 
-            // richTextBox2
+            // rtbInfoMaquinas
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(702, 9);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(186, 291);
-            this.richTextBox2.TabIndex = 28;
-            this.richTextBox2.Text = "";
+            this.rtbInfoMaquinas.Location = new System.Drawing.Point(702, 41);
+            this.rtbInfoMaquinas.Name = "rtbInfoMaquinas";
+            this.rtbInfoMaquinas.Size = new System.Drawing.Size(186, 244);
+            this.rtbInfoMaquinas.TabIndex = 28;
+            this.rtbInfoMaquinas.Text = "";
             // 
             // lblListaCompusDisponibles
             // 
@@ -421,15 +425,17 @@ namespace Formulario
             this.lsbCabinasDisponibles.Name = "lsbCabinasDisponibles";
             this.lsbCabinasDisponibles.Size = new System.Drawing.Size(140, 244);
             this.lsbCabinasDisponibles.TabIndex = 34;
+            this.lsbCabinasDisponibles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbCabinasDisponibles_MouseDoubleClick);
             // 
-            // lsbCsbinasOcupadas
+            // lsbCasbinasOcupadas
             // 
-            this.lsbCsbinasOcupadas.FormattingEnabled = true;
-            this.lsbCsbinasOcupadas.ItemHeight = 15;
-            this.lsbCsbinasOcupadas.Location = new System.Drawing.Point(1058, 372);
-            this.lsbCsbinasOcupadas.Name = "lsbCsbinasOcupadas";
-            this.lsbCsbinasOcupadas.Size = new System.Drawing.Size(140, 244);
-            this.lsbCsbinasOcupadas.TabIndex = 35;
+            this.lsbCasbinasOcupadas.FormattingEnabled = true;
+            this.lsbCasbinasOcupadas.ItemHeight = 15;
+            this.lsbCasbinasOcupadas.Location = new System.Drawing.Point(1058, 372);
+            this.lsbCasbinasOcupadas.Name = "lsbCasbinasOcupadas";
+            this.lsbCasbinasOcupadas.Size = new System.Drawing.Size(140, 244);
+            this.lsbCasbinasOcupadas.TabIndex = 35;
+            this.lsbCasbinasOcupadas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbCsbinasOcupadas_MouseDoubleClick);
             // 
             // btnFinalizarTareaCabina
             // 
@@ -469,23 +475,43 @@ namespace Formulario
             this.lblCabinasOcupadas.TabIndex = 39;
             this.lblCabinasOcupadas.Text = "Cabinas Ocupadas";
             // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(702, 4);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(94, 15);
+            this.lblInfo.TabIndex = 40;
+            this.lblInfo.Text = "Info de maquina";
+            // 
+            // lblInfoclic
+            // 
+            this.lblInfoclic.AutoSize = true;
+            this.lblInfoclic.Location = new System.Drawing.Point(702, 23);
+            this.lblInfoclic.Name = "lblInfoclic";
+            this.lblInfoclic.Size = new System.Drawing.Size(106, 15);
+            this.lblInfoclic.TabIndex = 41;
+            this.lblInfoclic.Text = "(doble clic en lista)";
+            // 
             // FormLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1391, 653);
+            this.Controls.Add(this.lblInfoclic);
+            this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.lblCabinasOcupadas);
             this.Controls.Add(this.lblCabinasDisponibles);
             this.Controls.Add(this.btnTiempoActualDeUsoCabina);
             this.Controls.Add(this.btnFinalizarTareaCabina);
-            this.Controls.Add(this.lsbCsbinasOcupadas);
+            this.Controls.Add(this.lsbCasbinasOcupadas);
             this.Controls.Add(this.lsbCabinasDisponibles);
             this.Controls.Add(this.lblListaClientes);
             this.Controls.Add(this.lblColaClientes);
             this.Controls.Add(this.tiempoActualDeUso);
             this.Controls.Add(this.lblListaCompusOcupadas);
             this.Controls.Add(this.lblListaCompusDisponibles);
-            this.Controls.Add(this.richTextBox2);
+            this.Controls.Add(this.rtbInfoMaquinas);
             this.Controls.Add(this.rbtCabina);
             this.Controls.Add(this.rbtComputadora);
             this.Controls.Add(this.panel2);
@@ -546,14 +572,14 @@ namespace Formulario
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RadioButton rbtComputadora;
         private System.Windows.Forms.RadioButton rbtCabina;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox rtbInfoMaquinas;
         private System.Windows.Forms.Label lblListaCompusDisponibles;
         private System.Windows.Forms.Label lblListaCompusOcupadas;
         private System.Windows.Forms.Button tiempoActualDeUso;
         private System.Windows.Forms.Label lblColaClientes;
         private System.Windows.Forms.Label lblListaClientes;
         private System.Windows.Forms.ListBox lsbCabinasDisponibles;
-        private System.Windows.Forms.ListBox lsbCsbinasOcupadas;
+        private System.Windows.Forms.ListBox lsbCasbinasOcupadas;
         private System.Windows.Forms.Button btnFinalizarTareaCabina;
         private System.Windows.Forms.Button btnTiempoActualDeUsoCabina;
         private System.Windows.Forms.Label lblCabinasDisponibles;
@@ -563,5 +589,7 @@ namespace Formulario
         private System.Windows.Forms.TextBox txtArea;
         private System.Windows.Forms.Label lblGuion;
         private System.Windows.Forms.Label lblGuion2;
+        private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Label lblInfoclic;
     }
 }

@@ -94,7 +94,7 @@ namespace Entidades.Clases_generales
 
 
         /// <summary>
-        /// petisiones son iguales si tienen los mismo (COMO COSTO!!)
+        /// petisiones son iguales si tienen los mismo 
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2">compu a igualar</param>
@@ -221,12 +221,6 @@ namespace Entidades.Clases_generales
 
             return retorno;
         }
-
-
-
-
-
-
 
 
 

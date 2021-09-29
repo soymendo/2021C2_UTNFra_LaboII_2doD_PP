@@ -17,6 +17,8 @@ namespace Entidades.Clases_especializadas
         private Petisiones petisiones;
         private string numeroAMarcar;
 
+
+        //--------------Propiedades--------------------------------
         /// <summary>
         /// devuelve Nombre
         /// </summary>
@@ -71,6 +73,8 @@ namespace Entidades.Clases_especializadas
         }
 
 
+
+     //--------Constructores------------------------
         /// <summary>
         /// Constructor de instancia
         /// </summary>
@@ -80,7 +84,13 @@ namespace Entidades.Clases_especializadas
         }
 
 
-
+        /// <summary>
+        /// contructor que recibe nombre,apellido, dni y edad
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="dni"></param>
+        /// <param name="edad"></param>
         public Cliente(string nombre, string apellido, int dni, int edad)
         {
             this.nombre = nombre;
@@ -93,7 +103,7 @@ namespace Entidades.Clases_especializadas
 
 
         /// <summary>
-        /// constructor
+        /// contructor que recibe nombre,apellido, dni,edad y las petisiones
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -110,6 +120,17 @@ namespace Entidades.Clases_especializadas
             this.petisiones = pedidos;
         }
 
+
+        /// <summary>
+        ///  contructor que recibe nombre,apellido, dni,edad y las petisiones
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="dni"></param>
+        /// <param name="edad"></param>
+        /// <param name="software"></param>
+        /// <param name="periféricos"></param>
+        /// <param name="juegos"></param>
         public Cliente(string nombre, string apellido, int dni, int edad, Petisiones.SoftwareInstalado software, Petisiones.PeriféricosDisponibles periféricos, Petisiones.JuegosDisponibles juegos)
         : this(nombre, apellido, dni, edad, new Petisiones(software, periféricos, juegos))
         {
@@ -117,12 +138,23 @@ namespace Entidades.Clases_especializadas
         }
 
 
-
+        /// <summary>
+        /// contructor que recibe nombre,apellido, dni,edad y el numero 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="apellido"></param>
+        /// <param name="dni"></param>
+        /// <param name="edad"></param>
+        /// <param name="numeroAMarcar"></param>
         public Cliente(string nombre, string apellido, int dni, int edad, string numeroAMarcar)
         :this(nombre, apellido, dni, edad)
         {
             this.numeroAMarcar = numeroAMarcar;
         }
+
+
+
+        //-------Sobrecargas----------------------------------------------------------
 
 
         /// <summary>

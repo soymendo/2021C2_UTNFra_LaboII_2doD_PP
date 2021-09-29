@@ -112,6 +112,7 @@ namespace Formulario
             }
             else
             {
+
                 Cliente cli = local.Cola_Clientes.Peek();
                 Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
 

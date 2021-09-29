@@ -26,6 +26,9 @@ namespace Formulario
         Cabina cabinaAux;
 
         string numeroDeTelefono;
+        string area;
+        string localTelefono;
+        string numeroTelefono;
 
         public Computadora CompuAux
         {
@@ -56,7 +59,7 @@ namespace Formulario
             lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
 
             lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
-            lsbCsbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+            lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
 
             lsbListaClientes.DataSource = null;
             lsbListaClientes.DataSource = local.Lista_Clientes;
@@ -120,6 +123,9 @@ namespace Formulario
                     if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
                     {
                         MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }else
+                    {
+                        MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     if (Local.GuardarClienteEnColaClientes(local, clienteCompu))
                     {
@@ -139,17 +145,25 @@ namespace Formulario
                 if( rbtCabina.Checked)
                 {
                     this.numeroDeTelefono = string.Concat(txtArea.Text,txtLocal.Text,txtNumero.Text);
-                    if(numeroDeTelefono.Length<=13)
+                    this.area = txtArea.Text;
+                    this.localTelefono = txtLocal.Text;
+                    this.numeroTelefono = txtNumero.Text;
+
+                    if(this.area!="" && this.localTelefono!=""&& this.numeroTelefono!="")
                     {
-                        //Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), txtTelefono.Text);
-                        Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), this.numeroDeTelefono);
+                       
+                            //Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), txtTelefono.Text);
+                            Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), this.numeroDeTelefono);
 
-                        if (Local.GuardarClienteEnListaClientes(local, clienteCabina)) { MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                        if (Local.GuardarClienteEnColaClientes(local, clienteCabina)) { }
+                            if (Local.GuardarClienteEnListaClientes(local, clienteCabina)) { MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                            if (Local.GuardarClienteEnColaClientes(local, clienteCabina)) { }
 
-                        lsbListaClientes.DataSource = null;
-                        lsbListaClientes.DataSource = local.Lista_Clientes;
-                    }else
+                            lsbListaClientes.DataSource = null;
+                            lsbListaClientes.DataSource = local.Lista_Clientes;
+                      
+
+                    }
+                    else
                     {
                         MessageBox.Show("Numero incorrecto!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -221,7 +235,7 @@ namespace Formulario
                 Cliente cliente = local.Cola_Clientes.Peek();
 
                 //cabinaAux = new Cabina(cliente.NumeroAMarcar);
-                // MessageBox.Show($"Numero de cabina: {cabinaAux.NumeroAMarcar}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show($"Numero de cabina: {cabinaAux.NumeroAMarcar}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
 
@@ -236,10 +250,7 @@ namespace Formulario
                 {
                     auxListaUnica = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Periféricos, cliente.PetisionesDePc.Juegos);
                     FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, auxListaUnica);
-                   
-                    buscaCompu.Show();
-                  
-                    //buscaCompu.ShowDialog();
+                    buscaCompu.ShowDialog();
                 }
 
 
@@ -256,8 +267,8 @@ namespace Formulario
                 lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
 
 
-                lsbCsbinasOcupadas.DataSource = null;
-                lsbCsbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+                lsbCasbinasOcupadas.DataSource = null;
+                lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
 
 
                 lsbListaClientes.DataSource = null;
@@ -319,7 +330,8 @@ namespace Formulario
             {
                 Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
 
-                MessageBox.Show($" tiempo de uso: {comp.TiempoActualDeUso} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                comp.TiempoFinal = DateTime.Now;
+                MessageBox.Show($" tiempo de uso: {comp.TiempoDeUso/*TiempoActualDeUso*/} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             
@@ -327,13 +339,13 @@ namespace Formulario
       
         private void btnFinalizarTareaCabina_Click(object sender, EventArgs e)
         {
-            if (lsbCsbinasOcupadas.SelectedItem is null)
+            if (lsbCasbinasOcupadas.SelectedItem is null)
             {
                 MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                Cabina cab = (Cabina)lsbCsbinasOcupadas.SelectedItem;
+                Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
 
                 if (Local.FinalizarTareaCabina(local, cab))
                 {
@@ -349,8 +361,8 @@ namespace Formulario
                 lsbCabinasDisponibles.DataSource = null;
                 lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
 
-                lsbCsbinasOcupadas.DataSource = null;
-                lsbCsbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+                lsbCasbinasOcupadas.DataSource = null;
+                lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
 
             }
 
@@ -365,16 +377,16 @@ namespace Formulario
         private void btnTiempoActualDeUsoCabina_Click(object sender, EventArgs e)
         {
 
-            if (lsbCsbinasOcupadas.SelectedItem is null)
+            if (lsbCasbinasOcupadas.SelectedItem is null)
             {
                 MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            { 
-
-                Cabina cab = (Cabina)lsbCsbinasOcupadas.SelectedItem;
-
-                MessageBox.Show($" tiempo de uso: {cab.TiempoActualDeUso} destino: {cab.Destino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            {
+       
+                Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
+                cab.TiempoFinal = DateTime.Now;
+                MessageBox.Show($" tiempo de uso: {cab.TiempoDeUso} destino: {cab.Destino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
 
@@ -409,6 +421,41 @@ namespace Formulario
         private void lblGuion_Click(object sender, EventArgs e)
         {
 
+        }
+
+
+
+        private void lsbCompusDisponibles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            Computadora c;
+            c = (Computadora)lsbCompusDisponibles.SelectedItem;
+
+            rtbInfoMaquinas.Text = c.Mostrar();
+        }
+
+        private void lsbCompusOcupadas_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Computadora c;
+            c = (Computadora)lsbCompusOcupadas.SelectedItem;
+
+            rtbInfoMaquinas.Text = c.Mostrar();
+        }
+
+        private void lsbCabinasDisponibles_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Cabina c;
+            c = (Cabina)lsbCabinasDisponibles.SelectedItem;
+
+            rtbInfoMaquinas.Text = c.Mostrar();
+        }
+
+        private void lsbCsbinasOcupadas_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Cabina c;
+            c = (Cabina)lsbCasbinasOcupadas.SelectedItem;
+
+            rtbInfoMaquinas.Text = c.Mostrar();
         }
     }
 }

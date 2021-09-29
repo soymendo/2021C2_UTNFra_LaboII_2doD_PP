@@ -45,7 +45,8 @@ namespace Entidades.Clases_generales
         private float contadorGananciasDelDiaPC = 0;
         private float contadorGananciasDelDiaCabina = 0;
 
-        //----------------------------CONTADORES-----------------------------------------------
+        //----------------------------CONTADORES/Propiedades-----------------------------------------------
+        
         public int ContadorSofwareOffice
         {
             get { return this.contadorSofwareOffice; }
@@ -121,48 +122,82 @@ namespace Entidades.Clases_generales
             set { this.contadorGananciasDelDiaCabina = value; }
         }
 
-
+        //---------Propiedades------------------------------------------------------------
+        
+        /// <summary>
+        /// Devuelve la lista de compus disponibles
+        /// </summary>
         public List<Computadora>Lista_CompusDisponibles
         {
             get { return this.ListaCompusDisponibles; }
         }
+        /// <summary>
+        /// Devuelve la lista de compus ocupadas
+        /// </summary>
         public List<Computadora> Lista_CompusOcupadas
         {
             get { return this.ListaCompusOcupadas; }
             set { this.ListaCompusOcupadas = value; }
         }
+
+        /// <summary>
+        /// Devuelve la lista de compus finalizadas
+        /// </summary>
         public List<Computadora> Lista_CompusFinalizadas
         {
             get { return this.ListaCompusFinalizadas; }
         }
+
+
+        /// <summary>
+        /// Devuelve la lista de compus segun la spetisiones del cliente
+        /// </summary>
         public List<Computadora> Lista_CompusDisponiblesParaElClienteSegunsSusPetisiones
         {
             get { return this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones; }
         }
 
-
+        /// <summary>
+        /// Devuelve la lista de cabinas disponibles
+        /// </summary>
         public List<Cabina>Lista_cabinas_disponibles
         {
             get { return this.ListaCabinasDisponibles; }
             set { this.ListaCabinasDisponibles = value; }
         }
 
+
+        /// <summary>
+        /// Devuelve la lista de cabinas ocupadas
+        /// </summary>
         public List<Cabina>Lista_cabinas_ocupadas
         {
             get { return this.ListaCabinasOcupadas; }
             set { this.ListaCabinasOcupadas = value; }
         }
 
+
+        /// <summary>
+        /// Devuelve la cola de clientes
+        /// </summary>
         public Queue<Cliente> Cola_Clientes
         {
             get { return this.ColaClientes; }
             set { this.ColaClientes = value; }
         }
 
+        /// <summary>
+        /// Devuelve la lista de clientes
+        /// </summary>
         public List<Cliente>Lista_Clientes
         {
             get { return this.ListaClientes; }
         }
+
+
+        //--------Contructores--------------------------------------
+
+
         /// <summary>
         /// constructro , inicializo las listas
         /// </summary>
@@ -1008,6 +1043,7 @@ namespace Entidades.Clases_generales
             if(AlmacenadoEnListaCompusOcupadas(l,c))
             {
                 Local.EliminarCompuEnListaCompusOcupadas(l, c);
+               
                 Local.GuardarCompuEnListaCompusDisponibles(l, c);
                 Local.GuardarCompuEnListaCompusFinalizadas(l, c);
                 //Local.GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c);
@@ -1155,7 +1191,8 @@ namespace Entidades.Clases_generales
             foreach (Computadora item in ListaPCOrdenadas)
             {
                 sb.Append($"{item.Mostrar()} ");
-                sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso}");
+                //sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso}");
+                sb.AppendLine($"Tiempo de uso: {item.TiempoTotalDeUso}");
                 sb.AppendLine();
                 sb.AppendLine();
                 sb.AppendLine();
@@ -1178,7 +1215,8 @@ namespace Entidades.Clases_generales
             foreach (Cabina item in ListaCabinasOrdenadas)
             {
                 sb.Append(item.Mostrar());
-                sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso.ToString()}");
+                //sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso.ToString()}");
+                sb.AppendLine($"Tiempo de uso: {item.TiempoActualDeUso.ToString()}");// toma el tiempo de esa cabina
                 sb.AppendLine();
             }
             return sb.ToString();
