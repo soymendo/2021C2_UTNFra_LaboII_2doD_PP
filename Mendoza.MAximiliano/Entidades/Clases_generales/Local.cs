@@ -227,7 +227,7 @@ namespace Entidades.Clases_generales
 
 
 
-            //Panasonic
+           
 
             this.ListaCompusOcupadas = new List<Computadora>();
             this.ListaCompusFinalizadas = new List<Computadora>();
@@ -256,11 +256,19 @@ namespace Entidades.Clases_generales
             this.ListaCabinasFinalizadas = new List<Cabina>();
 
         }
-
+        /// <summary>
+        /// estabkle el limite de maquinas en el local
+        /// </summary>
+        /// <param name="limite"></param>
         public Local(int limite)
         {
 
         }
+        /// <summary>
+        /// establece el nombre y limite de maquinas del local
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="limite"></param>
         public Local(string nombre, int limite)
         : this()
         {
@@ -268,55 +276,6 @@ namespace Entidades.Clases_generales
             this.limite = limite;
         }
 
-
-
-
-
-
-
-
-        /// <summary>
-        /// muestra si la maquina esta en el local
-        /// </summary>
-        /// <param name="loc"></param>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static bool operator ==(Local loc, Maquinas c)
-        {
-            bool retorno = false;
-            if (loc is not null && c is not null)
-            {
-                foreach (Maquinas item in loc.compusCabinas)
-                {
-
-                    if (item is Computadora && c is Computadora && ((Computadora)item == (Computadora)c))
-                    {
-                        retorno = true;
-                        break;
-                    }
-                    else if (item is Cabina && c is Cabina && ((Cabina)item == (Cabina)c))
-                    {
-                        retorno = true;
-                        break;
-                    }
-                }
-            }
-            return retorno;
-        }
-
-
-
-
-        /// <summary>
-        /// muestra si la maquina no esta en el local
-        /// </summary>
-        /// <param name="loc"></param>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public static bool operator !=(Local loc, Maquinas c)
-        {
-            return !(loc == c);
-        }
 
 
 
@@ -619,7 +578,7 @@ namespace Entidades.Clases_generales
 
             return retorno;
         }
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------
+        
        
 
 
@@ -684,7 +643,7 @@ namespace Entidades.Clases_generales
 
 
         /// <summary>
-        /// veo si la cabinaesta en ListaCabinasOcupadas
+        /// veo si la cabina esta en ListaCabinasOcupadas
         /// </summary>
         /// <param name="l"></param>
         /// <param name="m"></param>
@@ -804,7 +763,6 @@ namespace Entidades.Clases_generales
             return retorno;
         }
 
-        //-------------------------------------------------------------------------------------------------------------------------------------------------------
         /// <summary>
         /// veo si la cliente esta en ListaClientes
         /// </summary>
@@ -863,8 +821,8 @@ namespace Entidades.Clases_generales
 
             return retorno;
         }
-        //------------------------------------------------------------------------------------------------------------------------------------------------------
-        //private Queue<Cliente> ColaClientes;
+        
+       
 
         /// <summary>
         /// veo si cliente esta en ColaClientes
@@ -928,7 +886,6 @@ namespace Entidades.Clases_generales
 
 
 
-        //-------------------------------------------------------------------------------------------------------
         /// <summary>
         /// busca la pc que coincida con lo del cliente en la lista de compus disponibles
         /// </summary>
@@ -1020,15 +977,7 @@ namespace Entidades.Clases_generales
         }
 
 
-        //----------------------------------------------------------------------------------
-        public static bool AsignarClienteAListaDeEspera(Local l, Cliente c)
-        {
-            bool retorno = false;
-
-
-            return retorno;
-        }
-
+       
 
         /// <summary>
         /// finaliza la compu y le asigna un tiempo final para calcular el costo
@@ -1494,19 +1443,52 @@ namespace Entidades.Clases_generales
         }
 
 
-        
 
-        //public Computadora DevolverCompu(Computadora c)
-        //{
-        //    Computadora comp=new Computadora();
-        //    foreach (Computadora item in this.ListaCompusOcupadas)
-        //    {
-        //        if (item.PetisionesDePc == c.PetisionesDePc)
-        //            comp = c;
-        //    }
 
-        //    return comp;
-        //}
+        /// <summary>
+        /// muestra si la maquina esta en el local
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static bool operator ==(Local loc, Maquinas c)
+        {
+            bool retorno = false;
+            if (loc is not null && c is not null)
+            {
+                foreach (Maquinas item in loc.compusCabinas)
+                {
+
+                    if (item is Computadora && c is Computadora && ((Computadora)item == (Computadora)c))
+                    {
+                        retorno = true;
+                        break;
+                    }
+                    else if (item is Cabina && c is Cabina && ((Cabina)item == (Cabina)c))
+                    {
+                        retorno = true;
+                        break;
+                    }
+                }
+            }
+            return retorno;
+        }
+
+
+
+
+        /// <summary>
+        /// muestra si la maquina no esta en el local
+        /// </summary>
+        /// <param name="loc"></param>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static bool operator !=(Local loc, Maquinas c)
+        {
+            return !(loc == c);
+        }
+
+
 
     }
 }

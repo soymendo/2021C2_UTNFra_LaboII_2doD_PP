@@ -80,28 +80,28 @@ namespace Consola
 
 //--------------------------------------------------------------------------------------------------
 
-            Local.AsignarCabinaAlCliente(local1, cab1);
-            Local.AsignarCabinaAlCliente(local1, cab2);
-            Local.AsignarCabinaAlCliente(local1, cab3);
+            //Local.AsignarCabinaAlCliente(local1, cab1);
+            //Local.AsignarCabinaAlCliente(local1, cab2);
+            //Local.AsignarCabinaAlCliente(local1, cab3);
 
-            Thread.Sleep(4000);
-            Local.FinalizarTareaCabina(local1, cab1);//4seg = 4$
-            Thread.Sleep(4000);
-            Local.FinalizarTareaCabina(local1, cab2);//8seg =(8*2.5)
-            Thread.Sleep(4000);
-            Local.FinalizarTareaCabina(local1, cab3);//12seg =(12*5)
+            //Thread.Sleep(4000);
+            //Local.FinalizarTareaCabina(local1, cab1);//4seg = 4$
+            //Thread.Sleep(4000);
+            //Local.FinalizarTareaCabina(local1, cab2);//8seg =(8*2.5)
+            //Thread.Sleep(4000);
+            //Local.FinalizarTareaCabina(local1, cab3);//12seg =(12*5)
 
-            Console.WriteLine(local1.MostrarCabinasDisponibles());
-            Console.WriteLine();
-            Console.WriteLine(local1.MostrarCabinasOcupadas());
+            //Console.WriteLine(local1.MostrarCabinasDisponibles());
+            //Console.WriteLine();
+            //Console.WriteLine(local1.MostrarCabinasOcupadas());
 
-            Console.WriteLine(local1.Horas_totales_Y_La_Recaudación_Por_Tipo_De_Llamada());
-            Console.WriteLine(local1.ListaCabinasOrdenadasPorTiempoDeUso(local1));
+            //Console.WriteLine(local1.Horas_totales_Y_La_Recaudación_Por_Tipo_De_Llamada());
+            //Console.WriteLine(local1.ListaCabinasOrdenadasPorTiempoDeUso(local1));
 
 
 
             //------------------------------------------------------------------------------------------------------
-            Console.WriteLine(local1.BuscarCompuEnLaLista(aux));
+            //Console.WriteLine(local1.BuscarCompuEnLaLista(aux));
             //Console.WriteLine(local1.MostrarCompusDisponiblesParaElClienteSegunsSusPetisiones(aux));
             //Console.WriteLine();
             ////Local.EliminarCompuEnListaCompusDisponibles(local1, c5);
