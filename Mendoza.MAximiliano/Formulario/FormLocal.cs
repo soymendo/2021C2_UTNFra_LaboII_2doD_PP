@@ -57,6 +57,11 @@ namespace Formulario
 
             lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
             lsbCsbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+
+            lsbListaClientes.DataSource = null;
+            lsbListaClientes.DataSource = local.Lista_Clientes;
+
+            richTextBox1.Text = local.MostrarClientesDisponiblesCola();
             //txtTelefono.Enabled = false;
 
             txtArea.Enabled = false;
