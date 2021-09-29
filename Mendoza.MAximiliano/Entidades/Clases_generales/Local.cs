@@ -173,11 +173,11 @@ namespace Entidades.Clases_generales
 
             this.ListaCompusDisponibles = new List<Computadora>()
             {
-             new Computadora("C01", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C02", Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.DiabloII),
-            new Computadora("C03", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.DiabloII),
+             new Computadora("C01", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
+            new Computadora("C02", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
+            new Computadora("C03", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
             new Computadora("C04", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.MuOnline),
-            new Computadora("C05", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.CounterStrike),
+            new Computadora("C05", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.CounterStrike),
             new Computadora("C06", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.DiabloII),
             new Computadora("C07", Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.LineageII),
             new Computadora("C08", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.MuOnline),
