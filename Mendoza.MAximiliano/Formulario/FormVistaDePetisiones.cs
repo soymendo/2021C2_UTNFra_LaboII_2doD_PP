@@ -15,11 +15,16 @@ namespace Formulario
     public partial class FormVistaDePetisiones : Form
     {
         Local local = new Local(20);
+
+        /// <summary>
+        /// Constructor que recibe un cliente
+        /// </summary>
+        /// <param name="cliente"></param>
         public FormVistaDePetisiones(Cliente cliente)
         {
             InitializeComponent();
-            richTextBox1.ReadOnly = true;
-            richTextBox1.Text = cliente.MostrarCliente();
+            rtbPeticiones.ReadOnly = true;
+            rtbPeticiones.Text = cliente.MostrarCliente();
         }
     }
 }

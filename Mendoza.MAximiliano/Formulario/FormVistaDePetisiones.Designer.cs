@@ -29,23 +29,23 @@ namespace Formulario
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.rtbPeticiones = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
-            // richTextBox1
+            // rtbPeticiones
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(0, 1);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(277, 266);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.rtbPeticiones.Location = new System.Drawing.Point(0, 1);
+            this.rtbPeticiones.Name = "rtbPeticiones";
+            this.rtbPeticiones.Size = new System.Drawing.Size(277, 266);
+            this.rtbPeticiones.TabIndex = 0;
+            this.rtbPeticiones.Text = "";
             // 
             // FormVistaDePetisiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 263);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.rtbPeticiones);
             this.Name = "FormVistaDePetisiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormVistaDePetisiones";
@@ -55,6 +55,6 @@ namespace Formulario
 
         #endregion
 
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox rtbPeticiones;
     }
 }

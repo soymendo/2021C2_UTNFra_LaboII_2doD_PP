@@ -16,6 +16,11 @@ namespace Formulario
     public partial class FormMostrarCompu : Form
     {
         Local local = new Local(20);
+
+        /// <summary>
+        /// Constructor que recibe una computadora
+        /// </summary>
+        /// <param name="c"></param>
         public FormMostrarCompu(Computadora c)
         {
             InitializeComponent();
