@@ -95,6 +95,67 @@ namespace Entidades.Clases_generales
             return sb.ToString();
         }
 
+
+
+
+        //----Sobrecargas----------------------------
+        /// <summary>
+        /// compara dos maquinas y da true si tienen el mismo nombre
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Maquinas m1, Maquinas m2)
+        {
+            if(m1 is null || m2 is null)
+            {
+                return false;
+            }
+            return (m1.Identificador == m2.Identificador);
+        }
+
+
+        /// <summary>
+        /// da fase si son diferentes 
+        /// </summary>
+        /// <param name="m1"></param>
+        /// <param name="m2"></param>
+        /// <returns></returns>
+        public static bool operator !=(Maquinas m1, Maquinas m2)
+        {
+            return !(m1 == m2);
+        }
+
+
+        /// <summary>
+        /// sobrecarga tostring
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return this.Mostrar();
+        }
+
+
+        /// <summary>
+        /// sobrecarga equal
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Maquinas otraMaquina = obj as Maquinas;
+            return otraMaquina != null && this == otraMaquina;
+        }
+
+        /// <summary>
+        /// sobrecarga GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return  (Identificador).GetHashCode();
+        }
     }
 
 

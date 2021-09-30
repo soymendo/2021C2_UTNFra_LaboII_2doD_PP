@@ -31,13 +31,16 @@ namespace Formulario
         {
             this.btnLocal = new System.Windows.Forms.Button();
             this.btnEstadisticas = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnLocal
             // 
-            this.btnLocal.Location = new System.Drawing.Point(235, 70);
+            this.btnLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLocal.Location = new System.Drawing.Point(235, 99);
             this.btnLocal.Name = "btnLocal";
-            this.btnLocal.Size = new System.Drawing.Size(301, 72);
+            this.btnLocal.Size = new System.Drawing.Size(201, 72);
             this.btnLocal.TabIndex = 0;
             this.btnLocal.Text = "Local";
             this.btnLocal.UseVisualStyleBackColor = true;
@@ -45,21 +48,41 @@ namespace Formulario
             // 
             // btnEstadisticas
             // 
-            this.btnEstadisticas.Location = new System.Drawing.Point(235, 201);
+            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEstadisticas.Location = new System.Drawing.Point(235, 226);
             this.btnEstadisticas.Name = "btnEstadisticas";
-            this.btnEstadisticas.Size = new System.Drawing.Size(301, 72);
+            this.btnEstadisticas.Size = new System.Drawing.Size(201, 72);
             this.btnEstadisticas.TabIndex = 1;
             this.btnEstadisticas.Text = "Estadisticas";
             this.btnEstadisticas.UseVisualStyleBackColor = true;
             this.btnEstadisticas.Click += new System.EventHandler(this.btnEstadisticas_Click);
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAyuda.Location = new System.Drawing.Point(485, 413);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(187, 36);
+            this.btnAyuda.TabIndex = 2;
+            this.btnAyuda.Text = "Ayuda";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClientSize = new System.Drawing.Size(684, 461);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnEstadisticas);
             this.Controls.Add(this.btnLocal);
+            this.MaximumSize = new System.Drawing.Size(1000, 1000);
+            this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -71,6 +94,7 @@ namespace Formulario
 
         private System.Windows.Forms.Button btnLocal;
         private System.Windows.Forms.Button btnEstadisticas;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }
 

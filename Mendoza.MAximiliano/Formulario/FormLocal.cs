@@ -52,7 +52,9 @@ namespace Formulario
 
             lsbListaClientes.DataSource = null;
             lsbListaClientes.DataSource = local.Lista_Clientes;
-         
+
+            rtbInfoMaquinas.ReadOnly = true;
+
             txtArea.Enabled = false;
             txtLocal.Enabled = false;
             txtNumero.Enabled = false;
@@ -227,7 +229,7 @@ namespace Formulario
         {
             if (lsbCompusOcupadas.SelectedItem is null)
             {
-                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de compus ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -256,7 +258,7 @@ namespace Formulario
         {
             if (lsbCasbinasOcupadas.SelectedItem is null)
             {
-                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista  de cabinas ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -292,7 +294,7 @@ namespace Formulario
         {
             if (lsbCompusOcupadas.SelectedItem is null)
             {
-                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de compus ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -316,7 +318,7 @@ namespace Formulario
         {
             if (lsbCasbinasOcupadas.SelectedItem is null)
             {
-                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de cabinas ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {      
@@ -339,7 +341,7 @@ namespace Formulario
 
             if (lsbListaClientes.SelectedItem == null)
             {
-                MessageBox.Show("Se debe seleccionar algun elemento de la lista", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de clientes", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -358,11 +360,17 @@ namespace Formulario
         /// <param name="e"></param>
         private void lsbCompusDisponibles_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-
             Computadora c;
             c = (Computadora)lsbCompusDisponibles.SelectedItem;
-
-            rtbInfoMaquinas.Text = c.Mostrar();
+            if (lsbCompusDisponibles.SelectedItem == null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de compus disponibles", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                rtbInfoMaquinas.Text = c.Mostrar();
+            }
+           
         }
 
 
@@ -376,7 +384,15 @@ namespace Formulario
             Computadora c;
             c = (Computadora)lsbCompusOcupadas.SelectedItem;
 
-            rtbInfoMaquinas.Text = c.Mostrar();
+            if (lsbCompusOcupadas.SelectedItem == null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de compus ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                rtbInfoMaquinas.Text = c.Mostrar();
+            }
+            
         }
 
         /// <summary>
@@ -389,7 +405,14 @@ namespace Formulario
             Cabina c;
             c = (Cabina)lsbCabinasDisponibles.SelectedItem;
 
-            rtbInfoMaquinas.Text = c.Mostrar();
+            if (lsbCabinasDisponibles.SelectedItem == null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de cabinas disponibles", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                rtbInfoMaquinas.Text = c.Mostrar();
+            }
         }
 
 
@@ -403,7 +426,14 @@ namespace Formulario
             Cabina c;
             c = (Cabina)lsbCasbinasOcupadas.SelectedItem;
 
-            rtbInfoMaquinas.Text = c.Mostrar();
+            if (lsbCasbinasOcupadas.SelectedItem == null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de cabinas ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                rtbInfoMaquinas.Text = c.Mostrar();
+            }
         }
 
 
@@ -438,5 +468,33 @@ namespace Formulario
             e.Handled = true;
         }
 
+        private void tmrFecha_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Ayuda());          
+        }
+
+
+
+        /// <summary>
+        /// devuelve un string con los datos necesarios para el funcionamientop del local.
+        /// </summary>
+        /// <returns></returns>
+        public string Ayuda()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("1° Asigne los datos del cliente (nombre,apellido,edad,dni) dependiendo lo que quiera usar, marque computadora o cabina, se habilitara las opciones correspondiente a las necesidades del cliente.Una vez cargado todos los datos, oprima el boto 'OK'");
+            sb.AppendLine();    
+            sb.AppendLine("2° El boton 'Asignar' le asignara una maquina al cliente , dichos clientes se pueden observar en la 'lista de clientes'");
+            sb.AppendLine();
+            sb.AppendLine("3° Se podran observar las maquinas en sus respectivas listas tanto disponibles como ocupadas, el boton 'FinalizarTarea' terminará con la tarea que esté realizando la maquina y proporcionará datos de tiempos y costos correspondientes ");
+            sb.AppendLine();
+            sb.AppendLine("4° Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
+            return sb.ToString();
+        }
     }
 }

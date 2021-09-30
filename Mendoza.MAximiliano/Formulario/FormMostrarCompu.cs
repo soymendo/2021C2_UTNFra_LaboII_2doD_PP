@@ -27,5 +27,10 @@ namespace Formulario
             rtbDatosCompu.ReadOnly = true;
             rtbDatosCompu.Text = c.Mostrar();
         }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Mostrara la informacion de la computadora en pantalla");
+        }
     }
 }

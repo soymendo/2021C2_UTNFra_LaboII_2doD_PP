@@ -78,19 +78,6 @@ namespace Entidades.Clases_generales
 
 
 
-        /// <summary>
-        /// muestra los datos
-        /// </summary>
-        /// <returns></returns>
-        public override string ToString()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Sofware: {Sofware}");
-            sb.AppendLine($"Perisfericos: {Periféricos}");
-            sb.AppendLine($"Juegos: {Juegos}");
-            return sb.ToString();
-        }
-
 
 
         /// <summary>
@@ -233,6 +220,40 @@ namespace Entidades.Clases_generales
         public static bool operator !=(Petisiones p1, Petisiones p2)
         {
             return !(p1 == p2);
+        }
+
+
+        /// <summary>
+        /// muestra los datos
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Sofware: {Sofware}");
+            sb.AppendLine($"Perisfericos: {Periféricos}");
+            sb.AppendLine($"Juegos: {Juegos}");
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// sobrecarga equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Petisiones otraPeticion = obj as Petisiones;
+            return otraPeticion != null && this == otraPeticion;
+        }
+
+        /// <summary>
+        /// sobrecarga GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return (Sofware,Periféricos,Juegos).GetHashCode();
         }
 
     }

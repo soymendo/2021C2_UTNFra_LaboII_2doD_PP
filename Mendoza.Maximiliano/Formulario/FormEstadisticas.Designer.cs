@@ -40,6 +40,7 @@ namespace Formulario
             this.lblGananciasTotales = new System.Windows.Forms.Label();
             this.lblHorasTotalesCabinas = new System.Windows.Forms.Label();
             this.lblMasPedidos = new System.Windows.Forms.Label();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCompusOrdenadosSegunTiempoDeUso
@@ -55,6 +56,9 @@ namespace Formulario
             // lblListaCompusTiempoDeUso
             // 
             this.lblListaCompusTiempoDeUso.AutoSize = true;
+            this.lblListaCompusTiempoDeUso.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.lblListaCompusTiempoDeUso.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.lblListaCompusTiempoDeUso.ForeColor = System.Drawing.SystemColors.WindowText;
             this.lblListaCompusTiempoDeUso.Location = new System.Drawing.Point(4, 92);
             this.lblListaCompusTiempoDeUso.Name = "lblListaCompusTiempoDeUso";
             this.lblListaCompusTiempoDeUso.Size = new System.Drawing.Size(415, 15);
@@ -63,6 +67,8 @@ namespace Formulario
             // 
             // rtbEstadisticas
             // 
+            this.rtbEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbEstadisticas.Location = new System.Drawing.Point(536, 73);
             this.rtbEstadisticas.Name = "rtbEstadisticas";
             this.rtbEstadisticas.Size = new System.Drawing.Size(252, 298);
@@ -145,11 +151,26 @@ namespace Formulario
             this.lblMasPedidos.TabIndex = 10;
             this.lblMasPedidos.Text = "Sofware/Perisfericos/Juegos mas pedidos";
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAyuda.Location = new System.Drawing.Point(675, 404);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(113, 34);
+            this.btnAyuda.TabIndex = 11;
+            this.btnAyuda.Text = "Ayuda";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormEstadisticas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.lblMasPedidos);
             this.Controls.Add(this.lblHorasTotalesCabinas);
             this.Controls.Add(this.lblGananciasTotales);
@@ -161,6 +182,7 @@ namespace Formulario
             this.Controls.Add(this.rtbEstadisticas);
             this.Controls.Add(this.lblListaCompusTiempoDeUso);
             this.Controls.Add(this.btnCompusOrdenadosSegunTiempoDeUso);
+            this.MinimumSize = new System.Drawing.Size(816, 489);
             this.Name = "FormEstadisticas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ver";
@@ -182,5 +204,6 @@ namespace Formulario
         private System.Windows.Forms.Label lblGananciasTotales;
         private System.Windows.Forms.Label lblHorasTotalesCabinas;
         private System.Windows.Forms.Label lblMasPedidos;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

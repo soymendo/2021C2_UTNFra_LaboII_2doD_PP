@@ -56,5 +56,10 @@ namespace Formulario
             lsbCabinasDisponibles.DataSource = null;
             lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;           
         }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Elija de la lista una cabina para asignarle al cliente, luego seleccione el boton 'Asignar' , finalmente cierre esta pestaña");
+        }
     }
 }

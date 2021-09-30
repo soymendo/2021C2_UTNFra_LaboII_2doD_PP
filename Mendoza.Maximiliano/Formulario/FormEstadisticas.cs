@@ -72,5 +72,10 @@ namespace Formulario
         {
             rtbEstadisticas.Text = local.PetisionesMasPedidas();
         }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cada boton proporcionará los datos estadisticos del local");
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace Formulario
             rtbPeticiones.ReadOnly = true;
             rtbPeticiones.Text = cliente.MostrarCliente();
         }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Muestra al cliente, sus datos.");
+        }
     }
 }

@@ -303,100 +303,7 @@ namespace Entidades.Clases_generales
             return retorno;
         }
 
-        //------------------------------------------------------------------VVVVVVVVVVEEEEEEEEEEERRRRRRRRRRRRRRRRRRR-------------------------------------------------------------------------------
-        ///// <summary>
-        ///// veo si la ccompu esta en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        ///// </summary>
-        ///// <param name="l"></param>
-        ///// <param name="m"></param>
-        ///// <returns></returns>
-        //public static bool AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        //{
-        //    bool retorno = false;
-
-        //    foreach (Computadora item in l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones)
-        //    {
-        //        if (item.PetisionesDePc == c.PetisionesDePc)
-        //        {
-        //            retorno = true;
-        //        }
-        //    }
-
-        //    return retorno;
-        //}
-
-        ///// <summary>
-        ///// Devuelve true si guardo la compu en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        ///// </summary>
-        ///// <param name="l"></param>
-        ///// <param name="c"></param>
-        ///// <returns></returns>
-        //public static bool GuardarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        //{
-
-        //    bool retorno = false;
-
-        //    if (!(Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c)))
-        //    {
-        //        foreach (Computadora item in l.ListaCompusDisponibles)
-        //        {
-        //            if (item.PetisionesDePc == c.PetisionesDePc)
-        //            {
-        //                l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(item);
-        //                retorno = true;
-        //            }
-        //        }
-        //        //l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(c);
-        //        // retorno = true;
-        //    }
-
-        //    return retorno;
-        //}
-
-
-        ///// <summary>
-        ///// Devuelve true si guardo la compu en ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        ///// </summary>
-        ///// <param name="l"></param>
-        ///// <param name="c"></param>
-        ///// <returns></returns>
-        //public static bool GuardarCompuSolamenteEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        //{
-
-        //    bool retorno = false;
-
-        //   // if (!(Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c)))
-        //   // {
-                
-        //        l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Add(c);
-                 
-        //        retorno = true;
-        //  //  }
-
-        //    return retorno;
-        //}
-
-
-
-        ///// <summary>
-        ///// Elimina la compu de ListaCompusDisponiblesParaElClienteSegunsSusPetisiones
-        ///// </summary>
-        ///// <param name="l"></param>
-        ///// <param name="c"></param>
-        ///// <returns></returns>
-        //public static bool EliminarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Local l, Computadora c)
-        //{
-        //    bool retorno = false;
-        //    if (Local.AlmacenadoEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c))
-        //    {
-        //        l.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones.Remove(c);
-        //        retorno = true;
-        //    }
-
-        //    return retorno;
-        //}
-
-        //------------------------------------------------------------------VVVVVVVVVVEEEEEEEEEEERRRRRRRRRRRRRRRRRRR-------------------------------------------------------------------------------
+       
 
 
         /// <summary>
@@ -1483,6 +1390,30 @@ namespace Entidades.Clases_generales
         }
 
 
+        /// <summary>
+        /// Sobrecarga del toString
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return MostrarCompusYCabinasDelLocal();
+        }
+
+        /// <summary>
+        /// Sobrecarga equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Local otroLocal = obj as Local;
+            return otroLocal != null && this == otroLocal;
+        }
+
+        public override int GetHashCode()
+        {
+            return (nombreDelQueAtiende,limite).GetHashCode();
+        }
 
     }
 }

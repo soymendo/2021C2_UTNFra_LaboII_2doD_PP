@@ -152,7 +152,7 @@ namespace Entidades.Clases_especializadas
             int redondeo;
 
             float resultado;
-            if (TiempoDeUso < 30) { retorno = 0.5f; }
+            if (TiempoDeUso <= 30) { retorno = 0.5f; }
             if (TiempoDeUso > 30)
             {
                 resultado = tiempo / 30;
@@ -172,11 +172,11 @@ namespace Entidades.Clases_especializadas
         /// <returns></returns>
 
         public override string Mostrar()
-        {
+        {           
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"****Detalle****");
-            sb.AppendLine($"{petisiones.ToString()}");
+            sb.AppendLine($"{petisiones.ToString()}");           
             return sb.ToString();
         }
 
@@ -191,6 +191,10 @@ namespace Entidades.Clases_especializadas
         /// <returns></returns>
         public static bool operator ==(Computadora c1, Computadora c2)
         {
+            if(c1 is null || c2 is null)
+            {
+                return false;
+            }
             return (c1.Identificador == c2.Identificador);
         }
 
@@ -212,6 +216,27 @@ namespace Entidades.Clases_especializadas
             return sb.ToString();
         }
 
+
+        /// <summary>
+        /// Sobrecarga del equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Computadora otraCompu = obj as Computadora;
+            return otraCompu != null && this == otraCompu;
+        }
+
+
+        /// <summary>
+        /// Sobrecarga del GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return (Identificador).GetHashCode();
+        }
 
     }
 }

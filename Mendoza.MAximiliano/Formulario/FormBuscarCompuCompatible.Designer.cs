@@ -35,21 +35,26 @@ namespace Formulario
             this.lblCompus = new System.Windows.Forms.Label();
             this.lblPedidos = new System.Windows.Forms.Label();
             this.lblInfo = new System.Windows.Forms.Label();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lsbListaDeCompusCompatibles
             // 
+            this.lsbListaDeCompusCompatibles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.lsbListaDeCompusCompatibles.FormattingEnabled = true;
             this.lsbListaDeCompusCompatibles.ItemHeight = 15;
-            this.lsbListaDeCompusCompatibles.Location = new System.Drawing.Point(137, 49);
+            this.lsbListaDeCompusCompatibles.Location = new System.Drawing.Point(12, 49);
             this.lsbListaDeCompusCompatibles.Name = "lsbListaDeCompusCompatibles";
-            this.lsbListaDeCompusCompatibles.Size = new System.Drawing.Size(183, 319);
+            this.lsbListaDeCompusCompatibles.Size = new System.Drawing.Size(183, 244);
             this.lsbListaDeCompusCompatibles.TabIndex = 0;
             this.lsbListaDeCompusCompatibles.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbListaDeCompusCompatibles_MouseDoubleClick);
             // 
             // btnAsignar
             // 
-            this.btnAsignar.Location = new System.Drawing.Point(353, 60);
+            this.btnAsignar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAsignar.Location = new System.Drawing.Point(212, 49);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(125, 40);
             this.btnAsignar.TabIndex = 1;
@@ -59,16 +64,18 @@ namespace Formulario
             // 
             // rtbPeticiones
             // 
-            this.rtbPeticiones.Location = new System.Drawing.Point(353, 152);
+            this.rtbPeticiones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rtbPeticiones.Location = new System.Drawing.Point(212, 110);
             this.rtbPeticiones.Name = "rtbPeticiones";
-            this.rtbPeticiones.Size = new System.Drawing.Size(220, 216);
+            this.rtbPeticiones.Size = new System.Drawing.Size(195, 163);
             this.rtbPeticiones.TabIndex = 2;
             this.rtbPeticiones.Text = "";
             // 
             // lblCompus
             // 
             this.lblCompus.AutoSize = true;
-            this.lblCompus.Location = new System.Drawing.Point(137, 16);
+            this.lblCompus.Location = new System.Drawing.Point(12, 7);
             this.lblCompus.Name = "lblCompus";
             this.lblCompus.Size = new System.Drawing.Size(118, 15);
             this.lblCompus.TabIndex = 3;
@@ -77,7 +84,7 @@ namespace Formulario
             // lblPedidos
             // 
             this.lblPedidos.AutoSize = true;
-            this.lblPedidos.Location = new System.Drawing.Point(353, 124);
+            this.lblPedidos.Location = new System.Drawing.Point(212, 92);
             this.lblPedidos.Name = "lblPedidos";
             this.lblPedidos.Size = new System.Drawing.Size(50, 15);
             this.lblPedidos.TabIndex = 4;
@@ -86,23 +93,39 @@ namespace Formulario
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(137, 31);
+            this.lblInfo.Location = new System.Drawing.Point(12, 22);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(96, 15);
             this.lblInfo.TabIndex = 5;
             this.lblInfo.Text = "(info doble click)";
             // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAyuda.Location = new System.Drawing.Point(330, 279);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Size = new System.Drawing.Size(77, 33);
+            this.btnAyuda.TabIndex = 6;
+            this.btnAyuda.Text = "Ayuda";
+            this.btnAyuda.UseVisualStyleBackColor = true;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
+            // 
             // FormBuscarCompuCompatible
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.BackColor = System.Drawing.Color.DarkGray;
+            this.ClientSize = new System.Drawing.Size(419, 316);
+            this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.lblInfo);
             this.Controls.Add(this.lblPedidos);
             this.Controls.Add(this.lblCompus);
             this.Controls.Add(this.rtbPeticiones);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.lsbListaDeCompusCompatibles);
+            this.MinimumSize = new System.Drawing.Size(435, 355);
             this.Name = "FormBuscarCompuCompatible";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
@@ -119,5 +142,6 @@ namespace Formulario
         private System.Windows.Forms.Label lblCompus;
         private System.Windows.Forms.Label lblPedidos;
         private System.Windows.Forms.Label lblInfo;
+        private System.Windows.Forms.Button btnAyuda;
     }
 }

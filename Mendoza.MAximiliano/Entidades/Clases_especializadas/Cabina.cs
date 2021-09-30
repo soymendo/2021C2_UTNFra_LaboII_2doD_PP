@@ -24,7 +24,6 @@ namespace Entidades.Clases_especializadas
         private TipoTelefono tipoTelefono;
         private string marca;
         private string numeroAMarcar;
-        private TipoLlamada tipoLlamada;
 
       
         //------Propiedades----------------------
@@ -37,13 +36,7 @@ namespace Entidades.Clases_especializadas
             get { return Tipo.Telefono; }
         }
 
-        /// <summary>
-        /// especifica que tipo de llamada es
-        /// </summary>
-        public TipoLlamada TipoDeLlamada
-        {
-            get { return this.tipoLlamada; }
-        }
+        
 
         /// <summary>
         /// especifica que tipo de telefono es
@@ -152,6 +145,8 @@ namespace Entidades.Clases_especializadas
         }
 
    
+
+
         /// <summary>
         /// Constructor deonde le paso un string de numero
         /// </summary>
@@ -280,6 +275,10 @@ namespace Entidades.Clases_especializadas
         /// <returns></returns>
         public static bool operator ==(Cabina c1, Cabina c2)
         {
+            if (c1 is null || c2 is null)
+            {
+                return false;
+            }
             return (c1.Identificador == c2.Identificador);
         }
 
@@ -311,10 +310,35 @@ namespace Entidades.Clases_especializadas
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Sobrecarga toString
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return (this.Identificador);
         }
 
+
+        /// <summary>
+        /// Sobrecarga equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            Cabina otraCab = obj as Cabina;
+            return otraCab != null && this == otraCab;
+        }
+
+
+        /// <summary>
+        /// Sobrecarga GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return (Identificador).GetHashCode();
+        }
     }
 }

@@ -160,6 +160,11 @@ namespace Formulario
             rtbPeticiones.Text = null;
         }
 
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pueden presentarce dos situaciones: \n\n1° si hay computadoras que cumplen con los requisitos del cliente, se mostrara una lista que contengan dichas pc, elegir alguna y asignarla al cliente\n\n2° Si no hay computadoras con los requisitos pedidos del cliente , se mostrara la lista de las pc disponibles , se le preguntara al ususario si quiere asignarce igualmente una maquina , si la respuesta es si, se le asigna una maquina, si la respuesta es no, se elimina al cliente de la lista");
+
+        }
     }
 }
 

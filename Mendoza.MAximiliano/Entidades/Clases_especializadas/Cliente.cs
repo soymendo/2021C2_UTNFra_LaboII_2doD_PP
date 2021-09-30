@@ -206,6 +206,10 @@ namespace Entidades.Clases_especializadas
         /// <returns></returns>
         public static bool operator==(Cliente c1,Cliente c2)
         {
+            if(c1 is null || c2 is null)
+            {
+                return false;
+            }
             return (c1.Dni == c2.Dni);
         }
 
@@ -218,6 +222,28 @@ namespace Entidades.Clases_especializadas
         public static bool operator !=(Cliente c1, Cliente c2)
         {
             return !(c1 == c2);
+        }
+
+
+        // <summary>
+        // Sobrecarga del Equals
+        // </summary>
+        // <param name = "obj" ></ param >
+        // < returns ></ returns >
+        public override bool Equals(object obj)
+        {
+            Cliente otroCliente = obj as Cliente;
+            return otroCliente != null && this == otroCliente;
+        }
+
+
+        /// <summary>
+        /// Sobrecarga GetHashCode
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return (Nombre, Dni).GetHashCode();
         }
     }
 }

@@ -43,5 +43,10 @@ namespace Formulario
             FormEstadisticas formEstadisticas = new FormEstadisticas(local);
             formEstadisticas.ShowDialog();
         }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("'Local' abrirá un nuevo formulario donde se getionará las acciones\n 'Estadisticas' abrirá un nuevo formulario donde se visualizaran las estadisticas");
+        }
     }
 }
