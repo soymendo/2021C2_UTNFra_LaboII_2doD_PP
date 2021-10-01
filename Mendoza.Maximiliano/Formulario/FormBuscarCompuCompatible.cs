@@ -145,7 +145,7 @@ namespace Formulario
         {
             Cliente cli = local.Cola_Clientes.Peek();
             Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Local.EliminarClienteEnColaClientes(local)) { }
                 if (Local.EliminarClienteEnListaClientes(local, cli)) { }
@@ -153,6 +153,7 @@ namespace Formulario
                 if (EliminarDeListaUnica(c)) { }
                 MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnAsignar.Enabled = false;
+                
             }
 
             lsbListaDeCompusCompatibles.DataSource = null;
