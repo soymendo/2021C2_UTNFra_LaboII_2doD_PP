@@ -17,7 +17,7 @@
 ### "4° Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
 
 ## Diagrama de clases
-![](C:\Users\Maxi\Desktop\Parcial\2021C2_UTNFra_LaboII_2doD_PP\Mendoza.Maximiliano\Diagrama)
+!(C:\Users\Maxi\Desktop\Parcial\2021C2_UTNFra_LaboII_2doD_PP\Mendoza.Maximiliano\Diagrama.PNG)
 
 ## Justificación técnica
 ### Metodos estaticos: ubicados en la clase 'Local' usados para manejar, administrar, guardar datos en las listas
