@@ -20,17 +20,17 @@
 
 
 ## Justificación técnica
-Metodos estaticos: ubicados en la clase 'Local' usados para manejar, administrar, guardar datos en las listas
-Datetime : ubicados en las clases  'computadora' y 'cabina' para poder establecer el tiempo de uso de la maquina
-Sobrecargas: usadas en cada clase, la mayoria para poder comparar dos objeto.En la clase 'local' son usados para cargar, eliminar listas
-Windows forms: basicamente es la interfas de usuario
-Colecciones: list<> para administrar las computadoras y las cabinas  en la clase 'Local' Queue<> para administrar los clientes
-Propiedades: cada atributo de cada clase cuenta con propiedades con seus get y set correspondiente
-indexador: usado para trabajar con la Queue de 'cliente'
-Enumerados: usado para ver la spetisiones del cliente
-Herencia: clase abstracta 'Maquina' la cual heredan 'computadora' y 'cabina' 
-Sealed: solo la clase 'Petisiones' ya que no le ví sentido que tenga herencia.
-Polimorfismo: La clase 'Maquina' cuenta con algunas funciones (por ej Mostrar())que van a ser sobreescritas en sus clases derivadas
+-###Metodos estaticos: ubicados en la clase 'Local' usados para manejar, administrar, guardar datos en las listas
+-###Datetime : ubicados en las clases  'computadora' y 'cabina' para poder establecer el tiempo de uso de la maquina
+-###Sobrecargas: usadas en cada clase, la mayoria para poder comparar dos objeto.En la clase 'local' son usados para cargar, eliminar listas
+-###Windows forms: basicamente es la interfas de usuario
+-###Colecciones: list<> para administrar las computadoras y las cabinas  en la clase 'Local' Queue<> para administrar los clientes
+-###Propiedades: cada atributo de cada clase cuenta con propiedades con seus get y set correspondiente
+-###indexador: usado para trabajar con la Queue de 'cliente'
+-###Enumerados: usado para ver la spetisiones del cliente
+-###Herencia: clase abstracta 'Maquina' la cual heredan 'computadora' y 'cabina' 
+-###Sealed: solo la clase 'Petisiones' ya que no le ví sentido que tenga herencia.
+-###Polimorfismo: La clase 'Maquina' cuenta con algunas funciones (por ej Mostrar())que van a ser sobreescritas en sus clases derivadas
 
 
 ## Propuesta de valor agregado
