@@ -25,7 +25,7 @@ namespace Entidades.Clases_generales
         private List<Computadora> ListaCompusDisponibles;
         private List<Computadora> ListaCompusOcupadas;
         private List<Computadora> ListaCompusFinalizadas;
-        private List<Computadora> ListaCompusDisponiblesParaElClienteSegunsSusPetisiones;
+        //private List<Computadora> ListaCompusDisponiblesParaElClienteSegunsSusPetisiones;
 
 
         private List<Cabina> ListaCabinasDisponibles;
@@ -235,7 +235,7 @@ namespace Entidades.Clases_generales
 
             this.ListaCompusDisponibles = new List<Computadora>()
             {
-             new Computadora("C01", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
+             new Computadora("C01", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
             new Computadora("C02", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
             new Computadora("C03", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
             new Computadora("C04", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
@@ -243,9 +243,9 @@ namespace Entidades.Clases_generales
             new Computadora("C06", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.DiabloII),
             new Computadora("C07", Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos),
             new Computadora("C08", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.MuOnline),
-            new Computadora("C09", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.DiabloII),
+            new Computadora("C09", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.LineageII),
             new Computadora("C10", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C11", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.DiabloII),
+            new Computadora("C11", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
             new Computadora("C12", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
             new Computadora("C13", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.MuOnline),
             new Computadora("C14", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
@@ -258,7 +258,7 @@ namespace Entidades.Clases_generales
 
             this.ListaCompusOcupadas = new List<Computadora>();
             this.ListaCompusFinalizadas = new List<Computadora>();
-            this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones = new List<Computadora>();
+            //this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones = new List<Computadora>();
 
             this.ColaClientes = new Queue<Cliente>();
             this.ListaClientes = new List<Cliente>();
@@ -895,7 +895,7 @@ namespace Entidades.Clases_generales
 
                 if (c.PetisionesDePc.Sofware.ToString() == "todos") { l.ContadorSofwareOffice += 1; l.ContadorSofwaremessenger += 1; l.ContadorSofwareicq += 1; l.ContadorSofwareares += 1; }
                 if (c.PetisionesDePc.Periféricos.ToString() == "todos") { l.ContadorPeriféricosCamara += 1; l.ContadorPeriféricosAuriculares += 1; l.ContadorPeriféricosMicrófono += 1; }
-                if (c.PetisionesDePc.Sofware.ToString() == "todos") { l.ContadorJuegosCS += 1; l.ContadorJuegosDiablo += 1; l.ContadorJuegosMu += 1; l.ContadorJuegosLinege += 1; }
+                if (c.PetisionesDePc.Juegos.ToString() == "todos") { l.ContadorJuegosCS += 1; l.ContadorJuegosDiablo += 1; l.ContadorJuegosMu += 1; l.ContadorJuegosLinege += 1; }
 
 
                 retorno = true;
@@ -1182,48 +1182,6 @@ namespace Entidades.Clases_generales
 
 
 
-
-        /// <summary>
-        /// tiempo total y recaudacion por tipo de llamada
-        /// </summary>
-        /// <returns></returns>
-        public string Horas_totales_Y_La_Recaudación_Por_Tipo_De_Llamada()
-        {
-            float acumLocal = 0;
-            float acumLargaDistancia = 0;
-            float acumInternacional = 0;
-            StringBuilder sb = new StringBuilder();
-
-            foreach (Cabina item in this.ListaCabinasFinalizadas)
-            {
-                if (item.Destino() == TipoLlamada.local.ToString())
-                {
-                    acumLocal += item.CostoLocal();
-                }
-
-                if (item.Destino() == TipoLlamada.largaDistancia.ToString())
-                {
-                    acumLargaDistancia += item.CostoLargaDistancia();
-                }
-                if (item.Destino() == TipoLlamada.internacional.ToString())
-                {
-                    acumInternacional += item.CostoInternacional();
-                }
-            }
-
-
-            sb.AppendLine($"Tiempo total de llamadas: {TiempoTotalCabinas()}");
-
-            sb.AppendLine($"Ganancias de llamadas locales: {acumLocal}");
-            sb.AppendLine($"Ganancias de llamadas larga distancia: {acumLargaDistancia}");
-            sb.AppendLine($"Ganancias de llamadas Internacionales: {acumInternacional}");
-
-            return sb.ToString();
-        }
-
-
-
-
         public string HorasGananciasPorLlamada()
         {
             StringBuilder sb = new StringBuilder();
@@ -1235,10 +1193,6 @@ namespace Entidades.Clases_generales
 
             return sb.ToString();
         }
-
-
-        
-
 
 
 
@@ -1307,25 +1261,25 @@ namespace Entidades.Clases_generales
 
 
 
-        /// <summary>
-        ///verifica si hay pc disponibles (en la lista de pc desponibles) que cumplan con los requisitos del cliente
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public string MostrarListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Computadora c)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Maquinas: ");
+        ///// <summary>
+        /////verifica si hay pc disponibles (en la lista de pc desponibles) que cumplan con los requisitos del cliente
+        ///// </summary>
+        ///// <param name="c"></param>
+        ///// <returns></returns>
+        //public string MostrarListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Computadora c)
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.AppendLine("Maquinas: ");
 
-            foreach (Computadora item in this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones)
-            {
+        //    foreach (Computadora item in this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones)
+        //    {
                 
               
-                    sb.AppendLine(item.Mostrar());
+        //            sb.AppendLine(item.Mostrar());
              
-            }
-            return sb.ToString();
-        }
+        //    }
+        //    return sb.ToString();
+        //}
 
 
 
