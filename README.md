@@ -17,9 +17,10 @@
 ### "4° Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
 
 ## Diagrama de clases
-!(C:\Users\Maxi\Desktop\Parcial\2021C2_UTNFra_LaboII_2doD_PP\Mendoza.Maximiliano\Diagrama.PNG)
+![Diagrama](https://user-images.githubusercontent.com/29763406/135652638-916b18f5-8eae-4653-87b4-75a9082b1f66.png)
 
 ## Justificación técnica
+
 ### Metodos estaticos: ubicados en la clase 'Local' usados para manejar, administrar, guardar datos en las listas
 ### Datetime : ubicados en las clases  'computadora' y 'cabina' para poder establecer el tiempo de uso de la maquina
 ### Sobrecargas: usadas en cada clase, la mayoria para poder comparar dos objeto.En la clase 'local' son usados para cargar, eliminar listas
