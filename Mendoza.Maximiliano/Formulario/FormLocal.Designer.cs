@@ -169,6 +169,7 @@ namespace Formulario
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(173, 23);
             this.txtApellido.TabIndex = 8;
+            this.txtApellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtApellido_KeyPress);
             // 
             // lblApellido
             // 

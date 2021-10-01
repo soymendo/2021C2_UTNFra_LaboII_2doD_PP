@@ -241,7 +241,7 @@ namespace Formulario
                     comp.CantidadDeCocasEnLista = cocaAux;
                     MessageBox.Show($"Finalizado con exito!! tiempo de uso: {comp.TiempoDeUso} Costo de Consumo (pc+bebidas): {comp.CalcularCostoCompuBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     comp.CantidadDeCocasEnLista = cocaAux;
-                    comp.recaudacion += comp.CalcularCostoCompuBebida();
+                    comp.Recaudacion += comp.CalcularCostoCompuBebida();
                 }
 
                 lsbCompusDisponibles.DataSource = null;
@@ -362,20 +362,20 @@ namespace Formulario
             else
             {
                 Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
-                //comp.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora
-                //MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+              
 
                 if (MessageBox.Show($"Agregar bebida? ", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if(local.Stock_DeBebidas.Count==0)
+                    if(local.Stock_DeBebidas.Count == 0)
                     {
                         MessageBox.Show($" no hay stock ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                       
+
                         comp.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
                         MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     }                
                 }
 
@@ -652,6 +652,14 @@ namespace Formulario
         }
 
         private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtApellido_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsLetter(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
             {

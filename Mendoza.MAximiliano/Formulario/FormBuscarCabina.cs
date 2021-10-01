@@ -40,21 +40,31 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnAsignar_Click(object sender, EventArgs e)
         {
-            Cliente cli = local.Cola_Clientes.Peek();
-            Cabina c = (Cabina)lsbCabinasDisponibles.SelectedItem;
-            c.NumeroAMarcar = numero;
-
-            if (MessageBox.Show($"¿Seguro de querer asignar la cabina  a  { /*local.Cola_Clientes.Peek()*/ local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (btnAsignar.Text == "Cerrar") 
             {
-                if (Local.EliminarClienteEnColaClientes(local)) { }
-                if (Local.EliminarClienteEnListaClientes(local, cli)) { }
-                if (Local.AsignarCabinaAlCliente(local, c)) { }
-                MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnAsignar.Enabled = false;
+                this.Close();
+            }else
+            {
+
+                Cliente cli = local.Cola_Clientes.Peek();
+                Cabina c = (Cabina)lsbCabinasDisponibles.SelectedItem;
+                c.NumeroAMarcar = numero;
+
+                if (MessageBox.Show($"¿Seguro de querer asignar la cabina  a  { /*local.Cola_Clientes.Peek()*/ local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (Local.EliminarClienteEnColaClientes(local)) { }
+                    if (Local.EliminarClienteEnListaClientes(local, cli)) { }
+                    if (Local.AsignarCabinaAlCliente(local, c)) { }
+                    MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    btnAsignar.Text = "Cerrar";
+                }
+
+                lsbCabinasDisponibles.DataSource = null;
+                lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
             }
-          
-            lsbCabinasDisponibles.DataSource = null;
-            lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;           
+
+
+
         }
 
         private void btnAyuda_Click(object sender, EventArgs e)

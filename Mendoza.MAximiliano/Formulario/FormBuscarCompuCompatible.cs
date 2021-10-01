@@ -72,12 +72,27 @@ namespace Formulario
         private void btnAsignar_Click(object sender, EventArgs e)
         {
             if (listaVacia == false)
-            {             
-                Asignar();
+            {
+                if (btnAsignar.Text == "Cerrar")
+                {
+                    this.Close();
+                }
+                else
+                {
+                    Asignar();
+                }
             }
             else
             {
-                Asignar();
+                if (btnAsignar.Text == "Cerrar")
+                {
+                    this.Close();
+                }
+                else
+                {
+                    Asignar();
+                }
+                
             }
         }
 
@@ -153,7 +168,8 @@ namespace Formulario
                 if (Local.AsignarCompuAlCliente(local, c)) { }
                 if (EliminarDeListaUnica(c)) { }
                 MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                btnAsignar.Enabled = false;
+                //btnAsignar.Enabled = false;
+                btnAsignar.Text = "Cerrar";
                 
             }
 
