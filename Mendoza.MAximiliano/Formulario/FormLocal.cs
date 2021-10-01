@@ -227,6 +227,7 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnFinalizarTarea_Click(object sender, EventArgs e)
         {
+            int cocaAux;
             if (lsbCompusOcupadas.SelectedItem is null)
             {
                 MessageBox.Show("Se debe seleccionar algun elemento de la lista de compus ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -234,10 +235,13 @@ namespace Formulario
             else
             {
                 Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
-
+                cocaAux=comp.CantidadDeCocasEnLista;
                 if (Local.FinalizarTareaCompu(local, comp))
                 {
-                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {comp.TiempoDeUso} Costo de uso: {comp.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    comp.CantidadDeCocasEnLista = cocaAux;
+                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {comp.TiempoDeUso} Costo de Consumo (pc+bebidas): {comp.CalcularCostoCompuBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    comp.CantidadDeCocasEnLista = cocaAux;
+                    comp.recaudacion += comp.CalcularCostoCompuBebida();
                 }
 
                 lsbCompusDisponibles.DataSource = null;
@@ -256,6 +260,8 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnFinalizarTareaCabina_Click(object sender, EventArgs e)
         {
+            int cocaAux;
+
             if (lsbCasbinasOcupadas.SelectedItem is null)
             {
                 MessageBox.Show("Se debe seleccionar algun elemento de la lista  de cabinas ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -263,14 +269,31 @@ namespace Formulario
             else
             {
                 Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
-
+                cocaAux = cab.CantidadDeCocasEnLista;
                 if (Local.FinalizarTareaCabina(local, cab))
                 {
-                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cab.CantidadDeCocasEnLista = cocaAux;
+                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUso}\nDestino: {cab.Destino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cab.CantidadDeCocasEnLista = cocaAux;
+                    cab.recaudacion += cab.CalcularCostoCabinaBebida();
+
+                    if(cab.Destino()==TipoLlamada.local.ToString())
+                    {
+                        local.totalLocal += cab.CalcularCosto();
+                    }
+                    if(cab.Destino()==TipoLlamada.largaDistancia.ToString())
+                    {
+                        local.totalLargaDistancia += cab.CalcularCosto();
+                    }
+                    if(cab.Destino()==TipoLlamada.internacional.ToString())
+                    {
+                        local.totalInterncaional += cab.CalcularCosto();
+                    }
+                   
                 }
                 else
                 {
-                    MessageBox.Show($"No funca!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCosto()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"No funca!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 lsbCabinasDisponibles.DataSource = null;
@@ -328,6 +351,66 @@ namespace Formulario
             }
         }
 
+
+
+        private void btnAgregarCoca_Click(object sender, EventArgs e)
+        {
+            if (lsbCompusOcupadas.SelectedItem is null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de compus ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
+                //comp.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora
+                //MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                if (MessageBox.Show($"Agregar bebida? ", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if(local.Stock_DeBebidas.Count==0)
+                    {
+                        MessageBox.Show($" no hay stock ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                       
+                        comp.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
+                        MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }                
+                }
+
+
+            }
+        }
+
+
+        private void btnAgregarBebidaCabina_Click(object sender, EventArgs e)
+        {
+            if (lsbCasbinasOcupadas.SelectedItem is null)
+            {
+                MessageBox.Show("Se debe seleccionar algun elemento de la lista de cabinas ocupadas", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+               
+                Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
+
+                if (MessageBox.Show($"Agregar bebida? ", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (local.Stock_DeBebidas.Count == 0)
+                    {
+                        MessageBox.Show($" no hay stock ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        cab.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
+                        MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+
+
+            }
+        }
 
         /// <summary>
         /// al hacer doble clic  muestra la info del cliente en un form nuevo
@@ -495,6 +578,85 @@ namespace Formulario
             sb.AppendLine();
             sb.AppendLine("4° Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
             return sb.ToString();
+        }
+
+
+        /// <summary>
+        /// entrada unicamente de numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtEdad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// entrada unicamente de numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtDni_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// entrada unicamente de numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// entrada unicamente de numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtLocal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// entrada unicamente de numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (!char.IsNumber(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && (e.KeyChar != (char)Keys.Back))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

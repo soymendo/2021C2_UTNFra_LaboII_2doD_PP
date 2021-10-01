@@ -35,6 +35,8 @@ namespace Formulario
             // 
             // rtbDatosCompu
             // 
+            this.rtbDatosCompu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbDatosCompu.Location = new System.Drawing.Point(-1, 0);
             this.rtbDatosCompu.Name = "rtbDatosCompu";
             this.rtbDatosCompu.Size = new System.Drawing.Size(345, 239);
@@ -43,6 +45,9 @@ namespace Formulario
             // 
             // btnAyuda
             // 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAyuda.Location = new System.Drawing.Point(239, 245);
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Size = new System.Drawing.Size(93, 27);
@@ -56,9 +61,10 @@ namespace Formulario
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.ClientSize = new System.Drawing.Size(344, 284);
+            this.ClientSize = new System.Drawing.Size(343, 277);
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.rtbDatosCompu);
+            this.MinimumSize = new System.Drawing.Size(359, 316);
             this.Name = "FormMostrarCompu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMostrarCompu";

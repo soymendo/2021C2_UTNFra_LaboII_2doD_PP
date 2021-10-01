@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Entidades.Clases_especializadas;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Entidades.Clases_generales
 {
@@ -19,7 +21,9 @@ namespace Entidades.Clases_generales
         private string identificador;
         private DateTime tiempoInicial;
         private DateTime tiempoFinal;
-        public Stopwatch sw = new Stopwatch();
+        private  Stopwatch sw = new Stopwatch();
+        private List<Coca_cola> ListaDeCocas=new List<Coca_cola>();
+     
 
 
 
@@ -53,7 +57,17 @@ namespace Entidades.Clases_generales
         }
 
 
+        public List<Coca_cola>Lista_Cocas
+        {
+            get { return this.ListaDeCocas; }
+            set { this.ListaDeCocas = value; }
+        }
 
+        public Stopwatch SW
+        {
+            get { return this.sw; }
+            set { this.sw = value; }
+        }
 
         //---------------Propiedades Abstractas------------------------------
         
@@ -61,7 +75,9 @@ namespace Entidades.Clases_generales
         public abstract double TiempoDeUso { get; }
         public abstract float CalcularCosto();
 
-
+        //------------Metodos abstractos--------------------------
+        public abstract bool AgregarBebida(Coca_cola c);
+        public abstract float CalcularCostoDeConsumoBebidas();
 
         //--------------Constructores---------------------------------------
         /// <summary>
@@ -69,7 +85,7 @@ namespace Entidades.Clases_generales
         /// </summary>
         public Maquinas()
         {
-
+          
         }
 
         /// <summary>

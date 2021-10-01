@@ -83,6 +83,8 @@ namespace Formulario
             this.lblDateTime = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.tmrFecha = new System.Windows.Forms.Timer(this.components);
+            this.btnAgregarCocaCompu = new System.Windows.Forms.Button();
+            this.btnAgregarBebidaCabina = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -159,6 +161,7 @@ namespace Formulario
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(173, 23);
             this.txtNombre.TabIndex = 6;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // txtApellido
             // 
@@ -182,6 +185,7 @@ namespace Formulario
             this.txtEdad.Name = "txtEdad";
             this.txtEdad.Size = new System.Drawing.Size(173, 23);
             this.txtEdad.TabIndex = 10;
+            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
             // 
             // lblEdad
             // 
@@ -198,6 +202,7 @@ namespace Formulario
             this.txtDni.Name = "txtDni";
             this.txtDni.Size = new System.Drawing.Size(173, 23);
             this.txtDni.TabIndex = 12;
+            this.txtDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDni_KeyPress);
             // 
             // lblDni
             // 
@@ -259,9 +264,9 @@ namespace Formulario
             | System.Windows.Forms.AnchorStyles.Left)));
             this.lsbListaClientes.FormattingEnabled = true;
             this.lsbListaClientes.ItemHeight = 15;
-            this.lsbListaClientes.Location = new System.Drawing.Point(22, 40);
+            this.lsbListaClientes.Location = new System.Drawing.Point(12, 40);
             this.lsbListaClientes.Name = "lsbListaClientes";
-            this.lsbListaClientes.Size = new System.Drawing.Size(158, 319);
+            this.lsbListaClientes.Size = new System.Drawing.Size(203, 319);
             this.lsbListaClientes.TabIndex = 18;
             this.lsbListaClientes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbListaClientes_MouseDoubleClick);
             // 
@@ -329,6 +334,7 @@ namespace Formulario
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(70, 23);
             this.txtNumero.TabIndex = 27;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // lblGuion
             // 
@@ -345,6 +351,7 @@ namespace Formulario
             this.txtLocal.Name = "txtLocal";
             this.txtLocal.Size = new System.Drawing.Size(29, 23);
             this.txtLocal.TabIndex = 26;
+            this.txtLocal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLocal_KeyPress);
             // 
             // txtArea
             // 
@@ -352,6 +359,7 @@ namespace Formulario
             this.txtArea.Name = "txtArea";
             this.txtArea.Size = new System.Drawing.Size(26, 23);
             this.txtArea.TabIndex = 25;
+            this.txtArea.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtArea_KeyPress);
             // 
             // rbtComputadora
             // 
@@ -575,9 +583,9 @@ namespace Formulario
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel7.Controls.Add(this.lsbListaClientes);
             this.panel7.Controls.Add(this.lblListaClientes);
-            this.panel7.Location = new System.Drawing.Point(40, 257);
+            this.panel7.Location = new System.Drawing.Point(12, 257);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(200, 365);
+            this.panel7.Size = new System.Drawing.Size(228, 365);
             this.panel7.TabIndex = 46;
             // 
             // btnAyuda
@@ -630,12 +638,38 @@ namespace Formulario
             this.tmrFecha.Enabled = true;
             this.tmrFecha.Tick += new System.EventHandler(this.tmrFecha_Tick);
             // 
+            // btnAgregarCocaCompu
+            // 
+            this.btnAgregarCocaCompu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarCocaCompu.Location = new System.Drawing.Point(1194, 213);
+            this.btnAgregarCocaCompu.Name = "btnAgregarCocaCompu";
+            this.btnAgregarCocaCompu.Size = new System.Drawing.Size(62, 57);
+            this.btnAgregarCocaCompu.TabIndex = 49;
+            this.btnAgregarCocaCompu.Text = "Agregar Coca";
+            this.btnAgregarCocaCompu.UseVisualStyleBackColor = true;
+            this.btnAgregarCocaCompu.Click += new System.EventHandler(this.btnAgregarCoca_Click);
+            // 
+            // btnAgregarBebidaCabina
+            // 
+            this.btnAgregarBebidaCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarBebidaCabina.Location = new System.Drawing.Point(1194, 496);
+            this.btnAgregarBebidaCabina.Name = "btnAgregarBebidaCabina";
+            this.btnAgregarBebidaCabina.Size = new System.Drawing.Size(62, 57);
+            this.btnAgregarBebidaCabina.TabIndex = 50;
+            this.btnAgregarBebidaCabina.Text = "Agregar Coca";
+            this.btnAgregarBebidaCabina.UseVisualStyleBackColor = true;
+            this.btnAgregarBebidaCabina.Click += new System.EventHandler(this.btnAgregarBebidaCabina_Click);
+            // 
             // FormLocal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1391, 653);
+            this.Controls.Add(this.btnAgregarBebidaCabina);
+            this.Controls.Add(this.btnAgregarCocaCompu);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.panel7);
@@ -729,5 +763,7 @@ namespace Formulario
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer tmrFecha;
+        private System.Windows.Forms.Button btnAgregarCocaCompu;
+        private System.Windows.Forms.Button btnAgregarBebidaCabina;
     }
 }

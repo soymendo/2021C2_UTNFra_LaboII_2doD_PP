@@ -145,7 +145,7 @@ namespace Formulario
         {
             Cliente cli = local.Cola_Clientes.Peek();
             Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Local.EliminarClienteEnColaClientes(local)) { }
                 if (Local.EliminarClienteEnListaClientes(local, cli)) { }
@@ -153,6 +153,7 @@ namespace Formulario
                 if (EliminarDeListaUnica(c)) { }
                 MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnAsignar.Enabled = false;
+                
             }
 
             lsbListaDeCompusCompatibles.DataSource = null;
@@ -160,6 +161,11 @@ namespace Formulario
             rtbPeticiones.Text = null;
         }
 
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Pueden presentarce dos situaciones: \n\n1° si hay computadoras que cumplen con los requisitos del cliente, se mostrara una lista que contengan dichas pc, elegir alguna y asignarla al cliente\n\n2° Si no hay computadoras con los requisitos pedidos del cliente , se mostrara la lista de las pc disponibles , se le preguntara al ususario si quiere asignarce igualmente una maquina , si la respuesta es si, se le asigna una maquina, si la respuesta es no, se elimina al cliente de la lista");
+
+        }
     }
 }
 

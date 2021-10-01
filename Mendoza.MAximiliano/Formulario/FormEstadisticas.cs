@@ -60,7 +60,7 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnHorasTotales_Click(object sender, EventArgs e)
         {
-            rtbEstadisticas.Text = local.Horas_totales_Y_La_Recaudación_Por_Tipo_De_Llamada();
+            rtbEstadisticas.Text = local.HorasGananciasPorLlamada();
         }
 
         /// <summary>
@@ -72,5 +72,25 @@ namespace Formulario
         {
             rtbEstadisticas.Text = local.PetisionesMasPedidas();
         }
+
+
+
+
+        private void btnCompusCabinasRecaudacion_Click(object sender, EventArgs e)
+        {
+            rtbEstadisticas.Text = local.ListaComputadorasOrdenadasPorRecaudacionsTotal(local).ToString();
+        }
+
+        private void btnCabinasRecaudacion_Click(object sender, EventArgs e)
+        {
+            rtbEstadisticas.Text = local.ListaCabinasOrdenadasPorRecaudacionsTotal(local).ToString();
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Cada boton proporcionará los datos estadisticos del local");
+        }
+
+       
     }
 }

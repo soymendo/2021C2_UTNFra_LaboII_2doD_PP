@@ -13,15 +13,17 @@ namespace Entidades.Clases_especializadas
         //----------------Atributos-------------------------------------
         private Petisiones petisiones;
 
-
-
+        private int cantidadDeCocasEnLista=0;
+        private Coca_cola coca = new Coca_cola();
+        public int cocasTotales = 0;
+        public float recaudacion = 0;
         //--------------Constructores---------------------------------
         /// <summary>
         /// Constructor sin parametros
         /// </summary>
         public Computadora()
         {
-
+            
         }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace Entidades.Clases_especializadas
             {
                 double retorno;
 
-                TimeSpan tiempoActual = new TimeSpan(0, (int)sw.Elapsed.Minutes, (int)sw.Elapsed.Seconds);
+                TimeSpan tiempoActual = new TimeSpan(0, (int)SW.Elapsed.Minutes, (int)SW.Elapsed.Seconds);
                 double seg = tiempoActual.Seconds;
                 double min = tiempoActual.Minutes;
                 retorno = (min * 60) + seg;
@@ -138,8 +140,38 @@ namespace Entidades.Clases_especializadas
         }
 
 
+        /// <summary>
+        /// propiedad para saber la cantidad de cocas en la lista
+        /// </summary>
+        public int CantidadDeCocasEnLista
+        {
+            get { return this.cantidadDeCocasEnLista; }
+            set { this.cantidadDeCocasEnLista = value; }
+        }
 
-      //-----Metodos----------------------------------------------------------------------------------------------   
+        /// <summary>
+        /// propiedad para saber el precio de la coca
+        /// </summary>
+        public Coca_cola Coca
+        {
+            get { return this.coca; }
+            set { this.coca = value; }
+        }
+
+
+        /// <summary>
+        /// propiedad qu edevuelve las cocas totasles
+        /// </summary>
+        public int CocasTotales
+        {
+            get { return this.cocasTotales; }
+            set { this.cocasTotales = value; }
+        }
+
+        
+
+        //-----Metodos----------------------------------------------------------------------------------------------   
+
 
         /// <summary>
         /// Calcula el costo segun el tiempo transcurrido
@@ -167,6 +199,62 @@ namespace Entidades.Clases_especializadas
 
 
         /// <summary>
+        /// Calcula el costo total entre el tiempo transcurrido de pc y las bebdias consumidas
+        /// </summary>
+        /// <returns></returns>
+        public float CalcularCostoCompuBebida()
+        {
+            float retorno = 0;
+            retorno = CalcularCosto() + (CantidadDeCocasEnLista * Coca.Precio);
+            CantidadDeCocasEnLista = 0; //sino se acumulan las cocas 
+            return retorno;
+        }
+
+
+        /// <summary>
+        /// agrega una bebida a la lista de bebidas de computadora
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public override bool AgregarBebida(Coca_cola c)
+        {
+            
+            bool retorno = false;
+            if(c is not null)
+            {
+                this.Lista_Cocas.Add(c);
+                CantidadDeCocasEnLista += 1;
+                CocasTotales += 1;
+                retorno = true;
+            }
+           
+            return retorno;
+        }
+
+        /// <summary>
+        /// calcula el costo de consumo de las bebidas pedidas
+        /// </summary>
+        /// <returns></returns>
+        public override float CalcularCostoDeConsumoBebidas()
+        {
+            float acum = 0; ;
+            foreach (Coca_cola item in this.Lista_Cocas)
+            {
+                acum += item.Precio;
+            }
+            return acum;
+        }
+
+
+
+
+
+     
+
+
+
+
+        /// <summary>
         /// Muestro los datos de la compu
         /// </summary>
         /// <returns></returns>
@@ -176,11 +264,27 @@ namespace Entidades.Clases_especializadas
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"****Detalle****");
-            sb.AppendLine($"{petisiones.ToString()}");           
+            sb.AppendLine($"{petisiones.ToString()}");
+
+            sb.AppendLine($"Cantidad de cocas: {this.Lista_Cocas.Count}");
+            sb.AppendLine($"Costo de consumo de cocas: {this.CalcularCostoDeConsumoBebidas()}");
             return sb.ToString();
         }
 
 
+        /// <summary>
+        /// Muestra un string de los datos de la computadora
+        /// </summary>
+        /// <returns></returns>
+        public  string MostrarRecaudacion()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"{base.Mostrar()}");
+            sb.AppendLine($"Tiempo de uso pc: {this.TiempoTotalDeUso}");
+            sb.AppendLine($"Cantidad de cocas: {this.CocasTotales}");
+            sb.AppendLine($"Recaudacion:{recaudacion}");
+            return sb.ToString();
+        }
         //---------Sobrecargas-----------------------------------------------------------
 
         /// <summary>
