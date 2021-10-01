@@ -33,6 +33,7 @@ namespace Entidades.Clases_generales
         private List<Cabina> ListaCabinasFinalizadas;
 
         private Queue<Coca_cola> StockDeBebidas;
+       
 
         private int contadorSofwareOffice = 0;
         private int contadorSofwaremessenger = 0;
@@ -155,13 +156,7 @@ namespace Entidades.Clases_generales
         }
 
 
-        /// <summary>
-        /// Devuelve la lista de compus segun la spetisiones del cliente
-        /// </summary>
-        //public List<Computadora> Lista_CompusDisponiblesParaElClienteSegunsSusPetisiones
-        //{
-        //    get { return this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones; }
-        //}
+       
 
         /// <summary>
         /// Devuelve la lista de cabinas disponibles
@@ -207,12 +202,25 @@ namespace Entidades.Clases_generales
             get { return this.ListaClientes; }
         }
 
-
+        /// <summary>
+        /// devuelve el stock ed bebidas
+        /// </summary>
         public Queue<Coca_cola>Stock_DeBebidas
         {
             get { return this.StockDeBebidas; }
             set { this.StockDeBebidas = value; }
         }
+
+        /// <summary>
+        /// indexador
+        /// </summary>
+        /// <param name="dni"></param>
+        /// <returns></returns>
+        public string this[int indice]
+        {
+            get { return $"{ColaClientes.Peek().Nombre}  {Cola_Clientes.Peek().Apellido}"; }
+        }
+      
 
         //--------Contructores--------------------------------------
 
@@ -238,10 +246,10 @@ namespace Entidades.Clases_generales
             new Computadora("C09", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.DiabloII),
             new Computadora("C10", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos),
             new Computadora("C11", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.DiabloII),
-            new Computadora("C12", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
+            new Computadora("C12", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
             new Computadora("C13", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.MuOnline),
             new Computadora("C14", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C15", Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos)
+            new Computadora("C15", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos)
         };
 
 
@@ -286,6 +294,8 @@ namespace Entidades.Clases_generales
             Stock_DeBebidas.Enqueue(new Coca_cola(587423691));
             Stock_DeBebidas.Enqueue(new Coca_cola(932741865));
             Stock_DeBebidas.Enqueue(new Coca_cola(987412356));
+
+           
 
 
         }
@@ -1082,7 +1092,7 @@ namespace Entidades.Clases_generales
             StringBuilder sb = new StringBuilder();
             foreach (Computadora item in ListaPCOrdenadas)
             {
-                sb.Append($"{item.Mostrar()} ");
+                sb.Append($"{item.MostrarRecaudacion()} ");
                 //sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso}");
                 sb.AppendLine($"Tiempo de uso: {item.TiempoTotalDeUso}");
                 sb.AppendLine();
@@ -1138,7 +1148,7 @@ namespace Entidades.Clases_generales
         {
 
 
-            IEnumerable<Computadora> ListaCompusOrdenadas = this.Lista_CompusFinalizadas.OrderByDescending(user => user.recaudacion);
+            IEnumerable<Computadora> ListaCompusOrdenadas = this.Lista_CompusFinalizadas.OrderByDescending(user => user.Recaudacion);
             StringBuilder sb = new StringBuilder();
 
             foreach (Computadora item in ListaCompusOrdenadas)

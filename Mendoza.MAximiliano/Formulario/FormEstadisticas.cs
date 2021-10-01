@@ -21,6 +21,7 @@ namespace Formulario
         {
             InitializeComponent();
             this.local = l;
+            rtbEstadisticas.ReadOnly = true;
         }
 
         /// <summary>

@@ -15,8 +15,10 @@ namespace Entidades.Clases_especializadas
 
         private int cantidadDeCocasEnLista=0;
         private Coca_cola coca = new Coca_cola();
-        public int cocasTotales = 0;
-        public float recaudacion = 0;
+       
+
+        private int cocasTotales = 0;
+        private float recaudacion = 0;
         //--------------Constructores---------------------------------
         /// <summary>
         /// Constructor sin parametros
@@ -168,8 +170,16 @@ namespace Entidades.Clases_especializadas
             set { this.cocasTotales = value; }
         }
 
-        
+        /// <summary>
+        /// propiedad qu edevuelve la recaudacion
+        /// </summary>
+        public float Recaudacion
+        {
+            get { return this.recaudacion; }
+            set { this.recaudacion = value; }
+        }
 
+        
         //-----Metodos----------------------------------------------------------------------------------------------   
 
 
@@ -282,9 +292,11 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"Tiempo de uso pc: {this.TiempoTotalDeUso}");
             sb.AppendLine($"Cantidad de cocas: {this.CocasTotales}");
-            sb.AppendLine($"Recaudacion:{recaudacion}");
+            sb.AppendLine($"Recaudacion:{Recaudacion}");
             return sb.ToString();
         }
+
+
         //---------Sobrecargas-----------------------------------------------------------
 
         /// <summary>

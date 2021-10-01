@@ -34,7 +34,7 @@ namespace Formulario
 
 
         /// <summary>
-        /// Asigna la cabina a la lista disponible
+        /// Asigna la cabina a la lista disponible,indexador aca
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -44,7 +44,7 @@ namespace Formulario
             Cabina c = (Cabina)lsbCabinasDisponibles.SelectedItem;
             c.NumeroAMarcar = numero;
 
-            if (MessageBox.Show($"¿Seguro de querer asignar la cabina  a  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show($"¿Seguro de querer asignar la cabina  a  { /*local.Cola_Clientes.Peek()*/ local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Local.EliminarClienteEnColaClientes(local)) { }
                 if (Local.EliminarClienteEnListaClientes(local, cli)) { }
