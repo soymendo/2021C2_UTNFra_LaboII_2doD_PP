@@ -61,6 +61,8 @@ namespace Formulario
             cmbSofware.Enabled = false;
             cmbPerisfericos.Enabled = false;
             cmbJuego.Enabled = false;
+
+            
         }
 
 
@@ -115,6 +117,7 @@ namespace Formulario
         private void btnOk_Click(object sender, EventArgs e)
         {
             
+
             if(rbtComputadora.Checked==false && rbtCabina.Checked==false)
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
