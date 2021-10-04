@@ -17,7 +17,7 @@
 ### "4° Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
 
 ## Diagrama de clases
-![Diagrama](https://user-images.githubusercontent.com/29763406/135652638-916b18f5-8eae-4653-87b4-75a9082b1f66.png)
+![Diagrama](https://user-images.githubusercontent.com/29763406/135703886-1443fd1c-4d72-4528-bcf1-f392aa26d96d.png)
 
 ## Justificación técnica
 
