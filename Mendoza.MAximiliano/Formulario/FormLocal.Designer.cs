@@ -267,7 +267,7 @@ namespace Formulario
             this.lsbListaClientes.ItemHeight = 15;
             this.lsbListaClientes.Location = new System.Drawing.Point(12, 40);
             this.lsbListaClientes.Name = "lsbListaClientes";
-            this.lsbListaClientes.Size = new System.Drawing.Size(203, 304);
+            this.lsbListaClientes.Size = new System.Drawing.Size(203, 319);
             this.lsbListaClientes.TabIndex = 18;
             this.lsbListaClientes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lsbListaClientes_MouseDoubleClick);
             // 
@@ -429,7 +429,7 @@ namespace Formulario
             // lblListaClientes
             // 
             this.lblListaClientes.AutoSize = true;
-            this.lblListaClientes.Location = new System.Drawing.Point(41, 17);
+            this.lblListaClientes.Location = new System.Drawing.Point(41, 13);
             this.lblListaClientes.Name = "lblListaClientes";
             this.lblListaClientes.Size = new System.Drawing.Size(90, 15);
             this.lblListaClientes.TabIndex = 33;
@@ -584,9 +584,9 @@ namespace Formulario
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel7.Controls.Add(this.lsbListaClientes);
             this.panel7.Controls.Add(this.lblListaClientes);
-            this.panel7.Location = new System.Drawing.Point(12, 258);
+            this.panel7.Location = new System.Drawing.Point(12, 257);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(228, 364);
+            this.panel7.Size = new System.Drawing.Size(228, 365);
             this.panel7.TabIndex = 46;
             // 
             // btnAyuda

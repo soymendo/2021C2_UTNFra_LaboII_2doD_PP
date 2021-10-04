@@ -189,7 +189,7 @@ namespace Formulario
             else
             {
                 Cliente cliente = local.Cola_Clientes.Peek();
-
+                
                 if (cliente.PetisionesDePc is null)
                 {
                     cabinaAux = new Cabina(cliente.NumeroAMarcar);
