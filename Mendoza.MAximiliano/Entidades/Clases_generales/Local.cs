@@ -263,15 +263,15 @@ namespace Entidades.Clases_generales
 
             this.ColaClientes = new Queue<Cliente>();         
             ColaClientes.Enqueue(new Cliente("Lucas","Heredia",48657285,25,Petisiones.SoftwareInstalado.todos,Petisiones.PeriféricosDisponibles.micrófono,Petisiones.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 48657285, 24,"5401143258073"));
-            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 48657285, 23,Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 48657285, 22,"8502214367852"));
-            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 48657285, 21,Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.LineageII));
-            ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 48657285, 20,"5401279463102"));
-            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado", 48657285, 21, Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 48657285, 24,"5402316487520"));
-            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 48657285, 28, Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Ester", "Devo", 48657285, 29,"6851236987452"));
+            ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 47023687, 24,"5401143258073"));
+            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23,Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 37048521, 22,"8502214367852"));
+            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21,Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.LineageII));
+            ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 39854740, 20,"5401279463102"));
+            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado",40259671, 21, Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 34789652, 24,"5402316487520"));
+            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Ester", "Devo", 37850142, 29,"6851236987452"));
 
 
             this.ListaClientes = new List<Cliente>();

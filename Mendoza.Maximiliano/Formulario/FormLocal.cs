@@ -51,7 +51,10 @@ namespace Formulario
             lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
 
             lsbListaClientes.DataSource = null;
+            local.Lista_Clientes = local.Cola_Clientes.ToList<Cliente>();//copio el queue
             lsbListaClientes.DataSource = local.Lista_Clientes;
+
+
 
             rtbInfoMaquinas.ReadOnly = true;
 
