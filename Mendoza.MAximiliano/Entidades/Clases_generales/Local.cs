@@ -200,6 +200,7 @@ namespace Entidades.Clases_generales
         public List<Cliente>Lista_Clientes
         {
             get { return this.ListaClientes; }
+            set { this.ListaClientes = value; }
         }
 
         /// <summary>
@@ -260,7 +261,19 @@ namespace Entidades.Clases_generales
             this.ListaCompusFinalizadas = new List<Computadora>();
             //this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones = new List<Computadora>();
 
-            this.ColaClientes = new Queue<Cliente>();
+            this.ColaClientes = new Queue<Cliente>();         
+            ColaClientes.Enqueue(new Cliente("Lucas","Heredia",48657285,25,Petisiones.SoftwareInstalado.todos,Petisiones.PeriféricosDisponibles.micrófono,Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 48657285, 24,"5401143258073"));
+            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 48657285, 23,Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 48657285, 22,"8502214367852"));
+            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 48657285, 21,Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.LineageII));
+            ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 48657285, 20,"5401279463102"));
+            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado", 48657285, 21, Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 48657285, 24,"5402316487520"));
+            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 48657285, 28, Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Ester", "Devo", 48657285, 29,"6851236987452"));
+
+
             this.ListaClientes = new List<Cliente>();
 
           
@@ -295,7 +308,7 @@ namespace Entidades.Clases_generales
             Stock_DeBebidas.Enqueue(new Coca_cola(932741865));
             Stock_DeBebidas.Enqueue(new Coca_cola(987412356));
 
-           
+
 
 
         }
@@ -1123,21 +1136,6 @@ namespace Entidades.Clases_generales
             }
             return sb.ToString();
         }
-
-
-
-
-
-
-        //public float RecaudacionComputadora(Local loc)
-        //{
-        //    float acum = 0;
-        //    foreach (Computadora item in this.Lista_CompusFinalizadas)
-        //    {
-        //        acum += item.CalcularCostoCompuBebida();
-        //    }
-        //    return acum;
-        //}
 
 
         /// <summary>

@@ -85,7 +85,7 @@ namespace Formulario
             this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "FormMenu";
             this.ResumeLayout(false);
 
         }
