@@ -77,9 +77,9 @@ namespace Formulario
             this.lblCompus.AutoSize = true;
             this.lblCompus.Location = new System.Drawing.Point(12, 7);
             this.lblCompus.Name = "lblCompus";
-            this.lblCompus.Size = new System.Drawing.Size(118, 15);
+            this.lblCompus.Size = new System.Drawing.Size(288, 15);
             this.lblCompus.TabIndex = 3;
-            this.lblCompus.Text = "Compus disponibles:";
+            this.lblCompus.Text = "Compus disponibles seguns las pétisiones del cliente:";
             // 
             // lblPedidos
             // 
