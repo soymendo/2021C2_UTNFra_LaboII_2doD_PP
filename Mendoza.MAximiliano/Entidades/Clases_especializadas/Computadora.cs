@@ -11,10 +11,10 @@ namespace Entidades.Clases_especializadas
     public class  Computadora: Maquinas
     {
         //----------------Atributos-------------------------------------
-        private Petisiones petisiones;
+        private Peticiones petisiones;
 
         private int cantidadDeCocasEnLista=0;
-        private Coca_cola coca = new Coca_cola();
+        private Bebida coca = new Bebida();
        
 
         private int cocasTotales = 0;
@@ -33,7 +33,7 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="pedidos"></param>
-        public Computadora(string nombre, Petisiones pedidos)
+        public Computadora(string nombre, Peticiones pedidos)
         : base(nombre)
         {
             this.Identificador = nombre;
@@ -47,8 +47,8 @@ namespace Entidades.Clases_especializadas
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Computadora(string nombre, Petisiones.SoftwareInstalado software, Petisiones.PeriféricosDisponibles periféricos, Petisiones.JuegosDisponibles juegos)
-        : this(nombre, new Petisiones(software, periféricos, juegos))
+        public Computadora(string nombre, Peticiones.SoftwareInstalado software, Peticiones.PeriféricosDisponibles periféricos, Peticiones.JuegosDisponibles juegos)
+        : this(nombre, new Peticiones(software, periféricos, juegos))
         {
 
         }
@@ -58,7 +58,7 @@ namespace Entidades.Clases_especializadas
         /// constructor solo petisiones
         /// </summary>
         /// <param name="petisiones"></param>
-        public Computadora(Petisiones petisiones)
+        public Computadora(Peticiones petisiones)
         : this()
         {
             this.petisiones = petisiones;
@@ -70,8 +70,8 @@ namespace Entidades.Clases_especializadas
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Computadora(Petisiones.SoftwareInstalado software, Petisiones.PeriféricosDisponibles periféricos, Petisiones.JuegosDisponibles juegos)
-        : this(new Petisiones(software, periféricos, juegos))
+        public Computadora(Peticiones.SoftwareInstalado software, Peticiones.PeriféricosDisponibles periféricos, Peticiones.JuegosDisponibles juegos)
+        : this(new Peticiones(software, periféricos, juegos))
         {
 
         }
@@ -135,7 +135,7 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// propiedad para saber las petisiones
         /// </summary>
-        public Petisiones PetisionesDePc
+        public Peticiones PetisionesDePc
         {
             get { return this.petisiones; }
             set { this.petisiones = value; }
@@ -154,7 +154,7 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// propiedad para saber el precio de la coca
         /// </summary>
-        public Coca_cola Coca
+        public Bebida Coca
         {
             get { return this.coca; }
             set { this.coca = value; }
@@ -226,7 +226,7 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public override bool AgregarBebida(Coca_cola c)
+        public override bool AgregarBebida(Bebida c)
         {
             
             bool retorno = false;
@@ -248,7 +248,7 @@ namespace Entidades.Clases_especializadas
         public override float CalcularCostoDeConsumoBebidas()
         {
             float acum = 0; ;
-            foreach (Coca_cola item in this.Lista_Cocas)
+            foreach (Bebida item in this.Lista_Cocas)
             {
                 acum += item.Precio;
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases_generales
 {
-    public sealed class Petisiones
+    public sealed class Peticiones
     {
 
         //----------------Atributos-----------------------
@@ -69,7 +69,7 @@ namespace Entidades.Clases_generales
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Petisiones(SoftwareInstalado software, PeriféricosDisponibles periféricos, JuegosDisponibles juegos)
+        public Peticiones(SoftwareInstalado software, PeriféricosDisponibles periféricos, JuegosDisponibles juegos)
         {
             this.sofware = software;
             this.periféricosDisponibles = periféricos;
@@ -86,7 +86,7 @@ namespace Entidades.Clases_generales
         /// <param name="p1"></param>
         /// <param name="p2">compu a igualar</param>
         /// <returns></returns>
-        public static bool operator ==(Petisiones p1, Petisiones p2)
+        public static bool operator ==(Peticiones p1, Peticiones p2)
         {
             bool retorno = false;
 
@@ -136,7 +136,7 @@ namespace Entidades.Clases_generales
             }
 
 
-            if (p2.Juegos == Petisiones.JuegosDisponibles.todos)
+            if (p2.Juegos == Peticiones.JuegosDisponibles.todos)
             {
                 if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PeriféricosDisponibles.todos && p1.Juegos==JuegosDisponibles.todos)
                 {
@@ -217,7 +217,7 @@ namespace Entidades.Clases_generales
         /// <param name="p1"></param>
         /// <param name="p2"></param>
         /// <returns></returns>
-        public static bool operator !=(Petisiones p1, Petisiones p2)
+        public static bool operator !=(Peticiones p1, Peticiones p2)
         {
             return !(p1 == p2);
         }
@@ -243,7 +243,7 @@ namespace Entidades.Clases_generales
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            Petisiones otraPeticion = obj as Petisiones;
+            Peticiones otraPeticion = obj as Peticiones;
             return otraPeticion != null && this == otraPeticion;
         }
 

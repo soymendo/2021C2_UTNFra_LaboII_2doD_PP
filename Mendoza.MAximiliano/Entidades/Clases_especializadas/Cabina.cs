@@ -28,7 +28,7 @@ namespace Entidades.Clases_especializadas
        
 
         private int cantidadDeCocasEnLista=0;
-        private Coca_cola coca = new Coca_cola();
+        private Bebida coca = new Bebida();
         
         public int cocasTotales = 0;
         public float recaudacion = 0;
@@ -108,7 +108,7 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// propiedad para saber el precio de la coca
         /// </summary>
-        public Coca_cola Coca
+        public Bebida Coca
         {
             get { return this.coca; }
             set { this.coca = value; }
@@ -231,7 +231,7 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
-        public override bool AgregarBebida(Coca_cola c)
+        public override bool AgregarBebida(Bebida c)
         {
 
            
@@ -255,7 +255,7 @@ namespace Entidades.Clases_especializadas
         {
 
             float acum = 0; ;
-            foreach (Coca_cola item in this.Lista_Cocas)
+            foreach (Bebida item in this.Lista_Cocas)
             {
                 acum += item.Precio;
             }

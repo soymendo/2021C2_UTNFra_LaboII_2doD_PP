@@ -32,7 +32,7 @@ namespace Entidades.Clases_generales
         private List<Cabina> ListaCabinasOcupadas;
         private List<Cabina> ListaCabinasFinalizadas;
 
-        private Queue<Coca_cola> StockDeBebidas;
+        private Queue<Bebida> StockDeBebidas;
        
 
         private int contadorSofwareOffice = 0;
@@ -206,7 +206,7 @@ namespace Entidades.Clases_generales
         /// <summary>
         /// devuelve el stock ed bebidas
         /// </summary>
-        public Queue<Coca_cola>Stock_DeBebidas
+        public Queue<Bebida>Stock_DeBebidas
         {
             get { return this.StockDeBebidas; }
             set { this.StockDeBebidas = value; }
@@ -236,21 +236,21 @@ namespace Entidades.Clases_generales
 
             this.ListaCompusDisponibles = new List<Computadora>()
             {
-             new Computadora("C01", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C02", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C03", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C04", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C05", Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.CounterStrike),
-            new Computadora("C06", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.DiabloII),
-            new Computadora("C07", Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C08", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.MuOnline),
-            new Computadora("C09", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.auriculares, Petisiones.JuegosDisponibles.LineageII),
-            new Computadora("C10", Petisiones.SoftwareInstalado.messenger, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C11", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C12", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.camara, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C13", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.MuOnline),
-            new Computadora("C14", Petisiones.SoftwareInstalado.office, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos),
-            new Computadora("C15", Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos)
+             new Computadora("C01", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C02", Peticiones.SoftwareInstalado.icq, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C03", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C04", Peticiones.SoftwareInstalado.office, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C05", Peticiones.SoftwareInstalado.icq, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.CounterStrike),
+            new Computadora("C06", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.auriculares, Peticiones.JuegosDisponibles.DiabloII),
+            new Computadora("C07", Peticiones.SoftwareInstalado.ares, Peticiones.PeriféricosDisponibles.micrófono, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C08", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.MuOnline),
+            new Computadora("C09", Peticiones.SoftwareInstalado.messenger, Peticiones.PeriféricosDisponibles.auriculares, Peticiones.JuegosDisponibles.LineageII),
+            new Computadora("C10", Peticiones.SoftwareInstalado.messenger, Peticiones.PeriféricosDisponibles.micrófono, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C11", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C12", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.camara, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C13", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.micrófono, Peticiones.JuegosDisponibles.MuOnline),
+            new Computadora("C14", Peticiones.SoftwareInstalado.office, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos),
+            new Computadora("C15", Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos)
         };
 
 
@@ -262,15 +262,15 @@ namespace Entidades.Clases_generales
             //this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones = new List<Computadora>();
 
             this.ColaClientes = new Queue<Cliente>();         
-            ColaClientes.Enqueue(new Cliente("Lucas","Heredia",48657285,25,Petisiones.SoftwareInstalado.todos,Petisiones.PeriféricosDisponibles.micrófono,Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Lucas","Heredia",48657285,25,Peticiones.SoftwareInstalado.todos,Peticiones.PeriféricosDisponibles.micrófono,Peticiones.JuegosDisponibles.todos));
             ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 47023687, 24,"5401143258073"));
-            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23,Petisiones.SoftwareInstalado.icq, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23,Peticiones.SoftwareInstalado.icq, Peticiones.PeriféricosDisponibles.micrófono, Peticiones.JuegosDisponibles.todos));
             ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 37048521, 22,"8502214367852"));
-            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21,Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.LineageII));
+            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21,Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.micrófono, Peticiones.JuegosDisponibles.LineageII));
             ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 39854740, 20,"5401279463102"));
-            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado",40259671, 21, Petisiones.SoftwareInstalado.todos, Petisiones.PeriféricosDisponibles.todos, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado",40259671, 21, Peticiones.SoftwareInstalado.todos, Peticiones.PeriféricosDisponibles.todos, Peticiones.JuegosDisponibles.todos));
             ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 34789652, 24,"5402316487520"));
-            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, Petisiones.SoftwareInstalado.ares, Petisiones.PeriféricosDisponibles.micrófono, Petisiones.JuegosDisponibles.todos));
+            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, Peticiones.SoftwareInstalado.ares, Peticiones.PeriféricosDisponibles.micrófono, Peticiones.JuegosDisponibles.todos));
             ColaClientes.Enqueue(new Cliente("Ester", "Devo", 37850142, 29,"6851236987452"));
 
 
@@ -295,18 +295,18 @@ namespace Entidades.Clases_generales
             this.ListaCabinasOcupadas = new List<Cabina>();
             this.ListaCabinasFinalizadas = new List<Cabina>();
 
-            this.StockDeBebidas = new Queue<Coca_cola>();
-            Stock_DeBebidas.Enqueue(new Coca_cola(913254867));
-            Stock_DeBebidas.Enqueue(new Coca_cola(147852369));
-            Stock_DeBebidas.Enqueue(new Coca_cola(654789321));
-            Stock_DeBebidas.Enqueue(new Coca_cola(265384791));
-            Stock_DeBebidas.Enqueue(new Coca_cola(735198264));
-            Stock_DeBebidas.Enqueue(new Coca_cola(468257931));
-            Stock_DeBebidas.Enqueue(new Coca_cola(137985426));
-            Stock_DeBebidas.Enqueue(new Coca_cola(741963852));
-            Stock_DeBebidas.Enqueue(new Coca_cola(587423691));
-            Stock_DeBebidas.Enqueue(new Coca_cola(932741865));
-            Stock_DeBebidas.Enqueue(new Coca_cola(987412356));
+            this.StockDeBebidas = new Queue<Bebida>();
+            Stock_DeBebidas.Enqueue(new Bebida(913254867));
+            Stock_DeBebidas.Enqueue(new Bebida(147852369));
+            Stock_DeBebidas.Enqueue(new Bebida(654789321));
+            Stock_DeBebidas.Enqueue(new Bebida(265384791));
+            Stock_DeBebidas.Enqueue(new Bebida(735198264));
+            Stock_DeBebidas.Enqueue(new Bebida(468257931));
+            Stock_DeBebidas.Enqueue(new Bebida(137985426));
+            Stock_DeBebidas.Enqueue(new Bebida(741963852));
+            Stock_DeBebidas.Enqueue(new Bebida(587423691));
+            Stock_DeBebidas.Enqueue(new Bebida(932741865));
+            Stock_DeBebidas.Enqueue(new Bebida(987412356));
 
 
 

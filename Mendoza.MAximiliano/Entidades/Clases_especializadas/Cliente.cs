@@ -14,7 +14,7 @@ namespace Entidades.Clases_especializadas
         private string apellido;
         private int dni;
         private int edad;
-        private Petisiones petisiones;
+        private Peticiones petisiones;
         private string numeroAMarcar;
 
 
@@ -59,7 +59,7 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// Devuelve la s petisiones
         /// </summary>
-        public Petisiones PetisionesDePc
+        public Peticiones PetisionesDePc
         {
             get { return this.petisiones; }
             set { this.petisiones = value; }
@@ -110,7 +110,7 @@ namespace Entidades.Clases_especializadas
         /// <param name="dni"></param>
         /// <param name="edad"></param>
         /// <param name="pedidos"></param>
-        public Cliente(string nombre, string apellido, int dni, int edad, Petisiones pedidos)
+        public Cliente(string nombre, string apellido, int dni, int edad, Peticiones pedidos)
         : this(nombre,apellido,dni,edad)
         {
             //this.nombre = nombre;
@@ -131,8 +131,8 @@ namespace Entidades.Clases_especializadas
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Cliente(string nombre, string apellido, int dni, int edad, Petisiones.SoftwareInstalado software, Petisiones.PeriféricosDisponibles periféricos, Petisiones.JuegosDisponibles juegos)
-        : this(nombre, apellido, dni, edad, new Petisiones(software, periféricos, juegos))
+        public Cliente(string nombre, string apellido, int dni, int edad, Peticiones.SoftwareInstalado software, Peticiones.PeriféricosDisponibles periféricos, Peticiones.JuegosDisponibles juegos)
+        : this(nombre, apellido, dni, edad, new Peticiones(software, periféricos, juegos))
         {
 
         }

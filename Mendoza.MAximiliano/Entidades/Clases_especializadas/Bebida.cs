@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases_especializadas
 {
-    public class Coca_cola
+    public class Bebida
     {
         private float precio = 1.5f;
         private long codigoBarras;
@@ -29,23 +29,23 @@ namespace Entidades.Clases_especializadas
         }
 
 
-        public Coca_cola()
+        public Bebida()
         {
 
         }
-        public Coca_cola(long codigoBarras)
+        public Bebida(long codigoBarras)
         :this()
         {
             this.codigoBarras = codigoBarras;
         }
 
 
-        public static bool operator==(Coca_cola c1, Coca_cola c2)
+        public static bool operator==(Bebida c1, Bebida c2)
         {
             return (c1.codigoBarras == c2.codigoBarras);
         }
 
-        public static bool operator !=(Coca_cola c1, Coca_cola c2)
+        public static bool operator !=(Bebida c1, Bebida c2)
         {
             return !(c1 == c2);
         }
@@ -59,7 +59,7 @@ namespace Entidades.Clases_especializadas
 
         public override bool Equals(object obj)
         {
-            Coca_cola otraCoca = obj as Coca_cola;
+            Bebida otraCoca = obj as Bebida;
             return otraCoca != null && this == otraCoca;
         }
 

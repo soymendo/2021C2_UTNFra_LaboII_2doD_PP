@@ -39,9 +39,9 @@ namespace Formulario
             InitializeComponent();
 
             this.local = loc;
-            cmbSofware.DataSource = Enum.GetValues(typeof(Petisiones.SoftwareInstalado));
-            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Petisiones.PeriféricosDisponibles));
-            cmbJuego.DataSource = Enum.GetValues(typeof(Petisiones.JuegosDisponibles));
+            cmbSofware.DataSource = Enum.GetValues(typeof(Peticiones.SoftwareInstalado));
+            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Peticiones.PeriféricosDisponibles));
+            cmbJuego.DataSource = Enum.GetValues(typeof(Peticiones.JuegosDisponibles));
 
          
             lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
@@ -121,7 +121,7 @@ namespace Formulario
         {
             
 
-            if(rbtComputadora.Checked==false && rbtCabina.Checked==false)
+            if( (rbtComputadora.Checked==false && rbtCabina.Checked==false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "")
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -129,19 +129,22 @@ namespace Formulario
             {
                 if (rbtComputadora.Checked)
                 {
-                    Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Petisiones.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Petisiones.PeriféricosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Petisiones.JuegosDisponibles)cmbJuego.SelectedItem);
+                   
+                        Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Peticiones.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Peticiones.PeriféricosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Peticiones.JuegosDisponibles)cmbJuego.SelectedItem);
 
-                    if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
-                    {
-                        MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }else
-                    {
-                        MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
-                            
-                    lsbListaClientes.DataSource = null;
-                    lsbListaClientes.DataSource = local.Lista_Clientes;
+                        if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
+                        {
+                            MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
+
+                        lsbListaClientes.DataSource = null;
+                        lsbListaClientes.DataSource = local.Lista_Clientes;
+
                 }
 
                 if( rbtCabina.Checked)

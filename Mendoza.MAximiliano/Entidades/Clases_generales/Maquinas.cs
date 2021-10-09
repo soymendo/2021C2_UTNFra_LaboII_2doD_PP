@@ -22,7 +22,7 @@ namespace Entidades.Clases_generales
         private DateTime tiempoInicial;
         private DateTime tiempoFinal;
         private  Stopwatch sw = new Stopwatch();
-        private List<Coca_cola> ListaDeCocas=new List<Coca_cola>();
+        private List<Bebida> ListaDeCocas=new List<Bebida>();
      
 
 
@@ -57,7 +57,7 @@ namespace Entidades.Clases_generales
         }
 
 
-        public List<Coca_cola>Lista_Cocas
+        public List<Bebida>Lista_Cocas
         {
             get { return this.ListaDeCocas; }
             set { this.ListaDeCocas = value; }
@@ -76,7 +76,7 @@ namespace Entidades.Clases_generales
         public abstract float CalcularCosto();
 
         //------------Metodos abstractos--------------------------
-        public abstract bool AgregarBebida(Coca_cola c);
+        public abstract bool AgregarBebida(Bebida c);
         public abstract float CalcularCostoDeConsumoBebidas();
 
         //--------------Constructores---------------------------------------
