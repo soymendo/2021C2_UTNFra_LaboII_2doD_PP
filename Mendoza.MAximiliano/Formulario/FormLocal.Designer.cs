@@ -585,9 +585,9 @@ namespace Formulario
             // 
             this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAyuda.Location = new System.Drawing.Point(246, 544);
+            this.btnAyuda.Location = new System.Drawing.Point(1102, 597);
             this.btnAyuda.Name = "btnAyuda";
-            this.btnAyuda.Size = new System.Drawing.Size(99, 57);
+            this.btnAyuda.Size = new System.Drawing.Size(99, 25);
             this.btnAyuda.TabIndex = 47;
             this.btnAyuda.Text = "Ayuda";
             this.btnAyuda.UseVisualStyleBackColor = true;
@@ -609,7 +609,7 @@ namespace Formulario
             // 
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.ForeColor = System.Drawing.Color.Snow;
-            this.lblDateTime.Location = new System.Drawing.Point(1021, 10);
+            this.lblDateTime.Location = new System.Drawing.Point(1040, 10);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(36, 15);
             this.lblDateTime.TabIndex = 41;
@@ -619,7 +619,7 @@ namespace Formulario
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.ForeColor = System.Drawing.Color.Snow;
-            this.lblUsuario.Location = new System.Drawing.Point(773, 10);
+            this.lblUsuario.Location = new System.Drawing.Point(824, 10);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(125, 15);
             this.lblUsuario.TabIndex = 34;

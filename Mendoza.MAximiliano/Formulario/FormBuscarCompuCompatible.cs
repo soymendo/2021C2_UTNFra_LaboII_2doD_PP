@@ -73,26 +73,13 @@ namespace Formulario
         {
             if (listaVacia == false)
             {
-                if (btnAsignar.Text == "Cerrar")
-                {
-                    this.Close();
-                }
-                else
-                {
-                    Asignar();
-                }
+                if (btnAsignar.Text == "Cerrar") { this.Close(); }
+                else { Asignar(); }
             }
             else
             {
-                if (btnAsignar.Text == "Cerrar")
-                {
-                    this.Close();
-                }
-                else
-                {
-                    Asignar();
-                }
-                
+                if (btnAsignar.Text == "Cerrar") { this.Close(); }
+                else { Asignar(); }
             }
         }
 
