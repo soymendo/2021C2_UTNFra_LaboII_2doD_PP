@@ -117,6 +117,8 @@ namespace Formulario
             // 
             // btnFinalizarTarea
             // 
+            this.btnFinalizarTarea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFinalizarTarea.Location = new System.Drawing.Point(1095, 48);
             this.btnFinalizarTarea.Name = "btnFinalizarTarea";
             this.btnFinalizarTarea.Size = new System.Drawing.Size(101, 38);
@@ -273,7 +275,7 @@ namespace Formulario
             // 
             this.btnAsignar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAsignar.Location = new System.Drawing.Point(246, 363);
+            this.btnAsignar.Location = new System.Drawing.Point(266, 297);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(62, 57);
             this.btnAsignar.TabIndex = 21;
@@ -414,6 +416,8 @@ namespace Formulario
             // 
             // tiempoActualDeUso
             // 
+            this.tiempoActualDeUso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tiempoActualDeUso.Location = new System.Drawing.Point(1095, 110);
             this.tiempoActualDeUso.Name = "tiempoActualDeUso";
             this.tiempoActualDeUso.Size = new System.Drawing.Size(67, 57);
@@ -457,6 +461,8 @@ namespace Formulario
             // 
             // btnFinalizarTareaCabina
             // 
+            this.btnFinalizarTareaCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFinalizarTareaCabina.Location = new System.Drawing.Point(1095, 363);
             this.btnFinalizarTareaCabina.Name = "btnFinalizarTareaCabina";
             this.btnFinalizarTareaCabina.Size = new System.Drawing.Size(106, 38);
@@ -467,6 +473,8 @@ namespace Formulario
             // 
             // btnTiempoActualDeUsoCabina
             // 
+            this.btnTiempoActualDeUsoCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnTiempoActualDeUsoCabina.Location = new System.Drawing.Point(1095, 509);
             this.btnTiempoActualDeUsoCabina.Name = "btnTiempoActualDeUsoCabina";
             this.btnTiempoActualDeUsoCabina.Size = new System.Drawing.Size(67, 57);
@@ -583,8 +591,9 @@ namespace Formulario
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAyuda.Location = new System.Drawing.Point(1102, 597);
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Size = new System.Drawing.Size(99, 25);
@@ -632,6 +641,8 @@ namespace Formulario
             // 
             // btnAgregarCocaCompu
             // 
+            this.btnAgregarCocaCompu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregarCocaCompu.Location = new System.Drawing.Point(1095, 184);
             this.btnAgregarCocaCompu.Name = "btnAgregarCocaCompu";
             this.btnAgregarCocaCompu.Size = new System.Drawing.Size(67, 57);
@@ -642,6 +653,8 @@ namespace Formulario
             // 
             // btnAgregarBebidaCabina
             // 
+            this.btnAgregarBebidaCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAgregarBebidaCabina.Location = new System.Drawing.Point(1095, 431);
             this.btnAgregarBebidaCabina.Name = "btnAgregarBebidaCabina";
             this.btnAgregarBebidaCabina.Size = new System.Drawing.Size(67, 57);
