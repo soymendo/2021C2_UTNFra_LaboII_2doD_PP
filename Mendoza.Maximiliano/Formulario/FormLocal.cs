@@ -39,9 +39,9 @@ namespace Formulario
             InitializeComponent();
 
             this.local = loc;
-            cmbSofware.DataSource = Enum.GetValues(typeof(Peticiones.SoftwareInstalado));
-            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Peticiones.PeriféricosDisponibles));
-            cmbJuego.DataSource = Enum.GetValues(typeof(Peticiones.JuegosDisponibles));
+            cmbSofware.DataSource = Enum.GetValues(typeof(Peticion.SoftwareInstalado));
+            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Peticion.PerisfericosDisponibles));
+            cmbJuego.DataSource = Enum.GetValues(typeof(Peticion.JuegosDisponibles));
 
          
             lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
@@ -130,7 +130,7 @@ namespace Formulario
                 if (rbtComputadora.Checked)
                 {
                    
-                        Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Peticiones.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Peticiones.PeriféricosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Peticiones.JuegosDisponibles)cmbJuego.SelectedItem);
+                        Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Peticion.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Peticion.PerisfericosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Peticion.JuegosDisponibles)cmbJuego.SelectedItem);
 
                         if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
                         {
@@ -284,7 +284,7 @@ namespace Formulario
                     cab.CantidadDeCocasEnLista = cocaAux;
                     MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUso}\nDestino: {cab.Destino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cab.CantidadDeCocasEnLista = cocaAux;
-                    cab.recaudacion += cab.CalcularCostoCabinaBebida();
+                    cab.Recaudacion += cab.CalcularCostoCabinaBebida();
 
                     if(cab.Destino()==TipoLlamada.local.ToString())
                     {
