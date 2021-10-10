@@ -119,9 +119,9 @@ namespace Formulario
             // 
             this.btnFinalizarTarea.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarTarea.Location = new System.Drawing.Point(1095, 48);
+            this.btnFinalizarTarea.Location = new System.Drawing.Point(1091, 45);
             this.btnFinalizarTarea.Name = "btnFinalizarTarea";
-            this.btnFinalizarTarea.Size = new System.Drawing.Size(101, 38);
+            this.btnFinalizarTarea.Size = new System.Drawing.Size(62, 48);
             this.btnFinalizarTarea.TabIndex = 2;
             this.btnFinalizarTarea.Text = "FinalizarTarea";
             this.btnFinalizarTarea.UseVisualStyleBackColor = true;
@@ -275,7 +275,7 @@ namespace Formulario
             // 
             this.btnAsignar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAsignar.Location = new System.Drawing.Point(266, 297);
+            this.btnAsignar.Location = new System.Drawing.Point(256, 297);
             this.btnAsignar.Name = "btnAsignar";
             this.btnAsignar.Size = new System.Drawing.Size(62, 57);
             this.btnAsignar.TabIndex = 21;
@@ -418,9 +418,9 @@ namespace Formulario
             // 
             this.tiempoActualDeUso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tiempoActualDeUso.Location = new System.Drawing.Point(1095, 110);
+            this.tiempoActualDeUso.Location = new System.Drawing.Point(1091, 99);
             this.tiempoActualDeUso.Name = "tiempoActualDeUso";
-            this.tiempoActualDeUso.Size = new System.Drawing.Size(67, 57);
+            this.tiempoActualDeUso.Size = new System.Drawing.Size(62, 57);
             this.tiempoActualDeUso.TabIndex = 31;
             this.tiempoActualDeUso.Text = "Tiempo actual de uso";
             this.tiempoActualDeUso.UseVisualStyleBackColor = true;
@@ -463,9 +463,9 @@ namespace Formulario
             // 
             this.btnFinalizarTareaCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnFinalizarTareaCabina.Location = new System.Drawing.Point(1095, 363);
+            this.btnFinalizarTareaCabina.Location = new System.Drawing.Point(1091, 327);
             this.btnFinalizarTareaCabina.Name = "btnFinalizarTareaCabina";
-            this.btnFinalizarTareaCabina.Size = new System.Drawing.Size(106, 38);
+            this.btnFinalizarTareaCabina.Size = new System.Drawing.Size(62, 53);
             this.btnFinalizarTareaCabina.TabIndex = 36;
             this.btnFinalizarTareaCabina.Text = "FinalizarTarea";
             this.btnFinalizarTareaCabina.UseVisualStyleBackColor = true;
@@ -475,9 +475,9 @@ namespace Formulario
             // 
             this.btnTiempoActualDeUsoCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTiempoActualDeUsoCabina.Location = new System.Drawing.Point(1095, 509);
+            this.btnTiempoActualDeUsoCabina.Location = new System.Drawing.Point(1091, 386);
             this.btnTiempoActualDeUsoCabina.Name = "btnTiempoActualDeUsoCabina";
-            this.btnTiempoActualDeUsoCabina.Size = new System.Drawing.Size(67, 57);
+            this.btnTiempoActualDeUsoCabina.Size = new System.Drawing.Size(62, 57);
             this.btnTiempoActualDeUsoCabina.TabIndex = 37;
             this.btnTiempoActualDeUsoCabina.Text = "Tiempo actual de uso";
             this.btnTiempoActualDeUsoCabina.UseVisualStyleBackColor = true;
@@ -504,7 +504,7 @@ namespace Formulario
             // lblInfo
             // 
             this.lblInfo.AutoSize = true;
-            this.lblInfo.Location = new System.Drawing.Point(53, 13);
+            this.lblInfo.Location = new System.Drawing.Point(51, 16);
             this.lblInfo.Name = "lblInfo";
             this.lblInfo.Size = new System.Drawing.Size(94, 15);
             this.lblInfo.TabIndex = 40;
@@ -547,7 +547,7 @@ namespace Formulario
             this.panel4.Controls.Add(this.lsbCasbinasOcupadas);
             this.panel4.Controls.Add(this.lblCabinasDisponibles);
             this.panel4.Controls.Add(this.lblCabinasOcupadas);
-            this.panel4.Location = new System.Drawing.Point(730, 323);
+            this.panel4.Location = new System.Drawing.Point(717, 306);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(359, 284);
             this.panel4.TabIndex = 43;
@@ -559,7 +559,7 @@ namespace Formulario
             this.panel5.Controls.Add(this.lsbCompusDisponibles);
             this.panel5.Controls.Add(this.lblListaCompusDisponibles);
             this.panel5.Controls.Add(this.lblListaCompusOcupadas);
-            this.panel5.Location = new System.Drawing.Point(730, 12);
+            this.panel5.Location = new System.Drawing.Point(717, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(359, 284);
             this.panel5.TabIndex = 44;
@@ -572,7 +572,7 @@ namespace Formulario
             this.panel6.Controls.Add(this.rtbInfoMaquinas);
             this.panel6.Controls.Add(this.lblInfo);
             this.panel6.Controls.Add(this.lblInfoclic);
-            this.panel6.Location = new System.Drawing.Point(413, 291);
+            this.panel6.Location = new System.Drawing.Point(413, 257);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(228, 325);
             this.panel6.TabIndex = 45;
@@ -594,9 +594,9 @@ namespace Formulario
             this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAyuda.Location = new System.Drawing.Point(1102, 597);
+            this.btnAyuda.Location = new System.Drawing.Point(1052, 596);
             this.btnAyuda.Name = "btnAyuda";
-            this.btnAyuda.Size = new System.Drawing.Size(99, 25);
+            this.btnAyuda.Size = new System.Drawing.Size(110, 32);
             this.btnAyuda.TabIndex = 47;
             this.btnAyuda.Text = "Ayuda";
             this.btnAyuda.UseVisualStyleBackColor = true;
@@ -618,7 +618,7 @@ namespace Formulario
             // 
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.ForeColor = System.Drawing.Color.Snow;
-            this.lblDateTime.Location = new System.Drawing.Point(1040, 10);
+            this.lblDateTime.Location = new System.Drawing.Point(951, 0);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(36, 15);
             this.lblDateTime.TabIndex = 41;
@@ -628,7 +628,7 @@ namespace Formulario
             // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.ForeColor = System.Drawing.Color.Snow;
-            this.lblUsuario.Location = new System.Drawing.Point(824, 10);
+            this.lblUsuario.Location = new System.Drawing.Point(707, 1);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(125, 15);
             this.lblUsuario.TabIndex = 34;
@@ -643,9 +643,9 @@ namespace Formulario
             // 
             this.btnAgregarCocaCompu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarCocaCompu.Location = new System.Drawing.Point(1095, 184);
+            this.btnAgregarCocaCompu.Location = new System.Drawing.Point(1091, 162);
             this.btnAgregarCocaCompu.Name = "btnAgregarCocaCompu";
-            this.btnAgregarCocaCompu.Size = new System.Drawing.Size(67, 57);
+            this.btnAgregarCocaCompu.Size = new System.Drawing.Size(62, 57);
             this.btnAgregarCocaCompu.TabIndex = 49;
             this.btnAgregarCocaCompu.Text = "Agregar Coca";
             this.btnAgregarCocaCompu.UseVisualStyleBackColor = true;
@@ -655,9 +655,9 @@ namespace Formulario
             // 
             this.btnAgregarBebidaCabina.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarBebidaCabina.Location = new System.Drawing.Point(1095, 431);
+            this.btnAgregarBebidaCabina.Location = new System.Drawing.Point(1091, 460);
             this.btnAgregarBebidaCabina.Name = "btnAgregarBebidaCabina";
-            this.btnAgregarBebidaCabina.Size = new System.Drawing.Size(67, 57);
+            this.btnAgregarBebidaCabina.Size = new System.Drawing.Size(62, 57);
             this.btnAgregarBebidaCabina.TabIndex = 50;
             this.btnAgregarBebidaCabina.Text = "Agregar Coca";
             this.btnAgregarBebidaCabina.UseVisualStyleBackColor = true;
@@ -668,7 +668,7 @@ namespace Formulario
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1206, 653);
+            this.ClientSize = new System.Drawing.Size(1165, 653);
             this.Controls.Add(this.btnAgregarBebidaCabina);
             this.Controls.Add(this.btnAgregarCocaCompu);
             this.Controls.Add(this.panel8);
@@ -685,7 +685,7 @@ namespace Formulario
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.btnFinalizarTarea);
-            this.MinimumSize = new System.Drawing.Size(1222, 692);
+            this.MinimumSize = new System.Drawing.Size(1181, 692);
             this.Name = "FormLocal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLocal";

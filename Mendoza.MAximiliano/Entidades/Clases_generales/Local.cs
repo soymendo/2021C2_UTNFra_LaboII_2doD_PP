@@ -127,9 +127,26 @@ namespace Entidades.Clases_generales
             get { return this.contadorGananciasDelDiaCabina; }
             set { this.contadorGananciasDelDiaCabina = value; }
         }
+      
+
+        public float TotalLocal
+        {
+            get { return this.totalLocal; }
+            set { this.totalLocal = value; }
+        }
+        public float TotalLargaDistancia
+        {
+            get { return this.totalLargaDistancia; }
+            set { this.totalLargaDistancia = value; }
+        }
+        public float TotalInterncaional
+        {
+            get { return this.totalInterncaional; }
+            set { this.totalInterncaional = value; }
+        }
 
         //---------Propiedades------------------------------------------------------------
-        
+
         /// <summary>
         /// Devuelve la lista de compus disponibles
         /// </summary>
