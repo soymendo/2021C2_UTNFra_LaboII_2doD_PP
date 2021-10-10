@@ -15,16 +15,17 @@ namespace Entidades.Clases_generales
     }
 
 
-    public abstract class Maquinas
+    public abstract class Maquina
     {
         //----------------------Atributos--------------------------------------
         private string identificador;
         private DateTime tiempoInicial;
         private DateTime tiempoFinal;
-        private  Stopwatch sw = new Stopwatch();
+        private  Stopwatch stopwatch = new Stopwatch();
         private List<Bebida> ListaDeCocas=new List<Bebida>();
-     
-
+        private int cocasTotales = 0;
+        private float recaudacion = 0;
+        private int cantidadDeCocasEnLista = 0;
 
 
         //--------------------Propiedades--------------------------------------
@@ -56,21 +57,54 @@ namespace Entidades.Clases_generales
             set { this.identificador = value; }
         }
 
-
-        public List<Bebida>Lista_Cocas
+        /// <summary>
+        /// Devuelve la lista de bebidas
+        /// </summary>
+        public List<Bebida>Lista_Bebidas
         {
             get { return this.ListaDeCocas; }
             set { this.ListaDeCocas = value; }
         }
 
-        public Stopwatch SW
+        /// <summary>
+        /// Permite saber un determinado tiempo
+        /// </summary>
+        public Stopwatch Stopwatch
         {
-            get { return this.sw; }
-            set { this.sw = value; }
+            get { return this.stopwatch; }
+            set { this.stopwatch = value; }
+        }
+
+
+        /// <summary>
+        /// propiedad qu edevuelve las cocas totasles
+        /// </summary>
+        public int CocasTotales
+        {
+            get { return this.cocasTotales; }
+            set { this.cocasTotales = value; }
+        }
+
+        /// <summary>
+        /// propiedad qu edevuelve la recaudacion
+        /// </summary>
+        public float Recaudacion
+        {
+            get { return this.recaudacion; }
+            set { this.recaudacion = value; }
+        }
+
+        /// <summary>
+        /// propiedad para saber la cantidad de cocas en la lista
+        /// </summary>
+        public int CantidadDeCocasEnLista
+        {
+            get { return this.cantidadDeCocasEnLista; }
+            set { this.cantidadDeCocasEnLista = value; }
         }
 
         //---------------Propiedades Abstractas------------------------------
-        
+
         public abstract Tipo TipoDeMaquina { get; }
         public abstract double TiempoDeUso { get; }
         public abstract float CalcularCosto();
@@ -83,18 +117,18 @@ namespace Entidades.Clases_generales
         /// <summary>
         /// Constructor sin parametros
         /// </summary>
-        public Maquinas()
+        public Maquina()
         {
-          
+
         }
 
         /// <summary>
         /// conntructor donde recibe un nombre
         /// </summary>
         /// <param name="nombre"></param>
-        public Maquinas(string nombre)
+        public Maquina(string identificador)
         {
-            this.identificador = nombre;
+            this.identificador = identificador;
         }
 
         //-----------------Metodos------------------------------------------------------
@@ -121,7 +155,7 @@ namespace Entidades.Clases_generales
         /// <param name="m1"></param>
         /// <param name="m2"></param>
         /// <returns></returns>
-        public static bool operator ==(Maquinas m1, Maquinas m2)
+        public static bool operator ==(Maquina m1, Maquina m2)
         {
             if(m1 is null || m2 is null)
             {
@@ -137,7 +171,7 @@ namespace Entidades.Clases_generales
         /// <param name="m1"></param>
         /// <param name="m2"></param>
         /// <returns></returns>
-        public static bool operator !=(Maquinas m1, Maquinas m2)
+        public static bool operator !=(Maquina m1, Maquina m2)
         {
             return !(m1 == m2);
         }
@@ -160,7 +194,7 @@ namespace Entidades.Clases_generales
         /// <returns></returns>
         public override bool Equals(object obj)
         {
-            Maquinas otraMaquina = obj as Maquinas;
+            Maquina otraMaquina = obj as Maquina;
             return otraMaquina != null && this == otraMaquina;
         }
 

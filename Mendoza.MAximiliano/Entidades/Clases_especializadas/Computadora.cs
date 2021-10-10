@@ -8,47 +8,46 @@ using System.Threading.Tasks;
 
 namespace Entidades.Clases_especializadas
 {
-    public class  Computadora: Maquinas
+    public class  Computadora: Maquina
     {
         //----------------Atributos-------------------------------------
-        private Peticiones petisiones;
+        private Peticion petisiones;
 
-        private int cantidadDeCocasEnLista=0;
+        //private int cantidadDeCocasEnLista=0;
         private Bebida coca = new Bebida();
-       
 
-        private int cocasTotales = 0;
-        private float recaudacion = 0;
+
+
         //--------------Constructores---------------------------------
         /// <summary>
-        /// Constructor sin parametros
+        /// Constructor sin parametros (usado para instancias auxiliares en la consola)
         /// </summary>
         public Computadora()
         {
-            
+
         }
 
         /// <summary>
         /// constructor , le paso nombre de compu y las petisiones
         /// </summary>
-        /// <param name="nombre"></param>
+        /// <param name="identificador"></param>
         /// <param name="pedidos"></param>
-        public Computadora(string nombre, Peticiones pedidos)
-        : base(nombre)
+        public Computadora(string identificador, Peticion pedidos)
+        : base(identificador)
         {
-            this.Identificador = nombre;
+            this.Identificador = identificador;
             this.petisiones = pedidos;
         }
 
         /// <summary>
         /// constructor , le paso nombre de compu y las petisiones
         /// </summary>
-        /// <param name="nombre"></param>
+        /// <param name="identificador"></param>
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Computadora(string nombre, Peticiones.SoftwareInstalado software, Peticiones.PeriféricosDisponibles periféricos, Peticiones.JuegosDisponibles juegos)
-        : this(nombre, new Peticiones(software, periféricos, juegos))
+        public Computadora(string identificador, Peticion.SoftwareInstalado software, Peticion.PerisfericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
+        : this(identificador, new Peticion(software, periféricos, juegos))
         {
 
         }
@@ -58,7 +57,7 @@ namespace Entidades.Clases_especializadas
         /// constructor solo petisiones
         /// </summary>
         /// <param name="petisiones"></param>
-        public Computadora(Peticiones petisiones)
+        public Computadora(Peticion petisiones)
         : this()
         {
             this.petisiones = petisiones;
@@ -70,8 +69,8 @@ namespace Entidades.Clases_especializadas
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Computadora(Peticiones.SoftwareInstalado software, Peticiones.PeriféricosDisponibles periféricos, Peticiones.JuegosDisponibles juegos)
-        : this(new Peticiones(software, periféricos, juegos))
+        public Computadora(Peticion.SoftwareInstalado software, Peticion.PerisfericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
+        : this(new Peticion(software, periféricos, juegos))
         {
 
         }
@@ -105,7 +104,7 @@ namespace Entidades.Clases_especializadas
         }
 
         /// <summary>
-        /// devuelve el tiempo de uso total de la Computadora
+        /// devuelve el tiempo de uso total de la Computadora dentro de la lista de compu s finalizadad
         /// https://www.youtube.com/watch?v=mRZPY2RyGrU
         /// </summary>
         public double TiempoTotalDeUso
@@ -114,7 +113,7 @@ namespace Entidades.Clases_especializadas
             {
                 double retorno;
 
-                TimeSpan tiempoActual = new TimeSpan(0, (int)SW.Elapsed.Minutes, (int)SW.Elapsed.Seconds);
+                TimeSpan tiempoActual = new TimeSpan(0, (int)Stopwatch.Elapsed.Minutes, (int)Stopwatch.Elapsed.Seconds);
                 double seg = tiempoActual.Seconds;
                 double min = tiempoActual.Minutes;
                 retorno = (min * 60) + seg;
@@ -135,7 +134,7 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// propiedad para saber las petisiones
         /// </summary>
-        public Peticiones PetisionesDePc
+        public Peticion PetisionesDePc
         {
             get { return this.petisiones; }
             set { this.petisiones = value; }
@@ -145,11 +144,11 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// propiedad para saber la cantidad de cocas en la lista
         /// </summary>
-        public int CantidadDeCocasEnLista
-        {
-            get { return this.cantidadDeCocasEnLista; }
-            set { this.cantidadDeCocasEnLista = value; }
-        }
+        //public int CantidadDeCocasEnLista
+        //{
+        //    get { return this.cantidadDeCocasEnLista; }
+        //    set { this.cantidadDeCocasEnLista = value; }
+        //}
 
         /// <summary>
         /// propiedad para saber el precio de la coca
@@ -161,23 +160,6 @@ namespace Entidades.Clases_especializadas
         }
 
 
-        /// <summary>
-        /// propiedad qu edevuelve las cocas totasles
-        /// </summary>
-        public int CocasTotales
-        {
-            get { return this.cocasTotales; }
-            set { this.cocasTotales = value; }
-        }
-
-        /// <summary>
-        /// propiedad qu edevuelve la recaudacion
-        /// </summary>
-        public float Recaudacion
-        {
-            get { return this.recaudacion; }
-            set { this.recaudacion = value; }
-        }
 
         
         //-----Metodos----------------------------------------------------------------------------------------------   
@@ -232,7 +214,7 @@ namespace Entidades.Clases_especializadas
             bool retorno = false;
             if(c is not null)
             {
-                this.Lista_Cocas.Add(c);
+                this.Lista_Bebidas.Add(c);
                 CantidadDeCocasEnLista += 1;
                 CocasTotales += 1;
                 retorno = true;
@@ -248,7 +230,7 @@ namespace Entidades.Clases_especializadas
         public override float CalcularCostoDeConsumoBebidas()
         {
             float acum = 0; ;
-            foreach (Bebida item in this.Lista_Cocas)
+            foreach (Bebida item in this.Lista_Bebidas)
             {
                 acum += item.Precio;
             }
@@ -276,7 +258,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"****Detalle****");
             sb.AppendLine($"{petisiones.ToString()}");
 
-            sb.AppendLine($"Cantidad de cocas: {this.Lista_Cocas.Count}");
+            sb.AppendLine($"Cantidad de cocas: {this.Lista_Bebidas.Count}");
             sb.AppendLine($"Costo de consumo de cocas: {this.CalcularCostoDeConsumoBebidas()}");
             return sb.ToString();
         }

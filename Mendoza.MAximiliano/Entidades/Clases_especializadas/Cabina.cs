@@ -13,7 +13,7 @@ namespace Entidades.Clases_especializadas
         local, largaDistancia, internacional
     }
 
-    public class Cabina: Maquinas
+    public class Cabina: Maquina
     {
         public enum TipoTelefono
         {
@@ -27,11 +27,10 @@ namespace Entidades.Clases_especializadas
 
        
 
-        private int cantidadDeCocasEnLista=0;
+       // private int cantidadDeCocasEnLista=0;
         private Bebida coca = new Bebida();
         
-        public int cocasTotales = 0;
-        public float recaudacion = 0;
+      
 
         //------Propiedades----------------------
 
@@ -79,31 +78,15 @@ namespace Entidades.Clases_especializadas
         }
 
 
-        /// <summary>
-        /// propiedad qu edevuelve las cocas totasles
-        /// </summary>
-        public int CocasTotales
-        {
-            get { return this.cocasTotales; }
-            set { this.cocasTotales = value; }
-        }
 
-        /// <summary>
-        /// propiedad qu edevuelve la recaudacion
-        /// </summary>
-        public float Recaudacion
-        {
-            get { return this.recaudacion; }
-            set { this.recaudacion = value; }
-        }
         /// <summary>
         /// propiedad para saber la cantidad de cocas en la lista
         /// </summary>
-        public int CantidadDeCocasEnLista
-        {
-            get { return this.cantidadDeCocasEnLista; }
-            set { this.cantidadDeCocasEnLista = value; }
-        }
+       // public int CantidadDeCocasEnLista
+        //{
+        //    get { return this.cantidadDeCocasEnLista; }
+        //    set { this.cantidadDeCocasEnLista = value; }
+       // }
 
         /// <summary>
         /// propiedad para saber el precio de la coca
@@ -117,7 +100,7 @@ namespace Entidades.Clases_especializadas
 
 
         /// <summary>
-        /// Devuelve el tiempo de uso de la cabina
+        /// Devuelve el tiempo de uso de la cabina dentro de la lista de cabinas ocupadas
         /// </summary>
         public override double TiempoDeUso
         {
@@ -139,7 +122,7 @@ namespace Entidades.Clases_especializadas
 
 
         /// <summary>
-        /// devuelve el tiempo de uso total de la cabina
+        /// devuelve el tiempo de uso total de la cabina , el tiempo total que se acumula en la lista de cabinas finalizadas
         /// https://www.youtube.com/watch?v=mRZPY2RyGrU
         /// </summary>
         public double TiempoTotalDeUso
@@ -148,7 +131,7 @@ namespace Entidades.Clases_especializadas
             {
                 double retorno;
 
-                TimeSpan tiempoActual = new TimeSpan(0, (int)SW.Elapsed.Minutes, (int)SW.Elapsed.Seconds);
+                TimeSpan tiempoActual = new TimeSpan(0, (int)Stopwatch.Elapsed.Minutes, (int)Stopwatch.Elapsed.Seconds);
                 double seg = tiempoActual.Seconds;
                 double min = tiempoActual.Minutes;
                 retorno = (min * 60) + seg;
@@ -158,22 +141,22 @@ namespace Entidades.Clases_especializadas
             }
         }
 
-      
 
-       
+
+
 
         //------------Constructores-----------------------------------
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="nombre"></param>
+        /// <param name="identificador"></param>
         /// <param name="tipo"></param>
         /// <param name="marca"></param>
         /// <param name="numeroAMarcar"></param>
-        public Cabina(string nombre, TipoTelefono tipo, string marca, string numeroAMarcar)
-       : base(nombre)
+        public Cabina(string identificador, TipoTelefono tipo, string marca, string numeroAMarcar)
+       : base(identificador)
         {
-            this.Identificador = nombre;
+            this.Identificador = identificador;
             this.tipoTelefono = tipo;
             this.marca = marca;
             this.numeroAMarcar = numeroAMarcar;
@@ -183,11 +166,11 @@ namespace Entidades.Clases_especializadas
         /// constructor, si no le cargo numero da cargar numero,
         /// usado cuando la validacion da false
         /// </summary>
-        /// <param name="nombre"></param>
+        /// <param name="identificador"></param>
         /// <param name="tipo"></param>
         /// <param name="marca"></param>
-        public Cabina(string nombre, TipoTelefono tipo, string marca)
-        : this(nombre, tipo, marca, "Cargar numero")
+        public Cabina(string identificador, TipoTelefono tipo, string marca)
+        : this(identificador, tipo, marca, "Cargar numero")
         {
 
         }
@@ -239,7 +222,7 @@ namespace Entidades.Clases_especializadas
             bool retorno = false;
             if (c is not null)
             {
-                this.Lista_Cocas.Add(c);
+                this.Lista_Bebidas.Add(c);
                 CantidadDeCocasEnLista += 1;
                 CocasTotales += 1;
                 retorno = true;
@@ -255,7 +238,7 @@ namespace Entidades.Clases_especializadas
         {
 
             float acum = 0; ;
-            foreach (Bebida item in this.Lista_Cocas)
+            foreach (Bebida item in this.Lista_Bebidas)
             {
                 acum += item.Precio;
             }
@@ -358,7 +341,7 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         /// <param name="doc"></param>
         /// <returns></returns>
-        public bool ValidarDatos(string doc)
+        private bool ValidarDatos(string doc)
         {
 
 
@@ -416,7 +399,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"Marca: {Marca}");
             sb.AppendLine($"Numero: {NumeroAMarcar}");
 
-            sb.AppendLine($"Cantidad de cocas: {this.Lista_Cocas.Count}");
+            sb.AppendLine($"Cantidad de cocas: {this.Lista_Bebidas.Count}");
             sb.AppendLine($"Costo de consumo de cocas: {this.CalcularCostoDeConsumoBebidas()}");
 
             return sb.ToString();
