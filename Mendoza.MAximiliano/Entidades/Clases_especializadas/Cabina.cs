@@ -23,14 +23,10 @@ namespace Entidades.Clases_especializadas
         //------------Atributos-----------
         private TipoTelefono tipoTelefono;
         private string marca;
-        private string numeroAMarcar;
-
-       
-
-       // private int cantidadDeCocasEnLista=0;
+        private string numeroAMarcar;       
         private Bebida coca = new Bebida();
         
-      
+     
 
         //------Propiedades----------------------
 
@@ -78,15 +74,8 @@ namespace Entidades.Clases_especializadas
         }
 
 
+       
 
-        /// <summary>
-        /// propiedad para saber la cantidad de cocas en la lista
-        /// </summary>
-       // public int CantidadDeCocasEnLista
-        //{
-        //    get { return this.cantidadDeCocasEnLista; }
-        //    set { this.cantidadDeCocasEnLista = value; }
-       // }
 
         /// <summary>
         /// propiedad para saber el precio de la coca
@@ -100,7 +89,7 @@ namespace Entidades.Clases_especializadas
 
 
         /// <summary>
-        /// Devuelve el tiempo de uso de la cabina dentro de la lista de cabinas ocupadas
+        /// Devuelve el tiempo de uso de la cabina en la lista de cabinas ocupadas
         /// </summary>
         public override double TiempoDeUso
         {
@@ -123,7 +112,6 @@ namespace Entidades.Clases_especializadas
 
         /// <summary>
         /// devuelve el tiempo de uso total de la cabina , el tiempo total que se acumula en la lista de cabinas finalizadas
-        /// https://www.youtube.com/watch?v=mRZPY2RyGrU
         /// </summary>
         public double TiempoTotalDeUso
         {
@@ -131,7 +119,7 @@ namespace Entidades.Clases_especializadas
             {
                 double retorno;
 
-                TimeSpan tiempoActual = new TimeSpan(0, (int)Stopwatch.Elapsed.Minutes, (int)Stopwatch.Elapsed.Seconds);
+                TimeSpan tiempoActual = new TimeSpan(0, (int)Stopwacth.Elapsed.Minutes, (int)Stopwacth.Elapsed.Seconds);
                 double seg = tiempoActual.Seconds;
                 double min = tiempoActual.Minutes;
                 retorno = (min * 60) + seg;
@@ -141,15 +129,15 @@ namespace Entidades.Clases_especializadas
             }
         }
 
+      
 
-
-
+       
 
         //------------Constructores-----------------------------------
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="identificador"></param>
+        /// <param name="nombre"></param>
         /// <param name="tipo"></param>
         /// <param name="marca"></param>
         /// <param name="numeroAMarcar"></param>
@@ -166,7 +154,7 @@ namespace Entidades.Clases_especializadas
         /// constructor, si no le cargo numero da cargar numero,
         /// usado cuando la validacion da false
         /// </summary>
-        /// <param name="identificador"></param>
+        /// <param name="nombre"></param>
         /// <param name="tipo"></param>
         /// <param name="marca"></param>
         public Cabina(string identificador, TipoTelefono tipo, string marca)
@@ -222,7 +210,7 @@ namespace Entidades.Clases_especializadas
             bool retorno = false;
             if (c is not null)
             {
-                this.Lista_Bebidas.Add(c);
+                this.ListaBebidas.Add(c);
                 CantidadDeCocasEnLista += 1;
                 CocasTotales += 1;
                 retorno = true;
@@ -238,7 +226,7 @@ namespace Entidades.Clases_especializadas
         {
 
             float acum = 0; ;
-            foreach (Bebida item in this.Lista_Bebidas)
+            foreach (Bebida item in this.ListaBebidas)
             {
                 acum += item.Precio;
             }
@@ -399,7 +387,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"Marca: {Marca}");
             sb.AppendLine($"Numero: {NumeroAMarcar}");
 
-            sb.AppendLine($"Cantidad de cocas: {this.Lista_Bebidas.Count}");
+            sb.AppendLine($"Cantidad de cocas: {this.ListaBebidas.Count}");
             sb.AppendLine($"Costo de consumo de cocas: {this.CalcularCostoDeConsumoBebidas()}");
 
             return sb.ToString();

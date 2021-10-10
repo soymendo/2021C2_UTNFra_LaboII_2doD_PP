@@ -14,7 +14,7 @@ namespace Entidades.Clases_especializadas
         private string apellido;
         private int dni;
         private int edad;
-        private Peticion petisiones;
+        private Peticion peticiones;
         private string numeroAMarcar;
 
 
@@ -61,8 +61,8 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         public Peticion PetisionesDePc
         {
-            get { return this.petisiones; }
-            set { this.petisiones = value; }
+            get { return this.peticiones; }
+            set { this.peticiones = value; }
         }
 
 
@@ -117,7 +117,7 @@ namespace Entidades.Clases_especializadas
             //this.apellido = apellido;
             //this.dni = dni;
             //this.edad = edad;
-            this.petisiones = pedidos;
+            this.peticiones = pedidos;
         }
 
 
@@ -131,7 +131,7 @@ namespace Entidades.Clases_especializadas
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Cliente(string nombre, string apellido, int dni, int edad, Peticion.SoftwareInstalado software, Peticion.PerisfericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
+        public Cliente(string nombre, string apellido, int dni, int edad, Peticion.SoftwareInstalado software, Peticion.PerifericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
         : this(nombre, apellido, dni, edad, new Peticion(software, periféricos, juegos))
         {
 
@@ -169,7 +169,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"Dni: {this.dni}");
             sb.AppendLine($"Edad: {this.edad}");
            
-            if(petisiones is null)
+            if(peticiones is null)
             {
                 sb.AppendLine($"Telefono: {this.numeroAMarcar}");
                
@@ -177,7 +177,7 @@ namespace Entidades.Clases_especializadas
             else
             {
                 sb.AppendLine($"Requisitos pedidos: ");
-                sb.AppendLine($"{petisiones.ToString()}");
+                sb.AppendLine($"{peticiones.ToString()}");
             }
           
             return sb.ToString();

@@ -40,7 +40,7 @@ namespace Formulario
 
             this.local = loc;
             cmbSofware.DataSource = Enum.GetValues(typeof(Peticion.SoftwareInstalado));
-            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Peticion.PerisfericosDisponibles));
+            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Peticion.PerifericosDisponibles));
             cmbJuego.DataSource = Enum.GetValues(typeof(Peticion.JuegosDisponibles));
 
          
@@ -119,9 +119,8 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
-            
 
-            if( (rbtComputadora.Checked==false && rbtCabina.Checked==false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "")
+            if ((rbtComputadora.Checked == false && rbtCabina.Checked == false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "")
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -129,22 +128,19 @@ namespace Formulario
             {
                 if (rbtComputadora.Checked)
                 {
-                   
-                        Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Peticion.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Peticion.PerisfericosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Peticion.JuegosDisponibles)cmbJuego.SelectedItem);
+                    Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Peticion.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Peticion.PerifericosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Peticion.JuegosDisponibles)cmbJuego.SelectedItem);
 
-                        if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
-                        {
-                            MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        else
-                        {
-                            MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
-
-                        lsbListaClientes.DataSource = null;
-                        lsbListaClientes.DataSource = local.Lista_Clientes;
-
+                    if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
+                    {
+                        MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }else
+                    {
+                        MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
+                            
+                    lsbListaClientes.DataSource = null;
+                    lsbListaClientes.DataSource = local.Lista_Clientes;
                 }
 
                 if( rbtCabina.Checked)
@@ -192,7 +188,7 @@ namespace Formulario
             else
             {
                 Cliente cliente = local.Cola_Clientes.Peek();
-                
+
                 if (cliente.PetisionesDePc is null)
                 {
                     cabinaAux = new Cabina(cliente.NumeroAMarcar);
@@ -202,7 +198,7 @@ namespace Formulario
                 }
                 else
                 {
-                    compAux = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Periféricos, cliente.PetisionesDePc.Juegos);
+                    compAux = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Perifericos, cliente.PetisionesDePc.Juegos);
                     FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, compAux);
                     buscaCompu.ShowDialog();
                 }
@@ -284,7 +280,7 @@ namespace Formulario
                     cab.CantidadDeCocasEnLista = cocaAux;
                     MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUso}\nDestino: {cab.Destino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cab.CantidadDeCocasEnLista = cocaAux;
-                    cab.Recaudacion += cab.CalcularCostoCabinaBebida();
+                    cab.recaudacion += cab.CalcularCostoCabinaBebida();
 
                     if(cab.Destino()==TipoLlamada.local.ToString())
                     {

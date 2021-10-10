@@ -45,8 +45,8 @@ namespace Consola
 
 
 
-            Cliente cliente1 = new Cliente("oscar", "carabajal", 23456643, 35, Peticion.SoftwareInstalado.icq, Peticion.PerisfericosDisponibles.auriculares, (Peticion.JuegosDisponibles)1);
-            aux = new Computadora(cliente1.PetisionesDePc.Sofware, cliente1.PetisionesDePc.Periféricos, cliente1.PetisionesDePc.Juegos);
+            Cliente cliente1 = new Cliente("oscar", "carabajal", 23456643, 35, Peticion.SoftwareInstalado.icq, Peticion.PerifericosDisponibles.auriculares, (Peticion.JuegosDisponibles)1);
+            aux = new Computadora(cliente1.PetisionesDePc.Sofware, cliente1.PetisionesDePc.Perifericos, cliente1.PetisionesDePc.Juegos);
 
 
             // Console.WriteLine(c1==c2);

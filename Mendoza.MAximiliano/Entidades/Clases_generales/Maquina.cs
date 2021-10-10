@@ -21,12 +21,12 @@ namespace Entidades.Clases_generales
         private string identificador;
         private DateTime tiempoInicial;
         private DateTime tiempoFinal;
-        private  Stopwatch stopwatch = new Stopwatch();
+        private  Stopwatch stopwacth = new Stopwatch();
         private List<Bebida> ListaDeCocas=new List<Bebida>();
-        private int cocasTotales = 0;
-        private float recaudacion = 0;
-        private int cantidadDeCocasEnLista = 0;
 
+        public int cocasTotales = 0;
+        public float recaudacion = 0;
+        private int cantidadDeCocasEnLista = 0;
 
         //--------------------Propiedades--------------------------------------
         /// <summary>
@@ -57,23 +57,22 @@ namespace Entidades.Clases_generales
             set { this.identificador = value; }
         }
 
-        /// <summary>
-        /// Devuelve la lista de bebidas
-        /// </summary>
-        public List<Bebida>Lista_Bebidas
+
+        public List<Bebida>ListaBebidas
         {
             get { return this.ListaDeCocas; }
             set { this.ListaDeCocas = value; }
         }
 
         /// <summary>
-        /// Permite saber un determinado tiempo
+        /// Permite saber un determinado tiempo,usado para ver el total de tiempo de la maquina en la lista de finalizados
         /// </summary>
-        public Stopwatch Stopwatch
+        public Stopwatch Stopwacth
         {
-            get { return this.stopwatch; }
-            set { this.stopwatch = value; }
+            get { return this.stopwacth; }
+            set { this.stopwacth = value; }
         }
+
 
 
         /// <summary>
@@ -94,6 +93,7 @@ namespace Entidades.Clases_generales
             set { this.recaudacion = value; }
         }
 
+
         /// <summary>
         /// propiedad para saber la cantidad de cocas en la lista
         /// </summary>
@@ -102,7 +102,6 @@ namespace Entidades.Clases_generales
             get { return this.cantidadDeCocasEnLista; }
             set { this.cantidadDeCocasEnLista = value; }
         }
-
         //---------------Propiedades Abstractas------------------------------
 
         public abstract Tipo TipoDeMaquina { get; }

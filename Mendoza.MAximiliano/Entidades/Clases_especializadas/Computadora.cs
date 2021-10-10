@@ -12,25 +12,20 @@ namespace Entidades.Clases_especializadas
     {
         //----------------Atributos-------------------------------------
         private Peticion petisiones;
-
-        //private int cantidadDeCocasEnLista=0;
-        private Bebida coca = new Bebida();
-
-
-
-        //--------------Constructores---------------------------------
         /// <summary>
-        /// Constructor sin parametros (usado para instancias auxiliares en la consola)
+        /// me parecio mas practico instanciar un objeto bebida, para usar algunas de sus atributos, en este caso el de precio
         /// </summary>
-        public Computadora()
-        {
+        private Bebida coca = new Bebida();
+       
 
-        }
+      
+        //--------------Constructores---------------------------------
+       
 
         /// <summary>
         /// constructor , le paso nombre de compu y las petisiones
         /// </summary>
-        /// <param name="identificador"></param>
+        /// <param name="nombre"></param>
         /// <param name="pedidos"></param>
         public Computadora(string identificador, Peticion pedidos)
         : base(identificador)
@@ -42,11 +37,11 @@ namespace Entidades.Clases_especializadas
         /// <summary>
         /// constructor , le paso nombre de compu y las petisiones
         /// </summary>
-        /// <param name="identificador"></param>
+        /// <param name="nombre"></param>
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Computadora(string identificador, Peticion.SoftwareInstalado software, Peticion.PerisfericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
+        public Computadora(string identificador, Peticion.SoftwareInstalado software, Peticion.PerifericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
         : this(identificador, new Peticion(software, periféricos, juegos))
         {
 
@@ -58,7 +53,7 @@ namespace Entidades.Clases_especializadas
         /// </summary>
         /// <param name="petisiones"></param>
         public Computadora(Peticion petisiones)
-        : this()
+      
         {
             this.petisiones = petisiones;
         }
@@ -69,7 +64,7 @@ namespace Entidades.Clases_especializadas
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Computadora(Peticion.SoftwareInstalado software, Peticion.PerisfericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
+        public Computadora(Peticion.SoftwareInstalado software, Peticion.PerifericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
         : this(new Peticion(software, periféricos, juegos))
         {
 
@@ -83,7 +78,7 @@ namespace Entidades.Clases_especializadas
 
 
         /// <summary>
-        /// indica el tiempo de uso de la compu
+        /// indica el tiempo de uso de la compu en la lista de compus ocupadas
         /// </summary>
         public override double TiempoDeUso
         {
@@ -104,7 +99,7 @@ namespace Entidades.Clases_especializadas
         }
 
         /// <summary>
-        /// devuelve el tiempo de uso total de la Computadora dentro de la lista de compu s finalizadad
+        /// devuelve el tiempo de uso total de la Computadora dentro de la lista de compus finalizadas
         /// https://www.youtube.com/watch?v=mRZPY2RyGrU
         /// </summary>
         public double TiempoTotalDeUso
@@ -113,7 +108,7 @@ namespace Entidades.Clases_especializadas
             {
                 double retorno;
 
-                TimeSpan tiempoActual = new TimeSpan(0, (int)Stopwatch.Elapsed.Minutes, (int)Stopwatch.Elapsed.Seconds);
+                TimeSpan tiempoActual = new TimeSpan(0, (int)Stopwacth.Elapsed.Minutes, (int)Stopwacth.Elapsed.Seconds);
                 double seg = tiempoActual.Seconds;
                 double min = tiempoActual.Minutes;
                 retorno = (min * 60) + seg;
@@ -141,14 +136,6 @@ namespace Entidades.Clases_especializadas
         }
 
 
-        /// <summary>
-        /// propiedad para saber la cantidad de cocas en la lista
-        /// </summary>
-        //public int CantidadDeCocasEnLista
-        //{
-        //    get { return this.cantidadDeCocasEnLista; }
-        //    set { this.cantidadDeCocasEnLista = value; }
-        //}
 
         /// <summary>
         /// propiedad para saber el precio de la coca
@@ -161,7 +148,6 @@ namespace Entidades.Clases_especializadas
 
 
 
-        
         //-----Metodos----------------------------------------------------------------------------------------------   
 
 
@@ -214,7 +200,7 @@ namespace Entidades.Clases_especializadas
             bool retorno = false;
             if(c is not null)
             {
-                this.Lista_Bebidas.Add(c);
+                this.ListaBebidas.Add(c);
                 CantidadDeCocasEnLista += 1;
                 CocasTotales += 1;
                 retorno = true;
@@ -230,7 +216,7 @@ namespace Entidades.Clases_especializadas
         public override float CalcularCostoDeConsumoBebidas()
         {
             float acum = 0; ;
-            foreach (Bebida item in this.Lista_Bebidas)
+            foreach (Bebida item in this.ListaBebidas)
             {
                 acum += item.Precio;
             }
@@ -258,7 +244,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"****Detalle****");
             sb.AppendLine($"{petisiones.ToString()}");
 
-            sb.AppendLine($"Cantidad de cocas: {this.Lista_Bebidas.Count}");
+            sb.AppendLine($"Cantidad de cocas: {this.ListaBebidas.Count}");
             sb.AppendLine($"Costo de consumo de cocas: {this.CalcularCostoDeConsumoBebidas()}");
             return sb.ToString();
         }

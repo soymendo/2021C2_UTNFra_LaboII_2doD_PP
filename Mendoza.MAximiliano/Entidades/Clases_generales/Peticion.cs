@@ -11,7 +11,7 @@ namespace Entidades.Clases_generales
 
         //----------------Atributos-----------------------
         private SoftwareInstalado sofware;
-        private PerisfericosDisponibles perisfericosDisponibles;
+        private PerifericosDisponibles perifericosDisponibles;
         private JuegosDisponibles juegosDisponibles;
 
 
@@ -25,17 +25,13 @@ namespace Entidades.Clases_generales
         }
 
         /// <summary>
-        /// indica el perisferico instalado (No me permite cambiarlo)
+        /// indica el perisferico instalado
         /// </summary>
-        public PerisfericosDisponibles Periféricos
-
-
+        public PerifericosDisponibles Perifericos
         {
-            get { return this.perisfericosDisponibles; }
-            set { this.perisfericosDisponibles = value; }
+            get { return this.perifericosDisponibles; }
+            set { this.perifericosDisponibles = value; }
         }
-
-
 
 
         /// <summary>
@@ -56,9 +52,9 @@ namespace Entidades.Clases_generales
             office, messenger, icq, ares,todos
         }
 
-        public enum PerisfericosDisponibles
+        public enum PerifericosDisponibles
         {
-            camara, auriculares, micrófono,todos
+            camara, auriculares, microfono,todos
         }
 
         public enum JuegosDisponibles
@@ -73,10 +69,10 @@ namespace Entidades.Clases_generales
         /// <param name="software"></param>
         /// <param name="periféricos"></param>
         /// <param name="juegos"></param>
-        public Peticion(SoftwareInstalado software, PerisfericosDisponibles perisfericos, JuegosDisponibles juegos)
+        public Peticion(SoftwareInstalado software, PerifericosDisponibles periféricos, JuegosDisponibles juegos)
         {
             this.sofware = software;
-            this.perisfericosDisponibles = perisfericos;
+            this.perifericosDisponibles = periféricos;
             this.juegosDisponibles = juegos;
         }
 
@@ -85,7 +81,7 @@ namespace Entidades.Clases_generales
 
 
         /// <summary>
-        /// peticiones son iguales si tienen los mismo 
+        /// petisiones son iguales si tienen los mismo 
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2">compu a igualar</param>
@@ -94,10 +90,10 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            if (p2.Sofware != SoftwareInstalado.todos &&  p2.Periféricos != PerisfericosDisponibles.todos && p2.Juegos != JuegosDisponibles.todos)
+            if (p2.Sofware != SoftwareInstalado.todos &&  p2.Perifericos != PerifericosDisponibles.todos && p2.Juegos != JuegosDisponibles.todos)
             {
-                if ((p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                    || (p1.Juegos==p2.Juegos && p1.Periféricos==p2.Periféricos && p1.Sofware==p2.Sofware ))
+                if ((p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                    || (p1.Juegos==p2.Juegos && p1.Perifericos==p2.Perifericos && p1.Sofware==p2.Sofware ))
                 {
                     retorno = true;
                 }
@@ -106,35 +102,35 @@ namespace Entidades.Clases_generales
 
             if (p2.Sofware == SoftwareInstalado.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
-                else if(p1.Periféricos==PerisfericosDisponibles.todos)
+                else if(p1.Perifericos==PerifericosDisponibles.todos)
                 {
                     retorno = (p1.Sofware == p2.Sofware && p1.Juegos == p2.Juegos);
 
                 }
                 else if(p1.Juegos==JuegosDisponibles.todos)
                 {
-                    retorno = (p1.Sofware == p2.Sofware && p1.Periféricos == p2.Periféricos);
+                    retorno = (p1.Sofware == p2.Sofware && p1.Perifericos == p2.Perifericos);
                 }
             }
 
 
-            if (p2.Periféricos == PerisfericosDisponibles.todos)
+            if (p2.Perifericos == PerifericosDisponibles.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
                 else if(p1.Sofware==SoftwareInstalado.todos)
                 {
-                    retorno = (p1.Periféricos==p2.Periféricos && p1.Juegos==p2.Juegos);
+                    retorno = (p1.Perifericos==p2.Perifericos && p1.Juegos==p2.Juegos);
                 }
                 else if(p1.Juegos==JuegosDisponibles.todos)
                 {
-                    retorno = (p1.Sofware==p2.Sofware && p1.Periféricos==p2.Periféricos);
+                    retorno = (p1.Sofware==p2.Sofware && p1.Perifericos==p2.Perifericos);
                 }
                 
             }
@@ -142,16 +138,16 @@ namespace Entidades.Clases_generales
 
             if (p2.Juegos == Peticion.JuegosDisponibles.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos==JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos==JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
                 else if (p1.Sofware==SoftwareInstalado.todos)
                 {
-                    retorno = (p1.Periféricos==p2.Periféricos && p1.Juegos== p2.Juegos);
+                    retorno = (p1.Perifericos==p2.Perifericos && p1.Juegos== p2.Juegos);
                 }
 
-               else if(p1.Periféricos==PerisfericosDisponibles.todos)
+               else if(p1.Perifericos==PerifericosDisponibles.todos)
                 {
                     retorno = (p1.Sofware == p2.Sofware && p1.Juegos==p2.Juegos);
                 }
@@ -159,13 +155,13 @@ namespace Entidades.Clases_generales
             }
             
 
-            if (p2.Sofware == SoftwareInstalado.todos && p2.Periféricos == PerisfericosDisponibles.todos)
+            if (p2.Sofware == SoftwareInstalado.todos && p2.Perifericos == PerifericosDisponibles.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
-                else if(p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos)
+                else if(p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos)
                 {
                     retorno = (p1.Juegos == p2.Juegos);
                 }
@@ -173,13 +169,13 @@ namespace Entidades.Clases_generales
             
 
 
-            if (p2.Juegos == JuegosDisponibles.todos && p2.Periféricos == PerisfericosDisponibles.todos)
+            if (p2.Juegos == JuegosDisponibles.todos && p2.Perifericos == PerifericosDisponibles.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
-                else if (p1.Juegos == JuegosDisponibles.todos && p1.Periféricos == PerisfericosDisponibles.todos)
+                else if (p1.Juegos == JuegosDisponibles.todos && p1.Perifericos == PerifericosDisponibles.todos)
                 {
                     retorno = (p1.Sofware == p2.Sofware);
                 }
@@ -189,21 +185,21 @@ namespace Entidades.Clases_generales
 
             if (p2.Sofware==SoftwareInstalado.todos && p2.Juegos==JuegosDisponibles.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
                 else if(p1.Sofware == SoftwareInstalado.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
-                    retorno = (p1.Periféricos == p2.Periféricos);
+                    retorno = (p1.Perifericos == p2.Perifericos);
                 }
               
             }
 
 
-            if (p2.Juegos == JuegosDisponibles.todos && p2.Periféricos == PerisfericosDisponibles.todos && p2.Sofware == SoftwareInstalado.todos)
+            if (p2.Juegos == JuegosDisponibles.todos && p2.Perifericos == PerifericosDisponibles.todos && p2.Sofware == SoftwareInstalado.todos)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Periféricos == PerisfericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
                 {
                     retorno = true;
                 }
@@ -216,7 +212,7 @@ namespace Entidades.Clases_generales
 
 
         /// <summary>
-        /// peticiones son diferentes si no son iguales
+        /// petiones son diferentes si no son iguales
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
@@ -235,7 +231,7 @@ namespace Entidades.Clases_generales
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Sofware: {Sofware}");
-            sb.AppendLine($"Perisfericos: {Periféricos}");
+            sb.AppendLine($"Perisfericos: {Perifericos}");
             sb.AppendLine($"Juegos: {Juegos}");
             return sb.ToString();
         }
@@ -257,7 +253,7 @@ namespace Entidades.Clases_generales
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return (Sofware,Periféricos,Juegos).GetHashCode();
+            return (Sofware,Perifericos,Juegos).GetHashCode();
         }
 
     }
