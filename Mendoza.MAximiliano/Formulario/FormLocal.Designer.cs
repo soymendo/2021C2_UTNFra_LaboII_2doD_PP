@@ -685,7 +685,6 @@ namespace Formulario
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.btnFinalizarTarea);
-            this.MinimumSize = new System.Drawing.Size(1181, 692);
             this.Name = "FormLocal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLocal";

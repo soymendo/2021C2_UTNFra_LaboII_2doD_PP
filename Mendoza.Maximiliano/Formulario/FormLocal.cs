@@ -284,15 +284,15 @@ namespace Formulario
 
                     if(cab.Destino()==TipoLlamada.local.ToString())
                     {
-                        local.totalLocal += cab.CalcularCosto();
+                        local.TotalLocal += cab.CalcularCosto();
                     }
                     if(cab.Destino()==TipoLlamada.largaDistancia.ToString())
                     {
-                        local.totalLargaDistancia += cab.CalcularCosto();
+                        local.TotalLargaDistancia += cab.CalcularCosto();
                     }
                     if(cab.Destino()==TipoLlamada.internacional.ToString())
                     {
-                        local.totalInterncaional += cab.CalcularCosto();
+                        local.TotalInterncaional += cab.CalcularCosto();
                     }
                    
                 }

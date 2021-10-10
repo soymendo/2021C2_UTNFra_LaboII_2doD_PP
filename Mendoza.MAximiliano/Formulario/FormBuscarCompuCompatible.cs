@@ -156,16 +156,18 @@ namespace Formulario
         /// <summary>
         /// usado para achicar codigo, indexador aca
         /// </summary>
-        public void Asignar()
+        private void Asignar()
         {
             Cliente cli = local.Cola_Clientes.Peek();
 
             Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { /*local.Cola_Clientes.Peek()*/local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            Computadora auxCli = new Computadora (c.Identificador,cli.PetisionesDePc.Sofware,cli.PetisionesDePc.Perifericos,cli.PetisionesDePc.Juegos);
+            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Local.EliminarClienteEnColaClientes(local)) { }
                 if (Local.EliminarClienteEnListaClientes(local, cli)) { }
-                if (Local.AsignarCompuAlCliente(local, c)) { }
+                //if (Local.AsignarCompuAlCliente(local, c)) { }
+                if (Local.AsignarCompuAlCliente(local, auxCli)) { }
                 if (EliminarDeListaUnica(c)) { }
                 MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 //btnAsignar.Enabled = false;
@@ -185,22 +187,3 @@ namespace Formulario
         }
     }
 }
-
-
-
-//Cliente cli = local.Cola_Clientes.Peek();
-//Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-
-//if (MessageBox.Show($"¿Seguro de querer asignar la computadora a  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-//{
-//    if (Local.EliminarClienteEnColaClientes(local)) { }
-//    if (Local.EliminarClienteEnListaClientes(local, cli)) { }
-//    if (Local.AsignarCompuAlCliente(local, c)) { }
-//    if (EliminarDeListaUnica(c)) { }
-//    MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//    btnAsignar.Enabled = false;
-//}
-
-//lsbListaDeCompusCompatibles.DataSource = null;
-//lsbListaDeCompusCompatibles.DataSource = ListaUnica;
-//rtbPeticiones.Text = null;

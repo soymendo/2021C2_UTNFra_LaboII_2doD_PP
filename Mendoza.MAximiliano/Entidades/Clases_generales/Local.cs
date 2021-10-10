@@ -915,7 +915,7 @@ namespace Entidades.Clases_generales
 
                 if (c.PetisionesDePc.Perifericos.ToString() == "camara") { l.ContadorPeriféricosCamara += 1; }
                 if (c.PetisionesDePc.Perifericos.ToString() == "auriculares") { l.ContadorPeriféricosAuriculares += 1; }
-                if (c.PetisionesDePc.Perifericos.ToString() == "micrófono") { l.ContadorPeriféricosMicrófono += 1; }
+                if (c.PetisionesDePc.Perifericos.ToString() == "microfono") { l.ContadorPeriféricosMicrófono += 1; }
 
                 if (c.PetisionesDePc.Juegos.ToString() == "CounterStrike") { l.ContadorJuegosCS += 1; }
                 if (c.PetisionesDePc.Juegos.ToString() == "DiabloII") { l.ContadorJuegosDiablo += 1; }
