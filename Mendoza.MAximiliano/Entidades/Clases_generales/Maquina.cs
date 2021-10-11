@@ -28,6 +28,7 @@ namespace Entidades.Clases_generales
         public float recaudacion = 0;
         private int cantidadDeCocasEnLista = 0;
 
+        private  const float precioBebida = 1.5f;
         //--------------------Propiedades--------------------------------------
         /// <summary>
         /// indica el tiempo inicial desde que entra a la lista de disponibles
@@ -101,6 +102,12 @@ namespace Entidades.Clases_generales
         {
             get { return this.cantidadDeCocasEnLista; }
             set { this.cantidadDeCocasEnLista = value; }
+        }
+
+
+        public float PrecioBebida
+        {
+            get { return precioBebida; }
         }
         //---------------Propiedades Abstractas------------------------------
 

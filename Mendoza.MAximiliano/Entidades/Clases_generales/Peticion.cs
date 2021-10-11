@@ -10,74 +10,44 @@ namespace Entidades.Clases_generales
     {
 
         //----------------Atributos-----------------------
-        private SoftwareInstalado sofware;
-        private PerifericosDisponibles perifericosDisponibles;
-        private JuegosDisponibles juegosDisponibles;
+      
+        private List<string> ListaSofware;
+        private List<string> ListaPerifericos;
+        private List<string> ListaJuegos;
 
+       
+        //------------PROPIEDADES----------------------
 
-        /// <summary>
-        /// Indica el sofware instalado
-        /// </summary>
-        public SoftwareInstalado Sofware
+        public List<string> Lista_Sofware
         {
-            get { return this.sofware; }
-            set { this.sofware = value; }
+            get { return this.ListaSofware; }
+            set { this.ListaSofware = value; }
+        }
+        public List<string> Lista_Perifericos
+        {
+            get { return this.ListaPerifericos; }
+            set { this.ListaPerifericos = value; }
+        }
+        public List<string> Lista_Juegos
+        {
+            get { return this.ListaJuegos; }
+            set { this.ListaJuegos = value; }
+
         }
 
-        /// <summary>
-        /// indica el perisferico instalado
-        /// </summary>
-        public PerifericosDisponibles Perifericos
+        //---------------CONSTRUCTOR------------------------------------------------
+        public Peticion(List<string> sofware, List<string> perisfericos, List<string> juegos)
+     
         {
-            get { return this.perifericosDisponibles; }
-            set { this.perifericosDisponibles = value; }
-        }
-
-
-        /// <summary>
-        /// indica el juego disponible
-        /// </summary>
-        public JuegosDisponibles Juegos
-        {
-            get { return this.juegosDisponibles; }
-            set { this.juegosDisponibles = value; }
-        }
-
-
-
-
-        //------------------Enumerados--------------------
-        public enum SoftwareInstalado
-        {
-            office, messenger, icq, ares,todos
-        }
-
-        public enum PerifericosDisponibles
-        {
-            camara, auriculares, microfono,todos
-        }
-
-        public enum JuegosDisponibles
-        {
-            CounterStrike, DiabloII, MuOnline, LineageII,todos
-        }
-
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="software"></param>
-        /// <param name="periféricos"></param>
-        /// <param name="juegos"></param>
-        public Peticion(SoftwareInstalado software, PerifericosDisponibles periféricos, JuegosDisponibles juegos)
-        {
-            this.sofware = software;
-            this.perifericosDisponibles = periféricos;
-            this.juegosDisponibles = juegos;
+            this.Lista_Sofware = sofware;
+            this.Lista_Perifericos = perisfericos;
+            this.Lista_Juegos = juegos;
         }
 
 
 
+
+       //---------------SOBRECARGAS----------------------------------------------------------------
 
 
         /// <summary>
@@ -89,124 +59,66 @@ namespace Entidades.Clases_generales
         public static bool operator ==(Peticion p1, Peticion p2)
         {
             bool retorno = false;
-
-            if (p2.Sofware != SoftwareInstalado.todos &&  p2.Perifericos != PerifericosDisponibles.todos && p2.Juegos != JuegosDisponibles.todos)
+            bool retornoS = false;
+            bool retornoP= false;
+            bool retornoJ = false;
+            if (p1.ListaSofware.Count == p2.ListaSofware.Count)
             {
-                if ((p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                    || (p1.Juegos==p2.Juegos && p1.Perifericos==p2.Perifericos && p1.Sofware==p2.Sofware ))
+                if (p1.ListaSofware.Count == 1)
                 {
-                    retorno = true;
+                    if (p1.ListaSofware[0] == p2.ListaSofware[0]) { retornoS = true; }                  
+                }
+                if (p1.ListaSofware.Count == 2)
+                {
+                   if (p1.ListaSofware[0] == p2.ListaSofware[0] && p1.ListaSofware[1] == p2.ListaSofware[1]) { retornoS = true; }                   
+                }
+                if (p1.ListaSofware.Count == 3)
+                {
+                    if (p1.ListaSofware[0] == p2.ListaSofware[0] && p1.ListaSofware[1] == p2.ListaSofware[1] && p1.ListaSofware[2] == p2.ListaSofware[2]) { retornoS = true; }                
+                }
+                if (p1.ListaSofware.Count == 4)
+                {
+                    if (p1.ListaSofware[0] == p2.ListaSofware[0] && p1.ListaSofware[1] == p2.ListaSofware[1] && p1.ListaSofware[2] == p2.ListaSofware[2] && p1.ListaSofware[3] == p2.ListaSofware[3]) { retornoS = true; }               
+                }
+            }
+       
+            if(p1.ListaPerifericos.Count==p2.ListaPerifericos.Count)
+            {
+                if (p1.ListaPerifericos.Count == 1)
+                {
+                    if (p1.ListaPerifericos[0] == p2.ListaPerifericos[0]) { retornoP = true; }
+                }
+                if (p1.ListaPerifericos.Count ==2)
+                {
+                    if(p1.ListaPerifericos[0]==p2.ListaPerifericos[0] && p1.ListaPerifericos[1] == p2.ListaPerifericos[1]) { retornoP = true; }
+                }
+                if (p1.ListaPerifericos.Count == 3)
+                {
+                    if (p1.ListaPerifericos[0] == p2.ListaPerifericos[0] && p1.ListaPerifericos[1] == p2.ListaPerifericos[1] && p1.ListaPerifericos[2]==p2.ListaPerifericos[2]) { retornoP = true; }
                 }
             }
 
-
-            if (p2.Sofware == SoftwareInstalado.todos)
+            if(p1.Lista_Juegos.Count==p2.Lista_Juegos.Count)
             {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
+                if(p1.Lista_Juegos.Count==1)
                 {
-                    retorno = true;
+                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0]) { retornoJ = true; }
                 }
-                else if(p1.Perifericos==PerifericosDisponibles.todos)
+                if (p1.Lista_Juegos.Count == 2)
                 {
-                    retorno = (p1.Sofware == p2.Sofware && p1.Juegos == p2.Juegos);
-
+                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0] && p1.Lista_Juegos[1]==p2.Lista_Juegos[1]) { retornoJ = true; }
                 }
-                else if(p1.Juegos==JuegosDisponibles.todos)
+                if (p1.Lista_Juegos.Count == 3)
                 {
-                    retorno = (p1.Sofware == p2.Sofware && p1.Perifericos == p2.Perifericos);
+                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0] && p1.Lista_Juegos[1] == p2.Lista_Juegos[1] && p1.Lista_Juegos[2]==p2.Lista_Juegos[2]) { retornoJ = true; }
+                }
+                if (p1.Lista_Juegos.Count == 4)
+                {
+                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0] && p1.Lista_Juegos[1] == p2.Lista_Juegos[1] && p1.Lista_Juegos[2] == p2.Lista_Juegos[2] && p1.Lista_Juegos[3]== p2.Lista_Juegos[3]) { retornoJ = true; }
                 }
             }
-
-
-            if (p2.Perifericos == PerifericosDisponibles.todos)
-            {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                {
-                    retorno = true;
-                }
-                else if(p1.Sofware==SoftwareInstalado.todos)
-                {
-                    retorno = (p1.Perifericos==p2.Perifericos && p1.Juegos==p2.Juegos);
-                }
-                else if(p1.Juegos==JuegosDisponibles.todos)
-                {
-                    retorno = (p1.Sofware==p2.Sofware && p1.Perifericos==p2.Perifericos);
-                }
-                
-            }
-
-
-            if (p2.Juegos == Peticion.JuegosDisponibles.todos)
-            {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos==JuegosDisponibles.todos)
-                {
-                    retorno = true;
-                }
-                else if (p1.Sofware==SoftwareInstalado.todos)
-                {
-                    retorno = (p1.Perifericos==p2.Perifericos && p1.Juegos== p2.Juegos);
-                }
-
-               else if(p1.Perifericos==PerifericosDisponibles.todos)
-                {
-                    retorno = (p1.Sofware == p2.Sofware && p1.Juegos==p2.Juegos);
-                }
-             
-            }
-            
-
-            if (p2.Sofware == SoftwareInstalado.todos && p2.Perifericos == PerifericosDisponibles.todos)
-            {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                {
-                    retorno = true;
-                }
-                else if(p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos)
-                {
-                    retorno = (p1.Juegos == p2.Juegos);
-                }
-            }
-            
-
-
-            if (p2.Juegos == JuegosDisponibles.todos && p2.Perifericos == PerifericosDisponibles.todos)
-            {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                {
-                    retorno = true;
-                }
-                else if (p1.Juegos == JuegosDisponibles.todos && p1.Perifericos == PerifericosDisponibles.todos)
-                {
-                    retorno = (p1.Sofware == p2.Sofware);
-                }
-                
-                
-            }
-
-            if (p2.Sofware==SoftwareInstalado.todos && p2.Juegos==JuegosDisponibles.todos)
-            {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                {
-                    retorno = true;
-                }
-                else if(p1.Sofware == SoftwareInstalado.todos && p1.Juegos == JuegosDisponibles.todos)
-                {
-                    retorno = (p1.Perifericos == p2.Perifericos);
-                }
-              
-            }
-
-
-            if (p2.Juegos == JuegosDisponibles.todos && p2.Perifericos == PerifericosDisponibles.todos && p2.Sofware == SoftwareInstalado.todos)
-            {
-                if (p1.Sofware == SoftwareInstalado.todos && p1.Perifericos == PerifericosDisponibles.todos && p1.Juegos == JuegosDisponibles.todos)
-                {
-                    retorno = true;
-                }
-            }
-
-
-            return retorno;
+                retorno = (retornoS && retornoP && retornoJ);
+                return retorno;
         }
 
 
@@ -223,6 +135,30 @@ namespace Entidades.Clases_generales
         }
 
 
+
+
+        private string MostrarListas()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("\nSOFWARE");
+            foreach (string item in Lista_Sofware)
+            {
+                sb.AppendLine(item.ToString());
+            }
+            sb.AppendLine("\nPERIFERICOS");
+            foreach (string item in Lista_Perifericos)
+            {
+                sb.AppendLine(item.ToString());
+            }
+            sb.AppendLine("\nJUEGOS");
+            foreach (string item in Lista_Juegos)
+            {
+                sb.AppendLine(item.ToString());
+            }
+            return sb.ToString();
+        }
+
+
         /// <summary>
         /// muestra los datos
         /// </summary>
@@ -230,11 +166,12 @@ namespace Entidades.Clases_generales
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Sofware: {Sofware}");
-            sb.AppendLine($"Perisfericos: {Perifericos}");
-            sb.AppendLine($"Juegos: {Juegos}");
+            sb.AppendLine(this.MostrarListas());
+           
             return sb.ToString();
         }
+
+
 
         /// <summary>
         /// sobrecarga equals
@@ -253,7 +190,7 @@ namespace Entidades.Clases_generales
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return (Sofware,Perifericos,Juegos).GetHashCode();
+            return (Lista_Sofware, ListaPerifericos, Lista_Juegos).GetHashCode();
         }
 
     }

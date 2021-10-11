@@ -24,7 +24,7 @@ namespace Entidades.Clases_especializadas
         private TipoTelefono tipoTelefono;
         private string marca;
         private string numeroAMarcar;       
-        private Bebida coca = new Bebida();
+      
         
      
 
@@ -74,19 +74,7 @@ namespace Entidades.Clases_especializadas
         }
 
 
-       
-
-
-        /// <summary>
-        /// propiedad para saber el precio de la coca
-        /// </summary>
-        public Bebida Coca
-        {
-            get { return this.coca; }
-            set { this.coca = value; }
-        }
-
-
+      
 
         /// <summary>
         /// Devuelve el tiempo de uso de la cabina en la lista de cabinas ocupadas
@@ -190,8 +178,8 @@ namespace Entidades.Clases_especializadas
         public float CalcularCostoCabinaBebida()
         {
             float retorno = 0;
-            retorno = CalcularCosto() + (CantidadDeCocasEnLista * Coca.Precio);
-            CantidadDeCocasEnLista = 0; //sino se acumulan las cocas 
+            retorno = CalcularCosto() + (CantidadDeCocasEnLista * this.PrecioBebida);
+            CantidadDeCocasEnLista = 0; 
           
             return retorno;
         }

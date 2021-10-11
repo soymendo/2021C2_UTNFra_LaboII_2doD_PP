@@ -252,21 +252,22 @@ namespace Entidades.Clases_generales
 
             this.ListaCompusDisponibles = new List<Computadora>()
             {
-             new Computadora("C01", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos),
-            new Computadora("C02", Peticion.SoftwareInstalado.icq, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos),
-            new Computadora("C03", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos),
-            new Computadora("C04", Peticion.SoftwareInstalado.office, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos),
-            new Computadora("C05", Peticion.SoftwareInstalado.icq, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.CounterStrike),
-            new Computadora("C06", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.auriculares, Peticion.JuegosDisponibles.DiabloII),
-            new Computadora("C07", Peticion.SoftwareInstalado.ares, Peticion.PerifericosDisponibles.microfono, Peticion.JuegosDisponibles.todos),
-            new Computadora("C08", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.MuOnline),
-            new Computadora("C09", Peticion.SoftwareInstalado.messenger, Peticion.PerifericosDisponibles.auriculares, Peticion.JuegosDisponibles.LineageII),
-            new Computadora("C10", Peticion.SoftwareInstalado.messenger, Peticion.PerifericosDisponibles.microfono, Peticion.JuegosDisponibles.todos),
-            new Computadora("C11", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos),
-            new Computadora("C12", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.camara, Peticion.JuegosDisponibles.todos),
-            new Computadora("C13", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.microfono, Peticion.JuegosDisponibles.MuOnline),
-            new Computadora("C14", Peticion.SoftwareInstalado.office, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos),
-            new Computadora("C15", Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos)
+          
+            new Computadora("C01",new List<string>(){"office","messenger" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike","DiabloII","MuOnline","LineageII" }),
+            new Computadora("C02",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "MuOnline", "LineageII"}),
+            new Computadora("C03",new List<string>(){"office","messenger" ,"icq","ares"},new List<string>(){"camara","auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" }),
+            new Computadora("C04",new List<string>(){"icq","ares" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike", "DiabloII"}),
+            new Computadora("C05",new List<string>(){"messenger","ares"},new List<string>(){"auriculares" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" }),
+            new Computadora("C06",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"camara" },new List<string>(){ "MuOnline", "LineageII" }),
+            new Computadora("C07",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"microfono" },new List<string>(){"CounterStrike",   "LineageII"}),
+            new Computadora("C08",new List<string>(){"office","messenger","ares" },new List<string>(){"auriculares" },new List<string>(){ "DiabloII", "MuOnline", "LineageII" }),
+            new Computadora("C09",new List<string>(){"ares" },new List<string>(){"camara","auriculares" },new List<string>(){ "DiabloII", "MuOnline" }),
+            new Computadora("C10",new List<string>(){"messenger","icq" },new List<string>(){"camara","auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII"}),
+            new Computadora("C11",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline" }) ,
+            new Computadora("C12",new List<string>(){"icq","ares" },new List<string>(){"camara","auriculares" },new List<string>(){"LineageII" }),
+            new Computadora("C13",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"camara" },new List<string>(){"DiabloII" }),
+            new Computadora("C14",new List<string>(){"office","messenger","ares" },new List<string>(){"auriculares" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" }),
+            new Computadora("C15",new List<string>(){"messenger","icq" },new List<string>(){"camara","auriculares","microfono" },new List<string>(){"DiabloII", "MuOnline"}),
         };
 
 
@@ -275,20 +276,20 @@ namespace Entidades.Clases_generales
 
             this.ListaCompusOcupadas = new List<Computadora>();
             this.ListaCompusFinalizadas = new List<Computadora>();
-            //this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones = new List<Computadora>();
+          
+            this.ColaClientes = new Queue<Cliente>();
 
-            this.ColaClientes = new Queue<Cliente>();         
-            ColaClientes.Enqueue(new Cliente("Lucas","Heredia",48657285,25,Peticion.SoftwareInstalado.todos,Peticion.PerifericosDisponibles.microfono,Peticion.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 47023687, 24,"5401143258073"));
-            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23,Peticion.SoftwareInstalado.icq, Peticion.PerifericosDisponibles.microfono, Peticion.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 37048521, 22,"8502214367852"));
-            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21,Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.microfono, Peticion.JuegosDisponibles.LineageII));
-            ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 39854740, 20,"5401279463102"));
-            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado",40259671, 21, Peticion.SoftwareInstalado.todos, Peticion.PerifericosDisponibles.todos, Peticion.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 34789652, 24,"5402316487520"));
-            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, Peticion.SoftwareInstalado.ares, Peticion.PerifericosDisponibles.microfono, Peticion.JuegosDisponibles.todos));
-            ColaClientes.Enqueue(new Cliente("Ester", "Devo", 37850142, 29,"6851236987452"));
 
+            ColaClientes.Enqueue(new Cliente("Lucas", "Heredia", 48657285, 25, new List<string>() { "office", "messenger" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
+            ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 47023687, 24, "5401143258073"));
+            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23, new List<string>() { "messenger" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
+            ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 37048521, 22, "8502214367852"));
+            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21, new List<string>() { "office", "messenger", "icq", "ares" }, new List<string>() { "camara" }, new List<string>() { "DiabloII" }));
+            ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 39854740, 20, "5401279463102"));
+            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado", 40259671, 21, new List<string>() { "ares" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "DiabloII", "MuOnline" }));
+            ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 34789652, 24, "5402316487520"));
+            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, new List<string>() { "office", "messenger", "icq", "ares" }, new List<string>() { "camara", "auriculares", "microfono" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
+            ColaClientes.Enqueue(new Cliente("Ester", "Devo", 37850142, 29, "6851236987452"));
 
             this.ListaClientes = new List<Cliente>();
 
@@ -865,29 +866,6 @@ namespace Entidades.Clases_generales
 
 
 
-
-        /// <summary>
-        /// busca la pc que coincida con lo del cliente en la lista de compus disponibles
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-
-        public bool BuscarCompuEnLaLista(Computadora c)
-        {
-            bool retorno = false;
-            foreach (Computadora item in this.ListaCompusDisponibles)
-            {
-                if (item.PetisionesDePc ==c.PetisionesDePc)
-                {
-                    retorno = true;
-                }
-            }
-            return retorno;
-        }
-
-
-
-
         /// <summary>
         /// Asigna una compu al cliente, true si lo asigno
         /// </summary>
@@ -901,30 +879,33 @@ namespace Entidades.Clases_generales
             if(Local.AlmacenadoEnListaCompusDisponibles(l,c))
             {
                 Local.EliminarCompuEnListaCompusDisponibles(l, c);
-               // Local.EliminarCompuEnListaCompusDisponiblesParaElClienteSegunsSusPetisiones(l, c);
                 Local.GuardarCompuEnListaCompusOcupadas(l, c);
 
 
                 c.TiempoInicial = DateTime.Now;
                 c.Stopwacth.Start();
 
-                if (c.PetisionesDePc.Sofware.ToString() == "office") { l.ContadorSofwareOffice += 1; }
-                if (c.PetisionesDePc.Sofware.ToString() == "messenger") { l.ContadorSofwaremessenger += 1; }
-                if (c.PetisionesDePc.Sofware.ToString() == "icq") { l.ContadorSofwareicq += 1; }
-                if (c.PetisionesDePc.Sofware.ToString() == "ares") { l.ContadorSofwareares += 1; }
+                if(c.Peticiones.Lista_Sofware.Contains("office")) { l.ContadorSofwareOffice += 1; }
+                if (c.Peticiones.Lista_Sofware.Contains("messenger")) { l.ContadorSofwaremessenger += 1; }
+                if (c.Peticiones.Lista_Sofware.Contains("icq")) { l.ContadorSofwareicq += 1; }
+                if (c.Peticiones.Lista_Sofware.Contains("ares")) { l.ContadorSofwareares += 1; }
 
-                if (c.PetisionesDePc.Perifericos.ToString() == "camara") { l.ContadorPeriféricosCamara += 1; }
-                if (c.PetisionesDePc.Perifericos.ToString() == "auriculares") { l.ContadorPeriféricosAuriculares += 1; }
-                if (c.PetisionesDePc.Perifericos.ToString() == "microfono") { l.ContadorPeriféricosMicrófono += 1; }
+                
 
-                if (c.PetisionesDePc.Juegos.ToString() == "CounterStrike") { l.ContadorJuegosCS += 1; }
-                if (c.PetisionesDePc.Juegos.ToString() == "DiabloII") { l.ContadorJuegosDiablo += 1; }
-                if (c.PetisionesDePc.Juegos.ToString() == "MuOnline") { l.ContadorJuegosMu += 1; }
-                if (c.PetisionesDePc.Juegos.ToString() == "LineageII") { l.ContadorJuegosLinege += 1; }
 
-                if (c.PetisionesDePc.Sofware.ToString() == "todos") { l.ContadorSofwareOffice += 1; l.ContadorSofwaremessenger += 1; l.ContadorSofwareicq += 1; l.ContadorSofwareares += 1; }
-                if (c.PetisionesDePc.Perifericos.ToString() == "todos") { l.ContadorPeriféricosCamara += 1; l.ContadorPeriféricosAuriculares += 1; l.ContadorPeriféricosMicrófono += 1; }
-                if (c.PetisionesDePc.Juegos.ToString() == "todos") { l.ContadorJuegosCS += 1; l.ContadorJuegosDiablo += 1; l.ContadorJuegosMu += 1; l.ContadorJuegosLinege += 1; }
+                if(c.Peticiones.Lista_Perifericos.Contains("camara")) { l.ContadorPeriféricosCamara += 1; }
+                if (c.Peticiones.Lista_Perifericos.Contains("auriculares")) { l.ContadorPeriféricosAuriculares += 1; }
+                if (c.Peticiones.Lista_Perifericos.Contains("microfono")) { l.ContadorPeriféricosMicrófono += 1; }
+
+            
+
+                if(c.Peticiones.Lista_Juegos.Contains("CounterStrike")) { l.ContadorJuegosCS += 1; }
+                if (c.Peticiones.Lista_Juegos.Contains("DiabloII")) { l.ContadorJuegosDiablo += 1; }
+                if (c.Peticiones.Lista_Juegos.Contains("MuOnline")) { l.ContadorJuegosMu += 1; }
+                if (c.Peticiones.Lista_Juegos.Contains("LineageII")) { l.ContadorJuegosLinege += 1; }
+
+             
+
 
 
                 retorno = true;
@@ -975,10 +956,9 @@ namespace Entidades.Clases_generales
                 Local.GuardarCompuEnListaCompusDisponibles(l, c);
                 Local.GuardarCompuEnListaCompusFinalizadas(l, c);
                
-                c.ListaBebidas.Clear();//de esta forma no se ve acumulado las cocas cuando se elija esta maquina otra vez
+                c.ListaBebidas.Clear();
                 c.TiempoFinal = DateTime.Now;
                 c.Stopwacth.Stop();
-                //l.ContadorGananciasDelDiaPC += c.CalcularCosto();
                 l.ContadorGananciasDelDiaPC += c.CalcularCostoCompuBebida();
 
                 retorno = true;
@@ -1006,7 +986,6 @@ namespace Entidades.Clases_generales
                 c.ListaBebidas.Clear();
                 c.TiempoFinal = DateTime.Now;
                 c.Stopwacth.Stop();
-                //l.ContadorGananciasDelDiaCabina += c.CalcularCosto();
                 l.ContadorGananciasDelDiaCabina += c.CalcularCostoCabinaBebida();
                 retorno = true;
             }
@@ -1084,7 +1063,6 @@ namespace Entidades.Clases_generales
                 sb.AppendLine($"{item}");
             }
             sb.AppendLine($"Cantidad: { maxs}");
-            //sb.AppendLine($"{retorno1}\n{retorno2}\n{retorno3}\n{retorno4} \ncantidad: {maxs}" );
             sb.AppendLine();
             sb.AppendLine("****************El/los perisferico mas pedido es/son: ****************");
             foreach (string item in retornosP)
@@ -1122,7 +1100,6 @@ namespace Entidades.Clases_generales
             foreach (Computadora item in ListaPCOrdenadas)
             {
                 sb.Append($"{item.MostrarRecaudacion()} ");
-                //sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso}");
                 sb.AppendLine($"Tiempo de uso: {item.TiempoTotalDeUso}");
                 sb.AppendLine();
                 sb.AppendLine();
@@ -1146,8 +1123,7 @@ namespace Entidades.Clases_generales
             foreach (Cabina item in ListaCabinasOrdenadas)
             {
                 sb.Append(item.MostrarRecaudacion());
-                //sb.AppendLine($"Tiempo de uso: {item.TiempoDeUso.ToString()}");
-                sb.AppendLine($"Tiempo de uso: {item.TiempoTotalDeUso}");// toma el tiempo de esa cabina
+                sb.AppendLine($"Tiempo de uso: {item.TiempoTotalDeUso}");
                 sb.AppendLine();
             }
             return sb.ToString();
@@ -1248,52 +1224,6 @@ namespace Entidades.Clases_generales
             return sb.ToString();
         }
 
-
-
-
-        /// <summary>
-        ///verifica si hay pc disponibles (en la lista de pc desponibles) que cumplan con los requisitos del cliente
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public string MostrarCompusDisponiblesParaElClienteSegunsSusPetisiones(Computadora c)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Maquinas: ");
-
-            foreach (Computadora item in this.ListaCompusDisponibles)
-            {
-                if (item.PetisionesDePc == c.PetisionesDePc )
-                {
-                    sb.AppendLine(item.Mostrar());
-                }
-            }
-            return sb.ToString();
-        }
-
-
-
-
-
-        ///// <summary>
-        /////verifica si hay pc disponibles (en la lista de pc desponibles) que cumplan con los requisitos del cliente
-        ///// </summary>
-        ///// <param name="c"></param>
-        ///// <returns></returns>
-        //public string MostrarListaCompusDisponiblesParaElClienteSegunsSusPetisiones(Computadora c)
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    sb.AppendLine("Maquinas: ");
-
-        //    foreach (Computadora item in this.ListaCompusDisponiblesParaElClienteSegunsSusPetisiones)
-        //    {
-                
-              
-        //            sb.AppendLine(item.Mostrar());
-             
-        //    }
-        //    return sb.ToString();
-        //}
 
 
 

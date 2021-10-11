@@ -14,9 +14,10 @@ namespace Entidades.Clases_especializadas
         private string apellido;
         private int dni;
         private int edad;
-        private Peticion peticiones;
         private string numeroAMarcar;
 
+        private Peticion peticiones;
+    
 
         //--------------Propiedades--------------------------------
         /// <summary>
@@ -56,15 +57,7 @@ namespace Entidades.Clases_especializadas
         }
 
 
-        /// <summary>
-        /// Devuelve la s petisiones
-        /// </summary>
-        public Peticion PetisionesDePc
-        {
-            get { return this.peticiones; }
-            set { this.peticiones = value; }
-        }
-
+      
 
         public string NumeroAMarcar
         {
@@ -73,16 +66,15 @@ namespace Entidades.Clases_especializadas
         }
 
 
-
-     //--------Constructores------------------------
-        /// <summary>
-        /// Constructor de instancia
-        /// </summary>
-        public Cliente()
+        public Peticion Peticiones
         {
-
+            get { return this.peticiones; }
+            set { this.peticiones = value; }
         }
 
+
+     //--------Constructores------------------------
+        
 
         /// <summary>
         /// contructor que recibe nombre,apellido, dni y edad
@@ -102,39 +94,29 @@ namespace Entidades.Clases_especializadas
 
 
 
-        /// <summary>
-        /// contructor que recibe nombre,apellido, dni,edad y las petisiones
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="apellido"></param>
-        /// <param name="dni"></param>
-        /// <param name="edad"></param>
-        /// <param name="pedidos"></param>
-        public Cliente(string nombre, string apellido, int dni, int edad, Peticion pedidos)
-        : this(nombre,apellido,dni,edad)
+
+        public Cliente(string nombre, string apellido, int dni, int edad, Peticion peticiones)
+        :this(nombre, apellido, dni, edad)
         {
-            //this.nombre = nombre;
-            //this.apellido = apellido;
-            //this.dni = dni;
-            //this.edad = edad;
-            this.peticiones = pedidos;
+           
+            this.peticiones = peticiones;
         }
 
 
         /// <summary>
-        ///  contructor que recibe nombre,apellido, dni,edad y las petisiones
+        /// recibe los datos del cliente mas la listas de peticiones
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
         /// <param name="dni"></param>
         /// <param name="edad"></param>
-        /// <param name="software"></param>
-        /// <param name="periféricos"></param>
+        /// <param name="sofware"></param>
+        /// <param name="perisfericos"></param>
         /// <param name="juegos"></param>
-        public Cliente(string nombre, string apellido, int dni, int edad, Peticion.SoftwareInstalado software, Peticion.PerifericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
-        : this(nombre, apellido, dni, edad, new Peticion(software, periféricos, juegos))
+        public Cliente(string nombre, string apellido, int dni, int edad, List<string> sofware, List<string> perisfericos, List<string> juegos)
+        :this(nombre, apellido, dni, edad,new Peticion(sofware,perisfericos,juegos))
         {
-
+          
         }
 
 
@@ -169,7 +151,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"Dni: {this.dni}");
             sb.AppendLine($"Edad: {this.edad}");
            
-            if(peticiones is null)
+            if(!(numeroAMarcar is null))
             {
                 sb.AppendLine($"Telefono: {this.numeroAMarcar}");
                
@@ -177,12 +159,15 @@ namespace Entidades.Clases_especializadas
             else
             {
                 sb.AppendLine($"Requisitos pedidos: ");
-                sb.AppendLine($"{peticiones.ToString()}");
+                sb.AppendLine(Peticiones.ToString());
+            
             }
           
             return sb.ToString();
 
         }
+    
+
 
         /// <summary>
         /// usado en un listbox

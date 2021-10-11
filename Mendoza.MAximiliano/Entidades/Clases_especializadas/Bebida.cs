@@ -8,9 +8,12 @@ namespace Entidades.Clases_especializadas
 {
     public class Bebida
     {
+        //----------------ATRIBUTOS---------------------------
         private float precio = 1.5f;
         private long codigoBarras;
 
+
+        //---------------PROPIEDADES----------------------------
         public float Precio
         {
             get { return this.precio; }
@@ -29,16 +32,15 @@ namespace Entidades.Clases_especializadas
         }
 
 
-        public Bebida()
-        {
-
-        }
-        public Bebida(long codigoBarras)
-        :this()
+     //---------------CONSTRUCTORES------------------------------
+        public Bebida(long codigoBarras)   
         {
             this.codigoBarras = codigoBarras;
         }
 
+
+
+        //---------SOBRECARGAS------------------------------
 
         public static bool operator==(Bebida c1, Bebida c2)
         {

@@ -11,65 +11,36 @@ namespace Entidades.Clases_especializadas
     public class  Computadora: Maquina
     {
         //----------------Atributos-------------------------------------
-        private Peticion petisiones;
-        /// <summary>
-        /// me parecio mas practico instanciar un objeto bebida, para usar algunas de sus atributos, en este caso el de precio
-        /// </summary>
-        private Bebida coca = new Bebida();
-       
-
-      
+ 
+        private Peticion peticiones;
+        
         //--------------Constructores---------------------------------
-       
 
-        /// <summary>
-        /// constructor , le paso nombre de compu y las petisiones
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="pedidos"></param>
-        public Computadora(string identificador, Peticion pedidos)
-        : base(identificador)
+
+        public Computadora(Peticion peticiones)
         {
-            this.Identificador = identificador;
-            this.petisiones = pedidos;
+            this.peticiones = peticiones;
         }
 
-        /// <summary>
-        /// constructor , le paso nombre de compu y las petisiones
-        /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="software"></param>
-        /// <param name="periféricos"></param>
-        /// <param name="juegos"></param>
-        public Computadora(string identificador, Peticion.SoftwareInstalado software, Peticion.PerifericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
-        : this(identificador, new Peticion(software, periféricos, juegos))
+        public Computadora(string identificador,Peticion peticiones)
+        :base(identificador)
         {
-
+            this.peticiones = peticiones;
         }
 
 
-        /// <summary>
-        /// constructor solo petisiones
-        /// </summary>
-        /// <param name="petisiones"></param>
-        public Computadora(Peticion petisiones)
-      
+        public Computadora(string identificador,  List<string> sofware, List<string> perisfericos, List<string> juegos)
+        :this(identificador,new Peticion(sofware, perisfericos, juegos))
         {
-            this.petisiones = petisiones;
+          
         }
+    
 
-        /// <summary>
-        /// constructor. le paso las peticiones del cliente
-        /// </summary>
-        /// <param name="software"></param>
-        /// <param name="periféricos"></param>
-        /// <param name="juegos"></param>
-        public Computadora(Peticion.SoftwareInstalado software, Peticion.PerifericosDisponibles periféricos, Peticion.JuegosDisponibles juegos)
-        : this(new Peticion(software, periféricos, juegos))
+        public Computadora(List<string> sofware, List<string> perisfericos, List<string> juegos)             
+        :this(new Peticion(sofware, perisfericos, juegos))
         {
-
+           
         }
-
 
 
 
@@ -126,27 +97,14 @@ namespace Entidades.Clases_especializadas
             get { return Tipo.Computadora; }
         }
 
-        /// <summary>
-        /// propiedad para saber las petisiones
-        /// </summary>
-        public Peticion PetisionesDePc
+        
+
+
+        public Peticion Peticiones
         {
-            get { return this.petisiones; }
-            set { this.petisiones = value; }
+            get { return this.peticiones; }
+            set { this.peticiones = value; }
         }
-
-
-
-        /// <summary>
-        /// propiedad para saber el precio de la coca
-        /// </summary>
-        public Bebida Coca
-        {
-            get { return this.coca; }
-            set { this.coca = value; }
-        }
-
-
 
         //-----Metodos----------------------------------------------------------------------------------------------   
 
@@ -183,8 +141,8 @@ namespace Entidades.Clases_especializadas
         public float CalcularCostoCompuBebida()
         {
             float retorno = 0;
-            retorno = CalcularCosto() + (CantidadDeCocasEnLista * Coca.Precio);
-            CantidadDeCocasEnLista = 0; //sino se acumulan las cocas 
+            retorno = CalcularCosto() + (CantidadDeCocasEnLista * this.PrecioBebida);
+            CantidadDeCocasEnLista = 0; 
             return retorno;
         }
 
@@ -223,15 +181,6 @@ namespace Entidades.Clases_especializadas
             return acum;
         }
 
-
-
-
-
-     
-
-
-
-
         /// <summary>
         /// Muestro los datos de la compu
         /// </summary>
@@ -242,8 +191,7 @@ namespace Entidades.Clases_especializadas
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"****Detalle****");
-            sb.AppendLine($"{petisiones.ToString()}");
-
+            sb.AppendLine(Peticiones.ToString());
             sb.AppendLine($"Cantidad de cocas: {this.ListaBebidas.Count}");
             sb.AppendLine($"Costo de consumo de cocas: {this.CalcularCostoDeConsumoBebidas()}");
             return sb.ToString();
@@ -264,7 +212,7 @@ namespace Entidades.Clases_especializadas
             return sb.ToString();
         }
 
-
+      
         //---------Sobrecargas-----------------------------------------------------------
 
         /// <summary>
@@ -287,6 +235,9 @@ namespace Entidades.Clases_especializadas
             return !(c1 == c2);
         }
 
+
+
+      
 
         /// <summary>
         /// usado en el list del form
