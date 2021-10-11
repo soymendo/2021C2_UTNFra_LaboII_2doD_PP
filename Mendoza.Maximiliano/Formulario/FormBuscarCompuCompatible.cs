@@ -53,13 +53,13 @@ namespace Formulario
                 {
                     Cliente cli = local.Cola_Clientes.Peek();
                     if (Local.EliminarClienteEnColaClientes(local)) { }
-                    if (Local.EliminarClienteEnListaClientes(local, cli)) { }//elimino el cliente de la lista igual al de la cola
+                    if (Local.EliminarClienteEnListaClientes(local, cli)) { }
                 }
             }
             else
             {             
                 lsbListaDeCompusCompatibles.DataSource = ListaUnica;
-                rtbPeticiones.Text = $"{local.Cola_Clientes.Peek()}\n Peticiones: \n {c.PetisionesDePc}";
+                rtbPeticiones.Text = $"{local.Cola_Clientes.Peek()}\n Peticiones: \n {c.Peticiones.ToString()}";
             }           
         }
 
@@ -110,7 +110,7 @@ namespace Formulario
 
             foreach (Computadora item in l.Lista_CompusDisponibles)
             {
-                if (item.PetisionesDePc == c.PetisionesDePc)
+                if (item.Peticiones == c.Peticiones)
                 {
                     this.ListaUnica.Add(item);
                     retorno = true;
@@ -156,19 +156,25 @@ namespace Formulario
         /// <summary>
         /// usado para achicar codigo, indexador aca
         /// </summary>
-        public void Asignar()
+        private void Asignar()
         {
             Cliente cli = local.Cola_Clientes.Peek();
 
             Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { /*local.Cola_Clientes.Peek()*/local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            //Computadora auxCli = new Computadora (c.Identificador,cli.Peticiones.Lista_Sofware,cli.Peticiones.Lista_Perifericos,cli.Peticiones.Lista_Juegos);
+            //auxCli.Stopwacth = c.Stopwacth;
+            ////auxCli.Recaudacion += c.Recaudacion;
+            ////auxCli.CocasTotales += c.CocasTotales;
+
+            if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 if (Local.EliminarClienteEnColaClientes(local)) { }
                 if (Local.EliminarClienteEnListaClientes(local, cli)) { }
+                
                 if (Local.AsignarCompuAlCliente(local, c)) { }
                 if (EliminarDeListaUnica(c)) { }
                 MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //btnAsignar.Enabled = false;
+             
                 btnAsignar.Text = "Cerrar";
                 
             }
@@ -183,24 +189,10 @@ namespace Formulario
             MessageBox.Show("Pueden presentarce dos situaciones: \n\n1° si hay computadoras que cumplen con los requisitos del cliente, se mostrara una lista que contengan dichas pc, elegir alguna y asignarla al cliente\n\n2° Si no hay computadoras con los requisitos pedidos del cliente , se mostrara la lista de las pc disponibles , se le preguntara al ususario si quiere asignarce igualmente una maquina , si la respuesta es si, se le asigna una maquina, si la respuesta es no, se elimina al cliente de la lista");
 
         }
+
+        private void FormBuscarCompuCompatible_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-
-
-
-//Cliente cli = local.Cola_Clientes.Peek();
-//Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-
-//if (MessageBox.Show($"¿Seguro de querer asignar la computadora a  { local.Cola_Clientes.Peek() } ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-//{
-//    if (Local.EliminarClienteEnColaClientes(local)) { }
-//    if (Local.EliminarClienteEnListaClientes(local, cli)) { }
-//    if (Local.AsignarCompuAlCliente(local, c)) { }
-//    if (EliminarDeListaUnica(c)) { }
-//    MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-//    btnAsignar.Enabled = false;
-//}
-
-//lsbListaDeCompusCompatibles.DataSource = null;
-//lsbListaDeCompusCompatibles.DataSource = ListaUnica;
-//rtbPeticiones.Text = null;

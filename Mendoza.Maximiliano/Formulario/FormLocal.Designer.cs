@@ -35,7 +35,6 @@ namespace Formulario
             this.btnFinalizarTarea = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.cmbSofware = new System.Windows.Forms.ComboBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.lblApellido = new System.Windows.Forms.Label();
@@ -43,14 +42,10 @@ namespace Formulario
             this.lblEdad = new System.Windows.Forms.Label();
             this.txtDni = new System.Windows.Forms.TextBox();
             this.lblDni = new System.Windows.Forms.Label();
-            this.lblSofware = new System.Windows.Forms.Label();
-            this.lblPerisfericos = new System.Windows.Forms.Label();
-            this.cmbPerisfericos = new System.Windows.Forms.ComboBox();
-            this.lblJuego = new System.Windows.Forms.Label();
-            this.cmbJuego = new System.Windows.Forms.ComboBox();
             this.lsbListaClientes = new System.Windows.Forms.ListBox();
             this.btnAsignar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnPeticiones = new System.Windows.Forms.Button();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblGuion2 = new System.Windows.Forms.Label();
@@ -78,6 +73,7 @@ namespace Formulario
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.lblInfoCola = new System.Windows.Forms.Label();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
             this.lblDateTime = new System.Windows.Forms.Label();
@@ -146,15 +142,6 @@ namespace Formulario
             this.lblNombre.TabIndex = 4;
             this.lblNombre.Text = "Nombre";
             // 
-            // cmbSofware
-            // 
-            this.cmbSofware.FormattingEnabled = true;
-            this.cmbSofware.Location = new System.Drawing.Point(101, 26);
-            this.cmbSofware.Name = "cmbSofware";
-            this.cmbSofware.Size = new System.Drawing.Size(173, 23);
-            this.cmbSofware.TabIndex = 5;
-            this.cmbSofware.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbSofware_KeyPress);
-            // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(84, 11);
@@ -214,51 +201,6 @@ namespace Formulario
             this.lblDni.TabIndex = 11;
             this.lblDni.Text = "Dni";
             // 
-            // lblSofware
-            // 
-            this.lblSofware.AutoSize = true;
-            this.lblSofware.Location = new System.Drawing.Point(29, 34);
-            this.lblSofware.Name = "lblSofware";
-            this.lblSofware.Size = new System.Drawing.Size(49, 15);
-            this.lblSofware.TabIndex = 13;
-            this.lblSofware.Text = "Sofware";
-            // 
-            // lblPerisfericos
-            // 
-            this.lblPerisfericos.AutoSize = true;
-            this.lblPerisfericos.Location = new System.Drawing.Point(29, 63);
-            this.lblPerisfericos.Name = "lblPerisfericos";
-            this.lblPerisfericos.Size = new System.Drawing.Size(67, 15);
-            this.lblPerisfericos.TabIndex = 15;
-            this.lblPerisfericos.Text = "Perisfericos";
-            // 
-            // cmbPerisfericos
-            // 
-            this.cmbPerisfericos.FormattingEnabled = true;
-            this.cmbPerisfericos.Location = new System.Drawing.Point(101, 55);
-            this.cmbPerisfericos.Name = "cmbPerisfericos";
-            this.cmbPerisfericos.Size = new System.Drawing.Size(173, 23);
-            this.cmbPerisfericos.TabIndex = 14;
-            this.cmbPerisfericos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbPerisfericos_KeyPress);
-            // 
-            // lblJuego
-            // 
-            this.lblJuego.AutoSize = true;
-            this.lblJuego.Location = new System.Drawing.Point(29, 95);
-            this.lblJuego.Name = "lblJuego";
-            this.lblJuego.Size = new System.Drawing.Size(38, 15);
-            this.lblJuego.TabIndex = 17;
-            this.lblJuego.Text = "Juego";
-            // 
-            // cmbJuego
-            // 
-            this.cmbJuego.FormattingEnabled = true;
-            this.cmbJuego.Location = new System.Drawing.Point(101, 87);
-            this.cmbJuego.Name = "cmbJuego";
-            this.cmbJuego.Size = new System.Drawing.Size(173, 23);
-            this.cmbJuego.TabIndex = 16;
-            this.cmbJuego.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbJuego_KeyPress);
-            // 
             // lsbListaClientes
             // 
             this.lsbListaClientes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -286,16 +228,25 @@ namespace Formulario
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Controls.Add(this.cmbPerisfericos);
-            this.panel1.Controls.Add(this.cmbSofware);
-            this.panel1.Controls.Add(this.lblSofware);
-            this.panel1.Controls.Add(this.lblPerisfericos);
-            this.panel1.Controls.Add(this.cmbJuego);
-            this.panel1.Controls.Add(this.lblJuego);
+            this.panel1.Controls.Add(this.btnPeticiones);
             this.panel1.Location = new System.Drawing.Point(331, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 130);
             this.panel1.TabIndex = 22;
+            // 
+            // btnPeticiones
+            // 
+            this.btnPeticiones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPeticiones.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnPeticiones.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.btnPeticiones.Location = new System.Drawing.Point(76, 40);
+            this.btnPeticiones.Name = "btnPeticiones";
+            this.btnPeticiones.Size = new System.Drawing.Size(163, 41);
+            this.btnPeticiones.TabIndex = 22;
+            this.btnPeticiones.Text = "Peticiones";
+            this.btnPeticiones.UseVisualStyleBackColor = false;
+            this.btnPeticiones.Click += new System.EventHandler(this.btnPeticiones_Click);
             // 
             // lblTelefono
             // 
@@ -429,7 +380,7 @@ namespace Formulario
             // lblListaClientes
             // 
             this.lblListaClientes.AutoSize = true;
-            this.lblListaClientes.Location = new System.Drawing.Point(41, 13);
+            this.lblListaClientes.Location = new System.Drawing.Point(41, 7);
             this.lblListaClientes.Name = "lblListaClientes";
             this.lblListaClientes.Size = new System.Drawing.Size(90, 15);
             this.lblListaClientes.TabIndex = 33;
@@ -582,12 +533,22 @@ namespace Formulario
             this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.panel7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel7.Controls.Add(this.lblInfoCola);
             this.panel7.Controls.Add(this.lsbListaClientes);
             this.panel7.Controls.Add(this.lblListaClientes);
             this.panel7.Location = new System.Drawing.Point(12, 257);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(228, 365);
             this.panel7.TabIndex = 46;
+            // 
+            // lblInfoCola
+            // 
+            this.lblInfoCola.AutoSize = true;
+            this.lblInfoCola.Location = new System.Drawing.Point(41, 22);
+            this.lblInfoCola.Name = "lblInfoCola";
+            this.lblInfoCola.Size = new System.Drawing.Size(96, 15);
+            this.lblInfoCola.TabIndex = 34;
+            this.lblInfoCola.Text = "(info doble click)";
             // 
             // btnAyuda
             // 
@@ -685,11 +646,11 @@ namespace Formulario
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnAsignar);
             this.Controls.Add(this.btnFinalizarTarea);
+            this.MinimumSize = new System.Drawing.Size(1181, 692);
             this.Name = "FormLocal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLocal";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -715,7 +676,6 @@ namespace Formulario
         private System.Windows.Forms.Button btnFinalizarTarea;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Label lblNombre;
-        private System.Windows.Forms.ComboBox cmbSofware;
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtApellido;
         private System.Windows.Forms.Label lblApellido;
@@ -723,11 +683,6 @@ namespace Formulario
         private System.Windows.Forms.Label lblEdad;
         private System.Windows.Forms.TextBox txtDni;
         private System.Windows.Forms.Label lblDni;
-        private System.Windows.Forms.Label lblSofware;
-        private System.Windows.Forms.Label lblPerisfericos;
-        private System.Windows.Forms.ComboBox cmbPerisfericos;
-        private System.Windows.Forms.Label lblJuego;
-        private System.Windows.Forms.ComboBox cmbJuego;
         private System.Windows.Forms.ListBox lsbListaClientes;
         private System.Windows.Forms.Button btnAsignar;
         private System.Windows.Forms.Panel panel1;
@@ -765,5 +720,7 @@ namespace Formulario
         private System.Windows.Forms.Timer tmrFecha;
         private System.Windows.Forms.Button btnAgregarCocaCompu;
         private System.Windows.Forms.Button btnAgregarBebidaCabina;
+        private System.Windows.Forms.Button btnPeticiones;
+        private System.Windows.Forms.Label lblInfoCola;
     }
 }

@@ -129,6 +129,7 @@ namespace Formulario
             this.Name = "FormBuscarCompuCompatible";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " ";
+            this.Load += new System.EventHandler(this.FormBuscarCompuCompatible_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
