@@ -238,7 +238,7 @@ namespace Formulario
             // 
             this.btnPeticiones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPeticiones.BackColor = System.Drawing.Color.GreenYellow;
+            this.btnPeticiones.BackColor = System.Drawing.Color.Red;
             this.btnPeticiones.ForeColor = System.Drawing.SystemColors.Desktop;
             this.btnPeticiones.Location = new System.Drawing.Point(76, 40);
             this.btnPeticiones.Name = "btnPeticiones";
