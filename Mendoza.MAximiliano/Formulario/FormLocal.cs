@@ -20,6 +20,7 @@ namespace Formulario
     {
         Local local = new Local(20);
         Computadora compAux;
+        Computadora compuDePeticiones;
         Cabina cabinaAux;
 
         string numeroDeTelefono;
@@ -39,11 +40,10 @@ namespace Formulario
             InitializeComponent();
 
             this.local = loc;
-            cmbSofware.DataSource = Enum.GetValues(typeof(Peticion.SoftwareInstalado));
-            cmbPerisfericos.DataSource = Enum.GetValues(typeof(Peticion.PerifericosDisponibles));
-            cmbJuego.DataSource = Enum.GetValues(typeof(Peticion.JuegosDisponibles));
 
-         
+
+            
+
             lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
             lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
 
@@ -51,7 +51,7 @@ namespace Formulario
             lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
 
             lsbListaClientes.DataSource = null;
-            local.Lista_Clientes = local.Cola_Clientes.ToList<Cliente>();//copio el queue
+            local.Lista_Clientes = local.Cola_Clientes.ToList<Cliente>();
             lsbListaClientes.DataSource = local.Lista_Clientes;
 
 
@@ -61,10 +61,9 @@ namespace Formulario
             txtArea.Enabled = false;
             txtLocal.Enabled = false;
             txtNumero.Enabled = false;
-            cmbSofware.Enabled = false;
-            cmbPerisfericos.Enabled = false;
-            cmbJuego.Enabled = false;
+          
 
+            btnPeticiones.Enabled = false;
             
         }
 
@@ -84,10 +83,11 @@ namespace Formulario
                 txtNumero.Enabled = false;
 
 
-                cmbSofware.Enabled = true;
-                cmbPerisfericos.Enabled = true;
-                cmbJuego.Enabled = true;
+              
+
+                btnPeticiones.Enabled = true;
                
+                btnPeticiones.BackColor = Color.GreenYellow;
             }
         }
 
@@ -103,12 +103,21 @@ namespace Formulario
                 txtArea.Enabled = true;
                 txtLocal.Enabled = true;
                 txtNumero.Enabled = true;
-
-                
-                cmbSofware.Enabled = false;
-                cmbPerisfericos.Enabled = false;
-                cmbJuego.Enabled = false;
+                btnPeticiones.Enabled = false;
+                btnPeticiones.BackColor = Color.OrangeRed;
             }
+        }
+        /// <summary>
+        /// formulario peticiones, agarro la compu creada con las peticiones ya cargadas
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPeticiones_Click(object sender, EventArgs e)
+        {
+            
+            FormPeticiones fPeti = new FormPeticiones();
+            fPeti.ShowDialog();
+            this.compuDePeticiones = fPeti.compuAfura;
         }
 
 
@@ -120,7 +129,7 @@ namespace Formulario
         private void btnOk_Click(object sender, EventArgs e)
         {
 
-            if ((rbtComputadora.Checked == false && rbtCabina.Checked == false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "")
+            if ((rbtComputadora.Checked == false && rbtCabina.Checked == false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "" || this.compuDePeticiones is null)
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -128,17 +137,20 @@ namespace Formulario
             {
                 if (rbtComputadora.Checked)
                 {
-                    Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), (Entidades.Clases_generales.Peticion.SoftwareInstalado)cmbSofware.SelectedItem, (Entidades.Clases_generales.Peticion.PerifericosDisponibles)cmbPerisfericos.SelectedItem, (Entidades.Clases_generales.Peticion.JuegosDisponibles)cmbJuego.SelectedItem);
+                  
+
+                    Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text),compuDePeticiones.Peticiones.Lista_Sofware,compuDePeticiones.Peticiones.Lista_Perifericos,compuDePeticiones.Peticiones.Lista_Juegos);
 
                     if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
                     {
                         MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }else
+                    }
+                    else
                     {
                         MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
-                            
+
                     lsbListaClientes.DataSource = null;
                     lsbListaClientes.DataSource = local.Lista_Clientes;
                 }
@@ -189,7 +201,7 @@ namespace Formulario
             {
                 Cliente cliente = local.Cola_Clientes.Peek();
 
-                if (cliente.PetisionesDePc is null)
+                if (!(cliente.NumeroAMarcar is null))
                 {
                     cabinaAux = new Cabina(cliente.NumeroAMarcar);
 
@@ -198,7 +210,7 @@ namespace Formulario
                 }
                 else
                 {
-                    compAux = new Computadora(cliente.PetisionesDePc.Sofware, cliente.PetisionesDePc.Perifericos, cliente.PetisionesDePc.Juegos);
+                    compAux = new Computadora(cliente.Peticiones.Lista_Sofware,cliente.Peticiones.Lista_Perifericos,cliente.Peticiones.Lista_Juegos);
                     FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, compAux);
                     buscaCompu.ShowDialog();
                 }
@@ -232,6 +244,7 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnFinalizarTarea_Click(object sender, EventArgs e)
         {
+            
             int cocaAux;
             if (lsbCompusOcupadas.SelectedItem is null)
             {
@@ -240,7 +253,7 @@ namespace Formulario
             else
             {
                 Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
-                cocaAux=comp.CantidadDeCocasEnLista;
+                cocaAux = comp.CantidadDeCocasEnLista;
                 if (Local.FinalizarTareaCompu(local, comp))
                 {
                     comp.CantidadDeCocasEnLista = cocaAux;
@@ -254,7 +267,7 @@ namespace Formulario
 
                 lsbCompusOcupadas.DataSource = null;
                 lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
-            }            
+            }
         }
 
 
@@ -671,5 +684,10 @@ namespace Formulario
                 e.Handled = true;
             }
         }
+
+
+       
+
+      
     }
 }
