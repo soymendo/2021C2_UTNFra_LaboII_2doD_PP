@@ -40,4 +40,4 @@
 ### Se agregan dos nuevas estadisticas que brindan una lista con las recaudaciones totales de cada maquina en el dia.
 
 ## Paquete Nugget agregado
-##TimePeriodLibrary.NET , usado para calcular diferencias entre laapsos de tiempo, las usé para calcular el tiempo en que las maquinas estaban ocupadas
+###TimePeriodLibrary.NET , usado para calcular diferencias entre laapsos de tiempo, las usé para calcular el tiempo en que las maquinas estaban ocupadas
