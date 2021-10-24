@@ -39,30 +39,35 @@ namespace Formulario
             }
             else
             {
-                if (lsbSofware.SelectedItem == null || lsbPerisfericos.SelectedItem == null || lsbJuegos.SelectedItem == null)
-                {
-                    MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
+              
                     foreach (var item in lsbSofware.SelectedItems)
                     {
-                        sofware.Add((string)item);
+
+                    if(lsbSofware.SelectedItem is null) { }
+                    else { sofware.Add((string)item); }
+
                     }
+
                     foreach (var item in lsbPerisfericos.SelectedItems)
                     {
-                        perifericos.Add((string)item);
+
+                    if (lsbPerisfericos.SelectedItems is null) { }
+                    else { perifericos.Add((string)item); }
+                       
                     }
                     foreach (var item in lsbJuegos.SelectedItems)
                     {
-                        juegos.Add((string)item);
+
+                    if (lsbJuegos.SelectedItems is null) { }
+                    else { juegos.Add((string)item); } 
+
                     }
 
                     comp = new Computadora(sofware, perifericos, juegos);
                     MessageBox.Show("Peticiones cargadas!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnCargar.Text = "Cerrar";
                     rtbMostrarPeticiones.Text = comp.Mostrar();
-                }
+               
             }
 
                    

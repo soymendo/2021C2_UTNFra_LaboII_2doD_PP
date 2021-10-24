@@ -1,10 +1,12 @@
 ﻿using Entidades.Clases_generales;
+using Itenso.TimePeriod;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 
 namespace Entidades.Clases_especializadas
 {
@@ -13,10 +15,12 @@ namespace Entidades.Clases_especializadas
         //----------------Atributos-------------------------------------
  
         private Peticion peticiones;
-        
+        private List<string> hardware;
+        private string tiempoAsignado;
+       
         //--------------Constructores---------------------------------
 
-
+        
         public Computadora(Peticion peticiones)
         {
             this.peticiones = peticiones;
@@ -42,32 +46,20 @@ namespace Entidades.Clases_especializadas
            
         }
 
-
+        public Computadora(string identificador, List<string> sofware, List<string> perisfericos, List<string> juegos,List<string>hardware)
+        : this(identificador, new Peticion(sofware, perisfericos, juegos))
+        {
+            this.hardware = hardware;
+        }
 
 
         //----------Propiedades-----------------------------------------
 
 
-        /// <summary>
-        /// indica el tiempo de uso de la compu en la lista de compus ocupadas
-        /// </summary>
-        public override double TiempoDeUso
-        {
-            get
-            {
-                double retorno;
 
-                TimeSpan diferenciasSegundos = this.TiempoFinal - this.TiempoInicial;
 
-                double seg = diferenciasSegundos.Seconds;
-                double min = diferenciasSegundos.Minutes;
 
-                retorno = (min * 60) + seg;
 
-                return retorno;
-            }
-
-        }
 
         /// <summary>
         /// devuelve el tiempo de uso total de la Computadora dentro de la lista de compus finalizadas
@@ -106,6 +98,20 @@ namespace Entidades.Clases_especializadas
             set { this.peticiones = value; }
         }
 
+
+        public string TiempoAsignado
+        {
+            get
+            {
+                return this.tiempoAsignado;
+            }
+            set
+            {
+                this.tiempoAsignado = value;
+            }
+        }
+
+      
         //-----Metodos----------------------------------------------------------------------------------------------   
 
 
@@ -116,12 +122,12 @@ namespace Entidades.Clases_especializadas
         public override float CalcularCosto()
         {
             float retorno = 0;
-            float tiempo = (float)TiempoDeUso;
+            float tiempo = TiempoDeUsoNugget;
             int redondeo;
 
             float resultado;
-            if (TiempoDeUso <= 30) { retorno = 0.5f; }
-            if (TiempoDeUso > 30)
+            if (TiempoDeUsoNugget <= 30) { retorno = 0.5f; }
+            if (TiempoDeUsoNugget > 30)
             {
                 resultado = tiempo / 30;
                 redondeo = (int)Math.Ceiling(resultado);
@@ -141,10 +147,21 @@ namespace Entidades.Clases_especializadas
         public float CalcularCostoCompuBebida()
         {
             float retorno = 0;
-            retorno = CalcularCosto() + (CantidadDeCocasEnLista * this.PrecioBebida);
-            CantidadDeCocasEnLista = 0; 
+            retorno = CalcularCosto() + (CantidadDeBebidasEnLista * this.PrecioBebida);
+            CantidadDeBebidasEnLista = 0;
+            this.CostoFinal = retorno;
             return retorno;
         }
+
+        public override float ConsumoFinalIva()
+        {
+            float retorno = 0;
+
+            retorno= this.CostoFinal * 1.21f;
+         
+            return retorno;
+        }
+
 
 
         /// <summary>
@@ -159,27 +176,15 @@ namespace Entidades.Clases_especializadas
             if(c is not null)
             {
                 this.ListaBebidas.Add(c);
-                CantidadDeCocasEnLista += 1;
-                CocasTotales += 1;
+                CantidadDeBebidasEnLista += 1;
+                BebidasTotales += 1;
                 retorno = true;
             }
            
             return retorno;
         }
 
-        /// <summary>
-        /// calcula el costo de consumo de las bebidas pedidas
-        /// </summary>
-        /// <returns></returns>
-        public override float CalcularCostoDeConsumoBebidas()
-        {
-            float acum = 0; ;
-            foreach (Bebida item in this.ListaBebidas)
-            {
-                acum += item.Precio;
-            }
-            return acum;
-        }
+      
 
         /// <summary>
         /// Muestro los datos de la compu
@@ -190,6 +195,20 @@ namespace Entidades.Clases_especializadas
         {           
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.Mostrar()}");
+
+            if(this.hardware is null) { }
+            else
+            {
+                foreach (string item in this.hardware)
+                {
+                    sb.AppendLine("*****Hardware*****");
+                    sb.AppendLine(item.ToString());
+                }
+            }
+           
+
+            sb.AppendLine($"Tiempo asignado: {this.TiempoAsignado}");
+
             sb.AppendLine($"****Detalle****");
             sb.AppendLine(Peticiones.ToString());
             sb.AppendLine($"Cantidad de cocas: {this.ListaBebidas.Count}");
@@ -207,8 +226,8 @@ namespace Entidades.Clases_especializadas
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"Tiempo de uso pc: {this.TiempoTotalDeUso}");
-            sb.AppendLine($"Cantidad de cocas: {this.CocasTotales}");
-            sb.AppendLine($"Recaudacion:{Recaudacion}");
+            sb.AppendLine($"Cantidad de cocas: {this.BebidasTotales}");
+            sb.AppendLine($"Recaudacion:{Recaudacion*1.21}");
             return sb.ToString();
         }
 
@@ -260,7 +279,7 @@ namespace Entidades.Clases_especializadas
         public override bool Equals(object obj)
         {
             Computadora otraCompu = obj as Computadora;
-            return otraCompu != null && this == otraCompu;
+            return otraCompu is not null && this == otraCompu;
         }
 
 
@@ -273,5 +292,6 @@ namespace Entidades.Clases_especializadas
             return (Identificador).GetHashCode();
         }
 
+        
     }
 }

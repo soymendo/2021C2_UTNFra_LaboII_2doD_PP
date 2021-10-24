@@ -71,7 +71,8 @@ namespace Formulario
             // 
             // rtbEstadisticas
             // 
-            this.rtbEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtbEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbEstadisticas.Location = new System.Drawing.Point(536, 73);
             this.rtbEstadisticas.Name = "rtbEstadisticas";
@@ -157,8 +158,7 @@ namespace Formulario
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAyuda.Location = new System.Drawing.Point(675, 404);
             this.btnAyuda.Name = "btnAyuda";

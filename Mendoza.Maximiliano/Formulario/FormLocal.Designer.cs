@@ -45,6 +45,9 @@ namespace Formulario
             this.lsbListaClientes = new System.Windows.Forms.ListBox();
             this.btnAsignar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTiempo = new System.Windows.Forms.Label();
+            this.rbtLibre = new System.Windows.Forms.RadioButton();
+            this.nupTiempo = new System.Windows.Forms.NumericUpDown();
             this.btnPeticiones = new System.Windows.Forms.Button();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -82,6 +85,7 @@ namespace Formulario
             this.btnAgregarCocaCompu = new System.Windows.Forms.Button();
             this.btnAgregarBebidaCabina = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupTiempo)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -228,11 +232,53 @@ namespace Formulario
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.lblTiempo);
+            this.panel1.Controls.Add(this.rbtLibre);
+            this.panel1.Controls.Add(this.nupTiempo);
             this.panel1.Controls.Add(this.btnPeticiones);
             this.panel1.Location = new System.Drawing.Point(331, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(310, 130);
             this.panel1.TabIndex = 22;
+            // 
+            // lblTiempo
+            // 
+            this.lblTiempo.AutoSize = true;
+            this.lblTiempo.Location = new System.Drawing.Point(177, 17);
+            this.lblTiempo.Name = "lblTiempo";
+            this.lblTiempo.Size = new System.Drawing.Size(47, 15);
+            this.lblTiempo.TabIndex = 34;
+            this.lblTiempo.Text = "Tiempo";
+            // 
+            // rbtLibre
+            // 
+            this.rbtLibre.AutoSize = true;
+            this.rbtLibre.Location = new System.Drawing.Point(177, 75);
+            this.rbtLibre.Name = "rbtLibre";
+            this.rbtLibre.Size = new System.Drawing.Size(51, 19);
+            this.rbtLibre.TabIndex = 27;
+            this.rbtLibre.TabStop = true;
+            this.rbtLibre.Text = "Libre";
+            this.rbtLibre.UseVisualStyleBackColor = true;
+            this.rbtLibre.CheckedChanged += new System.EventHandler(this.rbtLibre_CheckedChanged);
+            // 
+            // nupTiempo
+            // 
+            this.nupTiempo.Increment = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.nupTiempo.Location = new System.Drawing.Point(177, 40);
+            this.nupTiempo.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.nupTiempo.Name = "nupTiempo";
+            this.nupTiempo.Size = new System.Drawing.Size(120, 23);
+            this.nupTiempo.TabIndex = 23;
+            this.nupTiempo.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // btnPeticiones
             // 
@@ -240,9 +286,9 @@ namespace Formulario
             | System.Windows.Forms.AnchorStyles.Left)));
             this.btnPeticiones.BackColor = System.Drawing.Color.Red;
             this.btnPeticiones.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btnPeticiones.Location = new System.Drawing.Point(76, 40);
+            this.btnPeticiones.Location = new System.Drawing.Point(23, 22);
             this.btnPeticiones.Name = "btnPeticiones";
-            this.btnPeticiones.Size = new System.Drawing.Size(163, 41);
+            this.btnPeticiones.Size = new System.Drawing.Size(122, 41);
             this.btnPeticiones.TabIndex = 22;
             this.btnPeticiones.Text = "Peticiones";
             this.btnPeticiones.UseVisualStyleBackColor = false;
@@ -552,8 +598,7 @@ namespace Formulario
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAyuda.Location = new System.Drawing.Point(1052, 596);
             this.btnAyuda.Name = "btnAyuda";
@@ -608,7 +653,7 @@ namespace Formulario
             this.btnAgregarCocaCompu.Name = "btnAgregarCocaCompu";
             this.btnAgregarCocaCompu.Size = new System.Drawing.Size(62, 57);
             this.btnAgregarCocaCompu.TabIndex = 49;
-            this.btnAgregarCocaCompu.Text = "Agregar Coca";
+            this.btnAgregarCocaCompu.Text = "Agregar Bebida";
             this.btnAgregarCocaCompu.UseVisualStyleBackColor = true;
             this.btnAgregarCocaCompu.Click += new System.EventHandler(this.btnAgregarCoca_Click);
             // 
@@ -620,7 +665,7 @@ namespace Formulario
             this.btnAgregarBebidaCabina.Name = "btnAgregarBebidaCabina";
             this.btnAgregarBebidaCabina.Size = new System.Drawing.Size(62, 57);
             this.btnAgregarBebidaCabina.TabIndex = 50;
-            this.btnAgregarBebidaCabina.Text = "Agregar Coca";
+            this.btnAgregarBebidaCabina.Text = "Agregar Bebida";
             this.btnAgregarBebidaCabina.UseVisualStyleBackColor = true;
             this.btnAgregarBebidaCabina.Click += new System.EventHandler(this.btnAgregarBebidaCabina_Click);
             // 
@@ -651,6 +696,8 @@ namespace Formulario
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormLocal";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nupTiempo)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -722,5 +769,8 @@ namespace Formulario
         private System.Windows.Forms.Button btnAgregarBebidaCabina;
         private System.Windows.Forms.Button btnPeticiones;
         private System.Windows.Forms.Label lblInfoCola;
+        private System.Windows.Forms.Label lblTiempo;
+        private System.Windows.Forms.RadioButton rbtLibre;
+        private System.Windows.Forms.NumericUpDown nupTiempo;
     }
 }

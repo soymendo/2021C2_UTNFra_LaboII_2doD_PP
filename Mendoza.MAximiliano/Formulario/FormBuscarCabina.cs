@@ -28,11 +28,11 @@ namespace Formulario
         {
             InitializeComponent();
             this.local = l;
-            this.lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+            this.lsbCabinasDisponibles.DataSource = local.ListacCabinasDisponibles;
             this.numero = cabinaDelOtroForm.NumeroAMarcar;           
         }
 
-
+        
         /// <summary>
         /// Asigna la cabina a la lista disponible,indexador aca
         /// </summary>
@@ -46,7 +46,7 @@ namespace Formulario
             }else
             {
 
-                Cliente cli = local.Cola_Clientes.Peek();
+                Cliente cli = local.ColaClientes.Peek();
                 Cabina c = (Cabina)lsbCabinasDisponibles.SelectedItem;
                 c.NumeroAMarcar = numero;
 
@@ -60,7 +60,7 @@ namespace Formulario
                 }
 
                 lsbCabinasDisponibles.DataSource = null;
-                lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+                lsbCabinasDisponibles.DataSource = local.ListacCabinasDisponibles;
             }
 
 

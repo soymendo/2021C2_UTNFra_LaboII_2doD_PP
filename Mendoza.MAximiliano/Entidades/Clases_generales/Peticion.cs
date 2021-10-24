@@ -11,27 +11,27 @@ namespace Entidades.Clases_generales
 
         //----------------Atributos-----------------------
       
-        private List<string> ListaSofware;
-        private List<string> ListaPerifericos;
-        private List<string> ListaJuegos;
+        private List<string> listaSofware;
+        private List<string> listaPerifericos;
+        private List<string> listaJuegos;
 
        
         //------------PROPIEDADES----------------------
 
-        public List<string> Lista_Sofware
+        public List<string> ListaSofware
         {
-            get { return this.ListaSofware; }
-            set { this.ListaSofware = value; }
+            get { return this.listaSofware; }
+            set { this.listaSofware = value; }
         }
-        public List<string> Lista_Perifericos
+        public List<string> ListaPerifericos
         {
-            get { return this.ListaPerifericos; }
-            set { this.ListaPerifericos = value; }
+            get { return this.listaPerifericos; }
+            set { this.listaPerifericos = value; }
         }
-        public List<string> Lista_Juegos
+        public List<string> ListaJuegos
         {
-            get { return this.ListaJuegos; }
-            set { this.ListaJuegos = value; }
+            get { return this.listaJuegos; }
+            set { this.listaJuegos = value; }
 
         }
 
@@ -39,9 +39,9 @@ namespace Entidades.Clases_generales
         public Peticion(List<string> sofware, List<string> perisfericos, List<string> juegos)
      
         {
-            this.Lista_Sofware = sofware;
-            this.Lista_Perifericos = perisfericos;
-            this.Lista_Juegos = juegos;
+            this.ListaSofware = sofware;
+            this.ListaPerifericos = perisfericos;
+            this.ListaJuegos = juegos;
         }
 
 
@@ -62,59 +62,60 @@ namespace Entidades.Clases_generales
             bool retornoS = false;
             bool retornoP= false;
             bool retornoJ = false;
-            if (p1.ListaSofware.Count == p2.ListaSofware.Count)
+
+            if (p1.listaSofware.Count == p2.listaSofware.Count)
             {
-                if (p1.ListaSofware.Count == 1)
+                if (p1.listaSofware.Count == 1)
                 {
-                    if (p1.ListaSofware[0] == p2.ListaSofware[0]) { retornoS = true; }                  
+                    if (p1.listaSofware[0] == p2.listaSofware[0]) { retornoS = true; }                  
                 }
-                if (p1.ListaSofware.Count == 2)
+                if (p1.listaSofware.Count == 2)
                 {
-                   if (p1.ListaSofware[0] == p2.ListaSofware[0] && p1.ListaSofware[1] == p2.ListaSofware[1]) { retornoS = true; }                   
+                   if (p1.listaSofware[0] == p2.listaSofware[0] && p1.listaSofware[1] == p2.listaSofware[1]) { retornoS = true; }                   
                 }
-                if (p1.ListaSofware.Count == 3)
+                if (p1.listaSofware.Count == 3)
                 {
-                    if (p1.ListaSofware[0] == p2.ListaSofware[0] && p1.ListaSofware[1] == p2.ListaSofware[1] && p1.ListaSofware[2] == p2.ListaSofware[2]) { retornoS = true; }                
+                    if (p1.listaSofware[0] == p2.listaSofware[0] && p1.listaSofware[1] == p2.listaSofware[1] && p1.listaSofware[2] == p2.listaSofware[2]) { retornoS = true; }                
                 }
-                if (p1.ListaSofware.Count == 4)
+                if (p1.listaSofware.Count == 4)
                 {
-                    if (p1.ListaSofware[0] == p2.ListaSofware[0] && p1.ListaSofware[1] == p2.ListaSofware[1] && p1.ListaSofware[2] == p2.ListaSofware[2] && p1.ListaSofware[3] == p2.ListaSofware[3]) { retornoS = true; }               
+                    if (p1.listaSofware[0] == p2.listaSofware[0] && p1.listaSofware[1] == p2.listaSofware[1] && p1.listaSofware[2] == p2.listaSofware[2] && p1.listaSofware[3] == p2.listaSofware[3]) { retornoS = true; }               
                 }
             }
        
-            if(p1.ListaPerifericos.Count==p2.ListaPerifericos.Count)
+            if(p1.listaPerifericos.Count==p2.listaPerifericos.Count)
             {
-                if (p1.ListaPerifericos.Count == 1)
+                if (p1.listaPerifericos.Count == 1)
                 {
-                    if (p1.ListaPerifericos[0] == p2.ListaPerifericos[0]) { retornoP = true; }
+                    if (p1.listaPerifericos[0] == p2.listaPerifericos[0]) { retornoP = true; }
                 }
-                if (p1.ListaPerifericos.Count ==2)
+                if (p1.listaPerifericos.Count ==2)
                 {
-                    if(p1.ListaPerifericos[0]==p2.ListaPerifericos[0] && p1.ListaPerifericos[1] == p2.ListaPerifericos[1]) { retornoP = true; }
+                    if(p1.listaPerifericos[0]==p2.listaPerifericos[0] && p1.listaPerifericos[1] == p2.listaPerifericos[1]) { retornoP = true; }
                 }
-                if (p1.ListaPerifericos.Count == 3)
+                if (p1.listaPerifericos.Count == 3)
                 {
-                    if (p1.ListaPerifericos[0] == p2.ListaPerifericos[0] && p1.ListaPerifericos[1] == p2.ListaPerifericos[1] && p1.ListaPerifericos[2]==p2.ListaPerifericos[2]) { retornoP = true; }
+                    if (p1.listaPerifericos[0] == p2.listaPerifericos[0] && p1.listaPerifericos[1] == p2.listaPerifericos[1] && p1.listaPerifericos[2]==p2.listaPerifericos[2]) { retornoP = true; }
                 }
             }
 
-            if(p1.Lista_Juegos.Count==p2.Lista_Juegos.Count)
+            if(p1.ListaJuegos.Count==p2.ListaJuegos.Count)
             {
-                if(p1.Lista_Juegos.Count==1)
+                if(p1.ListaJuegos.Count==1)
                 {
-                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0]) { retornoJ = true; }
+                    if (p1.ListaJuegos[0] == p2.ListaJuegos[0]) { retornoJ = true; }
                 }
-                if (p1.Lista_Juegos.Count == 2)
+                if (p1.ListaJuegos.Count == 2)
                 {
-                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0] && p1.Lista_Juegos[1]==p2.Lista_Juegos[1]) { retornoJ = true; }
+                    if (p1.ListaJuegos[0] == p2.ListaJuegos[0] && p1.ListaJuegos[1]==p2.ListaJuegos[1]) { retornoJ = true; }
                 }
-                if (p1.Lista_Juegos.Count == 3)
+                if (p1.ListaJuegos.Count == 3)
                 {
-                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0] && p1.Lista_Juegos[1] == p2.Lista_Juegos[1] && p1.Lista_Juegos[2]==p2.Lista_Juegos[2]) { retornoJ = true; }
+                    if (p1.ListaJuegos[0] == p2.ListaJuegos[0] && p1.ListaJuegos[1] == p2.ListaJuegos[1] && p1.ListaJuegos[2]==p2.ListaJuegos[2]) { retornoJ = true; }
                 }
-                if (p1.Lista_Juegos.Count == 4)
+                if (p1.ListaJuegos.Count == 4)
                 {
-                    if (p1.Lista_Juegos[0] == p2.Lista_Juegos[0] && p1.Lista_Juegos[1] == p2.Lista_Juegos[1] && p1.Lista_Juegos[2] == p2.Lista_Juegos[2] && p1.Lista_Juegos[3]== p2.Lista_Juegos[3]) { retornoJ = true; }
+                    if (p1.ListaJuegos[0] == p2.ListaJuegos[0] && p1.ListaJuegos[1] == p2.ListaJuegos[1] && p1.ListaJuegos[2] == p2.ListaJuegos[2] && p1.ListaJuegos[3]== p2.ListaJuegos[3]) { retornoJ = true; }
                 }
             }
                 retorno = (retornoS && retornoP && retornoJ);
@@ -140,18 +141,20 @@ namespace Entidades.Clases_generales
         private string MostrarListas()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("\nSOFWARE");
-            foreach (string item in Lista_Sofware)
-            {
-                sb.AppendLine(item.ToString());
-            }
+            sb.AppendLine("\nSOFWARE");    
+            
+                foreach (string item in ListaSofware)
+                {
+                    sb.AppendLine(item.ToString());
+                }
+                
             sb.AppendLine("\nPERIFERICOS");
-            foreach (string item in Lista_Perifericos)
+            foreach (string item in ListaPerifericos)
             {
                 sb.AppendLine(item.ToString());
             }
             sb.AppendLine("\nJUEGOS");
-            foreach (string item in Lista_Juegos)
+            foreach (string item in ListaJuegos)
             {
                 sb.AppendLine(item.ToString());
             }
@@ -181,7 +184,7 @@ namespace Entidades.Clases_generales
         public override bool Equals(object obj)
         {
             Peticion otraPeticion = obj as Peticion;
-            return otraPeticion != null && this == otraPeticion;
+            return otraPeticion is not null && this == otraPeticion;
         }
 
         /// <summary>
@@ -190,7 +193,7 @@ namespace Entidades.Clases_generales
         /// <returns></returns>
         public override int GetHashCode()
         {
-            return (Lista_Sofware, ListaPerifericos, Lista_Juegos).GetHashCode();
+            return (ListaSofware, listaPerifericos, ListaJuegos).GetHashCode();
         }
 
     }

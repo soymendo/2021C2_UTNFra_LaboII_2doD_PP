@@ -35,7 +35,8 @@ namespace Formulario
             // 
             // rtbPeticiones
             // 
-            this.rtbPeticiones.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.rtbPeticiones.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.rtbPeticiones.Location = new System.Drawing.Point(0, 1);
             this.rtbPeticiones.Name = "rtbPeticiones";
@@ -45,8 +46,7 @@ namespace Formulario
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAyuda.Location = new System.Drawing.Point(135, 231);
             this.btnAyuda.Name = "btnAyuda";

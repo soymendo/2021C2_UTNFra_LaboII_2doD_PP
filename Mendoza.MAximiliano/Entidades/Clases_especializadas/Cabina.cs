@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using Itenso.TimePeriod;
 
 namespace Entidades.Clases_especializadas
 {
@@ -76,26 +77,6 @@ namespace Entidades.Clases_especializadas
 
       
 
-        /// <summary>
-        /// Devuelve el tiempo de uso de la cabina en la lista de cabinas ocupadas
-        /// </summary>
-        public override double TiempoDeUso
-        {
-            get
-            {
-                double retorno;
-
-                TimeSpan diferenciasSegundos = this.TiempoFinal - this.TiempoInicial;
-
-                double seg = diferenciasSegundos.Seconds;
-                double min = diferenciasSegundos.Minutes;
-
-                retorno = (min * 60) + seg;
-
-                return retorno;
-            }
-
-        }
 
 
         /// <summary>
@@ -178,12 +159,21 @@ namespace Entidades.Clases_especializadas
         public float CalcularCostoCabinaBebida()
         {
             float retorno = 0;
-            retorno = CalcularCosto() + (CantidadDeCocasEnLista * this.PrecioBebida);
-            CantidadDeCocasEnLista = 0; 
-          
+            retorno = CalcularCosto() + (CantidadDeBebidasEnLista * this.PrecioBebida);
+            CantidadDeBebidasEnLista = 0;
+            this.CostoFinal = retorno;
             return retorno;
         }
 
+        public override float ConsumoFinalIva()
+        {
+
+            float retorno = 0;
+
+            retorno = this.CostoFinal * 1.21f;
+
+            return retorno;
+        }
 
         /// <summary>
         /// agrega una bebida a la lista de bebidas de cabina
@@ -199,8 +189,8 @@ namespace Entidades.Clases_especializadas
             if (c is not null)
             {
                 this.ListaBebidas.Add(c);
-                CantidadDeCocasEnLista += 1;
-                CocasTotales += 1;
+                CantidadDeBebidasEnLista += 1;
+                BebidasTotales += 1;
                 retorno = true;
             }
             return retorno;
@@ -210,16 +200,16 @@ namespace Entidades.Clases_especializadas
         /// calcula el costo de consumo de las bebidas pedidas
         /// </summary>
         /// <returns></returns>
-        public override float CalcularCostoDeConsumoBebidas()
-        {
+        //public override float CalcularCostoDeConsumoBebidas()
+        //{
 
-            float acum = 0; ;
-            foreach (Bebida item in this.ListaBebidas)
-            {
-                acum += item.Precio;
-            }
-            return acum;
-        }
+        //    float acum = 0; ;
+        //    foreach (Bebida item in this.ListaBebidas)
+        //    {
+        //        acum += item.Precio;
+        //    }
+        //    return acum;
+        //}
 
 
 
@@ -235,9 +225,9 @@ namespace Entidades.Clases_especializadas
         public override float CalcularCosto()
         {
             float retorno = 0;
-            if (Destino() == "local") { retorno = (float)this.TiempoDeUso * 1; }
-            if (Destino() == "largaDistancia") { retorno = (float)this.TiempoDeUso * 2.5f; }
-            if (Destino() == "internacional") { retorno = (float)this.TiempoDeUso * 5; }
+            if (Destino() ==TipoLlamada.local.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 1; }
+            if (Destino() == TipoLlamada.largaDistancia.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 2.5f; }
+            if (Destino() == TipoLlamada.internacional.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 5; }
             return retorno;
         }
 
@@ -284,7 +274,7 @@ namespace Entidades.Clases_especializadas
         public float CostoLocal()
         {
             float retorno = 0;
-            if (Destino() == "local") { retorno = (float)this.TiempoDeUso * 1; }
+            if (Destino() == TipoLlamada.local.ToString() ){ retorno = (float)this.TiempoDeUsoNugget * 1; }
             return retorno;
         }
 
@@ -295,7 +285,7 @@ namespace Entidades.Clases_especializadas
         public float CostoLargaDistancia()
         {
             float retorno = 0;
-            if (Destino() == "largaDistancia") { retorno = (float)this.TiempoDeUso * 2.5f; }
+            if (Destino() == TipoLlamada.largaDistancia.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 2.5f; }
             return retorno;
         }
 
@@ -306,7 +296,7 @@ namespace Entidades.Clases_especializadas
         public float CostoInternacional()
         {
             float retorno = 0;
-            if (Destino() == "internacional") { retorno = (float)this.TiempoDeUso * 5; }
+            if (Destino() ==  TipoLlamada.internacional.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 5; }
             return retorno;
         }
 
@@ -391,8 +381,8 @@ namespace Entidades.Clases_especializadas
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"Tiempo de uso cabina: {this.TiempoTotalDeUso}");
-            sb.AppendLine($"Cantidad de cocas: {this.CocasTotales}");
-            sb.AppendLine($"Recaudacion: {this.Recaudacion}");
+            sb.AppendLine($"Cantidad de cocas: {this.BebidasTotales}");
+            sb.AppendLine($"Recaudacion: {this.Recaudacion*1.21}");
             return sb.ToString();
         }
         /// <summary>
@@ -413,7 +403,7 @@ namespace Entidades.Clases_especializadas
         public override bool Equals(object obj)
         {
             Cabina otraCab = obj as Cabina;
-            return otraCab != null && this == otraCab;
+            return otraCab is not null && this == otraCab;
         }
 
 
@@ -425,5 +415,7 @@ namespace Entidades.Clases_especializadas
         {
             return (Identificador).GetHashCode();
         }
+
+        
     }
 }

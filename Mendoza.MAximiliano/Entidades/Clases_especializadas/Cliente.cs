@@ -15,7 +15,7 @@ namespace Entidades.Clases_especializadas
         private int dni;
         private int edad;
         private string numeroAMarcar;
-
+        private string tiempoAsignado;
         private Peticion peticiones;
     
 
@@ -72,6 +72,20 @@ namespace Entidades.Clases_especializadas
             set { this.peticiones = value; }
         }
 
+
+
+
+        public string TiempoAsignado
+        {
+            get
+            {
+                return this.tiempoAsignado;
+            }
+            set
+            {
+                this.tiempoAsignado = value;
+            }
+        }
 
      //--------Constructores------------------------
         
@@ -162,6 +176,8 @@ namespace Entidades.Clases_especializadas
                 sb.AppendLine(Peticiones.ToString());
             
             }
+
+          //  sb.AppendLine($"Tiempo de uso:{this.TiempoAsignado}");
           
             return sb.ToString();
 
@@ -218,7 +234,7 @@ namespace Entidades.Clases_especializadas
         public override bool Equals(object obj)
         {
             Cliente otroCliente = obj as Cliente;
-            return otroCliente != null && this == otroCliente;
+            return otroCliente is not null && this == otroCliente;
         }
 
 

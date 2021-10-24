@@ -90,7 +90,7 @@ namespace Formulario
             "CounterStrike",
             "DiabloII",
             "MuOnline",
-            "LinegeII"});
+            "LineageII"});
             this.lsbJuegos.Location = new System.Drawing.Point(440, 84);
             this.lsbJuegos.Name = "lsbJuegos";
             this.lsbJuegos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
@@ -146,8 +146,7 @@ namespace Formulario
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAyuda.Location = new System.Drawing.Point(14, 397);
             this.btnAyuda.Name = "btnAyuda";
             this.btnAyuda.Size = new System.Drawing.Size(158, 41);

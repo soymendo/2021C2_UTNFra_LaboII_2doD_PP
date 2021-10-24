@@ -5,33 +5,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace Entidades.Clases_generales
 {
    public class Local
     {
         //------------------Atributos----------------------
 
-        public float totalLocal = 0;
-        public float totalLargaDistancia = 0;
-        public float totalInterncaional = 0;
-
+        private float totalLocal = 0;
+        private float totalLargaDistancia = 0;
+        private float totalInterncaional = 0;
+        const float iva = 1.21f;
         private string nombreDelQueAtiende;
         private int limite;
 
-        private Queue<Cliente> ColaClientes;
-        private List<Cliente> ListaClientes;
+        private Queue<Cliente> colaClientes;
+        private List<Cliente> listaClientes;
         private List<Maquina> compusCabinas;
 
-        private List<Computadora> ListaCompusDisponibles;
-        private List<Computadora> ListaCompusOcupadas;
-        private List<Computadora> ListaCompusFinalizadas;
+        private List<Computadora> listaCompusDisponibles;
+        private List<Computadora> listaCompusOcupadas;
+        private List<Computadora> listaCompusFinalizadas;
 
 
-        private List<Cabina> ListaCabinasDisponibles;
-        private List<Cabina> ListaCabinasOcupadas;
-        private List<Cabina> ListaCabinasFinalizadas;
+        private List<Cabina> listaCabinasDisponibles;
+        private List<Cabina> listaCabinasOcupadas;
+        private List<Cabina> listaCabinasFinalizadas;
 
-        private Queue<Bebida> StockDeBebidas;
+        private Queue<Bebida> stockDeBebidas;
        
 
         private int contadorSofwareOffice = 0;
@@ -39,9 +41,9 @@ namespace Entidades.Clases_generales
         private int contadorSofwareicq = 0;
         private int contadorSofwareares = 0;
 
-        private int contadorPeriféricosCamara = 0;
-        private int contadorPeriféricosAuriculares = 0;
-        private int contadorPeriféricosMicrófono = 0;
+        private int contadorPerifericosCamara = 0;
+        private int contadorPerifericosAuriculares = 0;
+        private int contadorPerifericosMicrofono = 0;
 
         private int contadorJuegosCS = 0;
         private int contadorJuegosDiablo = 0;
@@ -58,17 +60,17 @@ namespace Entidades.Clases_generales
             get { return this.contadorSofwareOffice; }
             set { this.contadorSofwareOffice = value; }
         }
-        public int ContadorSofwaremessenger
+        public int ContadorSofwareMessenger
         {
             get { return this.contadorSofwaremessenger; }
             set { this.contadorSofwaremessenger = value; }
         }
-        public int ContadorSofwareicq
+        public int ContadorSofwareIcq
         {
             get { return this.contadorSofwareicq; }
             set { this.contadorSofwareicq = value; }
         }
-        public int ContadorSofwareares
+        public int ContadorSofwareAres
         {
             get { return this.contadorSofwareares; }
             set { this.contadorSofwareares = value; }
@@ -76,21 +78,21 @@ namespace Entidades.Clases_generales
 
 
 
-        public int ContadorPeriféricosCamara
+        public int ContadorPerifericosCamara
         {
-            get { return this.contadorPeriféricosCamara; }
-            set { this.contadorPeriféricosCamara = value; }
+            get { return this.contadorPerifericosCamara; }
+            set { this.contadorPerifericosCamara = value; }
         }
 
-        public int ContadorPeriféricosAuriculares
+        public int ContadorPerifericosAuriculares
         {
-            get { return this.contadorPeriféricosAuriculares; }
-            set { this.contadorPeriféricosAuriculares = value; }
+            get { return this.contadorPerifericosAuriculares; }
+            set { this.contadorPerifericosAuriculares = value; }
         }
-        public int ContadorPeriféricosMicrófono
+        public int ContadorPerifericosMicrofono
         {
-            get { return this.contadorPeriféricosMicrófono; }
-            set { this.contadorPeriféricosMicrófono = value; }
+            get { return this.contadorPerifericosMicrofono; }
+            set { this.contadorPerifericosMicrofono = value; }
         }
 
 
@@ -150,25 +152,25 @@ namespace Entidades.Clases_generales
         /// <summary>
         /// Devuelve la lista de compus disponibles
         /// </summary>
-        public List<Computadora>Lista_CompusDisponibles
+        public List<Computadora>ListaCompusDisponibles
         {
-            get { return this.ListaCompusDisponibles; }
+            get { return this.listaCompusDisponibles; }
         }
         /// <summary>
         /// Devuelve la lista de compus ocupadas
         /// </summary>
-        public List<Computadora> Lista_CompusOcupadas
+        public List<Computadora> ListaCompusOcupadas
         {
-            get { return this.ListaCompusOcupadas; }
-            set { this.ListaCompusOcupadas = value; }
+            get { return this.listaCompusOcupadas; }
+            set { this.listaCompusOcupadas = value; }
         }
 
         /// <summary>
         /// Devuelve la lista de compus finalizadas
         /// </summary>
-        public List<Computadora> Lista_CompusFinalizadas
+        public List<Computadora> ListaCompusFinalizadas
         {
-            get { return this.ListaCompusFinalizadas; }
+            get { return this.listaCompusFinalizadas; }
         }
 
 
@@ -177,55 +179,55 @@ namespace Entidades.Clases_generales
         /// <summary>
         /// Devuelve la lista de cabinas disponibles
         /// </summary>
-        public List<Cabina>Lista_cabinas_disponibles
+        public List<Cabina>ListacCabinasDisponibles
         {
-            get { return this.ListaCabinasDisponibles; }
-            set { this.ListaCabinasDisponibles = value; }
+            get { return this.listaCabinasDisponibles; }
+            set { this.listaCabinasDisponibles = value; }
         }
 
 
         /// <summary>
         /// Devuelve la lista de cabinas ocupadas
         /// </summary>
-        public List<Cabina>Lista_cabinas_ocupadas
+        public List<Cabina>ListaCabinasOcupadas
         {
-            get { return this.ListaCabinasOcupadas; }
-            set { this.ListaCabinasOcupadas = value; }
+            get { return this.listaCabinasOcupadas; }
+            set { this.listaCabinasOcupadas = value; }
         }
 
 
 
-        public List<Cabina> Lista_CabinasFinalizadas
+        public List<Cabina> ListaCabinasFinalizadas
         {
-            get { return this.ListaCabinasFinalizadas; }
-            set { this.ListaCabinasFinalizadas= value; }
+            get { return this.listaCabinasFinalizadas; }
+            set { this.listaCabinasFinalizadas= value; }
         }
 
         /// <summary>
         /// Devuelve la cola de clientes
         /// </summary>
-        public Queue<Cliente> Cola_Clientes
+        public Queue<Cliente> ColaClientes
         {
-            get { return this.ColaClientes; }
-            set { this.ColaClientes = value; }
+            get { return this.colaClientes; }
+            set { this.colaClientes = value; }
         }
 
         /// <summary>
         /// Devuelve la lista de clientes
         /// </summary>
-        public List<Cliente>Lista_Clientes
+        public List<Cliente>ListaClientes
         {
-            get { return this.ListaClientes; }
-            set { this.ListaClientes = value; }
+            get { return this.listaClientes; }
+            set { this.listaClientes = value; }
         }
 
         /// <summary>
         /// devuelve el stock ed bebidas
         /// </summary>
-        public Queue<Bebida>Stock_DeBebidas
+        public Queue<Bebida>StockDeBebidas
         {
-            get { return this.StockDeBebidas; }
-            set { this.StockDeBebidas = value; }
+            get { return this.stockDeBebidas; }
+            set { this.stockDeBebidas = value; }
         }
 
         /// <summary>
@@ -235,7 +237,7 @@ namespace Entidades.Clases_generales
         /// <returns></returns>
         public string this[int indice]
         {
-            get { return $"{ColaClientes.Peek().Nombre}  {Cola_Clientes.Peek().Apellido}"; }
+            get { return $"{colaClientes.Peek().Nombre}  {ColaClientes.Peek().Apellido}"; }
         }
       
 
@@ -247,54 +249,56 @@ namespace Entidades.Clases_generales
         /// </summary>
         private Local()
         {
-            this.ListaClientes = new List<Cliente>();
+            this.listaClientes = new List<Cliente>();
             this.compusCabinas = new List<Maquina>();
 
-            this.ListaCompusDisponibles = new List<Computadora>()
+            this.listaCompusDisponibles = new List<Computadora>()
             {
           
-            new Computadora("C01",new List<string>(){"office","messenger" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike","DiabloII","MuOnline","LineageII" }),
-            new Computadora("C02",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "MuOnline", "LineageII"}),
-            new Computadora("C03",new List<string>(){"office","messenger" ,"icq","ares"},new List<string>(){"camara","auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" }),
-            new Computadora("C04",new List<string>(){"icq","ares" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike", "DiabloII"}),
-            new Computadora("C05",new List<string>(){"messenger","ares"},new List<string>(){"auriculares" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" }),
-            new Computadora("C06",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"camara" },new List<string>(){ "MuOnline", "LineageII" }),
-            new Computadora("C07",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"microfono" },new List<string>(){"CounterStrike",   "LineageII"}),
-            new Computadora("C08",new List<string>(){"office","messenger","ares" },new List<string>(){"auriculares" },new List<string>(){ "DiabloII", "MuOnline", "LineageII" }),
-            new Computadora("C09",new List<string>(){"ares" },new List<string>(){"camara","auriculares" },new List<string>(){ "DiabloII", "MuOnline" }),
-            new Computadora("C10",new List<string>(){"messenger","icq" },new List<string>(){"camara","auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII"}),
-            new Computadora("C11",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline" }) ,
-            new Computadora("C12",new List<string>(){"icq","ares" },new List<string>(){"camara","auriculares" },new List<string>(){"LineageII" }),
-            new Computadora("C13",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"camara" },new List<string>(){"DiabloII" }),
-            new Computadora("C14",new List<string>(){"office","messenger","ares" },new List<string>(){"auriculares" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" }),
-            new Computadora("C15",new List<string>(){"messenger","icq" },new List<string>(){"camara","auriculares","microfono" },new List<string>(){"DiabloII", "MuOnline"}),
+          
+
+            new Computadora("C01",new List<string>(){"office","messenger" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike","DiabloII","MuOnline","LineageII" },new List<string>(){"Procesador :i3\nRam:4gb\nPlaca de video: gts 250" }),
+            new Computadora("C02",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "MuOnline", "LineageII"},new List<string>(){"Procesador :i5\nRam:4gb\nPlaca de video: gts 650" }),
+            new Computadora("C03",new List<string>(){"office","messenger" ,"icq","ares"},new List<string>(){"camara","auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" },new List<string>(){"Procesador :i5\nRam:8gb\nPlaca de video: Radeon 7" }),
+            new Computadora("C04",new List<string>(){"icq","ares" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike", "DiabloII"},new List<string>(){"Procesador :i3\nRam:6gb\nPlaca de video: gts 550" }),
+            new Computadora("C05",new List<string>(){"messenger","ares"},new List<string>(){"auriculares" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" },new List<string>(){"Procesador :i7\nRam:12gb\nPlaca de video: gt 710" }),
+            new Computadora("C06",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"camara" },new List<string>(){ "MuOnline", "LineageII" },new List<string>(){"Procesador :i3\nRam:4gb\nPlaca de video: Radeon 3" }),
+            new Computadora("C07",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"microfono" },new List<string>(){"CounterStrike",   "LineageII"},new List<string>(){"Procesador :i5\nRam:8gb\nPlaca de video: gt 730" }),
+            new Computadora("C08",new List<string>(){"office","messenger","ares" },new List<string>(){"auriculares" },new List<string>(){ "DiabloII", "MuOnline", "LineageII" },new List<string>(){"Procesador :i7\nRam:12gb\nPlaca de video: gtx 550" }),
+            new Computadora("C09",new List<string>(){"ares" },new List<string>(){"camara","auriculares" },new List<string>(){ "DiabloII", "MuOnline" },new List<string>(){"Procesador :i7\nRam:12gb\nPlaca de video: gtx 550" }),
+            new Computadora("C10",new List<string>(){"messenger","icq" },new List<string>(){"camara","auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII"},new List<string>(){"Procesador :i5\nRam:6gb\nPlaca de video: gts 450" }),
+            new Computadora("C11",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline" },new List<string>(){"Procesador :i3\nRam:8gb\nPlaca de video: Radeon 3" }) ,
+            new Computadora("C12",new List<string>(){"icq","ares" },new List<string>(){"camara","auriculares" },new List<string>(){"LineageII" },new List<string>(){"Procesador :i5\nRam:6gb\nPlaca de video: gts 350" }),
+            new Computadora("C13",new List<string>(){"office", "messenger", "icq", "ares" },new List<string>(){"camara" },new List<string>(){"DiabloII" },new List<string>(){"Procesador :i3\nRam:4gb\nPlaca de video: No tiene" }),
+            new Computadora("C14",new List<string>(){"office","messenger","ares" },new List<string>(){"auriculares" },new List<string>(){"CounterStrike", "DiabloII", "MuOnline", "LineageII" },new List<string>(){"Procesador :i3\nRam:4gb\nPlaca de video: gt 150" }),
+            new Computadora("C15",new List<string>(){"messenger","icq" },new List<string>(){"camara","auriculares","microfono" },new List<string>(){"DiabloII", "MuOnline"},new List<string>(){"Procesador :i5\nRam:8gb\nPlaca de video: Radeon 7" }),
         };
 
 
 
            
 
-            this.ListaCompusOcupadas = new List<Computadora>();
-            this.ListaCompusFinalizadas = new List<Computadora>();
+            this.listaCompusOcupadas = new List<Computadora>();
+            this.listaCompusFinalizadas = new List<Computadora>();
           
-            this.ColaClientes = new Queue<Cliente>();
+            this.colaClientes = new Queue<Cliente>();
 
 
-            ColaClientes.Enqueue(new Cliente("Lucas", "Heredia", 48657285, 25, new List<string>() { "office", "messenger" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
-            ColaClientes.Enqueue(new Cliente("Maxi", "Leiva", 47023687, 24, "5401143258073"));
-            ColaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23, new List<string>() { "messenger" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
-            ColaClientes.Enqueue(new Cliente("Silvia", "Diaz", 37048521, 22, "8502214367852"));
-            ColaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21, new List<string>() { "office", "messenger", "icq", "ares" }, new List<string>() { "camara" }, new List<string>() { "DiabloII" }));
-            ColaClientes.Enqueue(new Cliente("Esteban", "Chaves", 39854740, 20, "5401279463102"));
-            ColaClientes.Enqueue(new Cliente("Monica", "Maldonado", 40259671, 21, new List<string>() { "ares" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "DiabloII", "MuOnline" }));
-            ColaClientes.Enqueue(new Cliente("Lucia", "Liso", 34789652, 24, "5402316487520"));
-            ColaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, new List<string>() { "office", "messenger", "icq", "ares" }, new List<string>() { "camara", "auriculares", "microfono" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
-            ColaClientes.Enqueue(new Cliente("Ester", "Devo", 37850142, 29, "6851236987452"));
+            colaClientes.Enqueue(new Cliente("Lucas", "Heredia", 48657285, 25, new List<string>() { "office", "messenger" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
+            colaClientes.Enqueue(new Cliente("Maxi", "Leiva", 47023687, 24, "5401143258073"));
+            colaClientes.Enqueue(new Cliente("Emilia", "Gonzales", 437895205, 23, new List<string>() { "messenger" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
+            colaClientes.Enqueue(new Cliente("Silvia", "Diaz", 37048521, 22, "8502214367852"));
+            colaClientes.Enqueue(new Cliente("Ramiro", "Ayala", 38974102, 21, new List<string>() { "office", "messenger", "icq", "ares" }, new List<string>() { "camara" }, new List<string>() { "DiabloII" }));
+            colaClientes.Enqueue(new Cliente("Esteban", "Chaves", 39854740, 20, "5401279463102"));
+            colaClientes.Enqueue(new Cliente("Monica", "Maldonado", 40259671, 21, new List<string>() { "ares" }, new List<string>() { "camara", "auriculares" }, new List<string>() { "DiabloII", "MuOnline" }));
+            colaClientes.Enqueue(new Cliente("Lucia", "Liso", 34789652, 24, "5402316487520"));
+            colaClientes.Enqueue(new Cliente("Carlos", "Rivas", 35789641, 28, new List<string>() { "office", "messenger", "icq", "ares" }, new List<string>() { "camara", "auriculares", "microfono" }, new List<string>() { "CounterStrike", "DiabloII", "MuOnline", "LineageII" }));
+            colaClientes.Enqueue(new Cliente("Ester", "Devo", 37850142, 29, "6851236987452"));
 
-            this.ListaClientes = new List<Cliente>();
+            this.listaClientes = new List<Cliente>();
 
           
-            this.ListaCabinasDisponibles = new List<Cabina>()
+            this.listaCabinasDisponibles = new List<Cabina>()
             {
                 new Cabina("T01",Cabina.TipoTelefono.ConTeclado,"Panasonic"),
                 new Cabina("T02",Cabina.TipoTelefono.ACuerda,"Siemens"),
@@ -309,21 +313,21 @@ namespace Entidades.Clases_generales
             };
 
 
-            this.ListaCabinasOcupadas = new List<Cabina>();
-            this.ListaCabinasFinalizadas = new List<Cabina>();
+            this.listaCabinasOcupadas = new List<Cabina>();
+            this.listaCabinasFinalizadas = new List<Cabina>();
 
-            this.StockDeBebidas = new Queue<Bebida>();
-            Stock_DeBebidas.Enqueue(new Bebida(913254867));
-            Stock_DeBebidas.Enqueue(new Bebida(147852369));
-            Stock_DeBebidas.Enqueue(new Bebida(654789321));
-            Stock_DeBebidas.Enqueue(new Bebida(265384791));
-            Stock_DeBebidas.Enqueue(new Bebida(735198264));
-            Stock_DeBebidas.Enqueue(new Bebida(468257931));
-            Stock_DeBebidas.Enqueue(new Bebida(137985426));
-            Stock_DeBebidas.Enqueue(new Bebida(741963852));
-            Stock_DeBebidas.Enqueue(new Bebida(587423691));
-            Stock_DeBebidas.Enqueue(new Bebida(932741865));
-            Stock_DeBebidas.Enqueue(new Bebida(987412356));
+            this.stockDeBebidas = new Queue<Bebida>();
+            StockDeBebidas.Enqueue(new Bebida(913254867));
+            StockDeBebidas.Enqueue(new Bebida(147852369));
+            StockDeBebidas.Enqueue(new Bebida(654789321));
+            StockDeBebidas.Enqueue(new Bebida(265384791));
+            StockDeBebidas.Enqueue(new Bebida(735198264));
+            StockDeBebidas.Enqueue(new Bebida(468257931));
+            StockDeBebidas.Enqueue(new Bebida(137985426));
+            StockDeBebidas.Enqueue(new Bebida(741963852));
+            StockDeBebidas.Enqueue(new Bebida(587423691));
+            StockDeBebidas.Enqueue(new Bebida(932741865));
+            StockDeBebidas.Enqueue(new Bebida(987412356));
 
 
 
@@ -366,10 +370,10 @@ namespace Entidades.Clases_generales
                 loc.compusCabinas.Add(c);
                 if (c is Computadora)
                 {
-                    loc.ListaCompusDisponibles.Add((Computadora)c);
+                    loc.listaCompusDisponibles.Add((Computadora)c);
                 }
                 if (c is Cabina)
-                { loc.ListaCabinasDisponibles.Add((Cabina)c); }
+                { loc.listaCabinasDisponibles.Add((Cabina)c); }
 
                 retorno = true;
             }
@@ -389,7 +393,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Computadora item in l.ListaCompusDisponibles)
+            foreach (Computadora item in l.listaCompusDisponibles)
             {
                 if (item == c)
                 {
@@ -413,7 +417,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaCompusDisponibles(l, c)))
             {
-                l.ListaCompusDisponibles.Add(c);
+                l.listaCompusDisponibles.Add(c);
                 retorno = true;
             }
 
@@ -431,7 +435,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if(Local.AlmacenadoEnListaCompusDisponibles(l,c))
             {
-                l.ListaCompusDisponibles.Remove(c);
+                l.listaCompusDisponibles.Remove(c);
                 retorno = true;
             }
 
@@ -449,7 +453,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Computadora item in l.ListaCompusOcupadas)
+            foreach (Computadora item in l.listaCompusOcupadas)
             {
                 if (item == c)
                 {
@@ -473,7 +477,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaCompusOcupadas(l, c)))
             {
-                l.ListaCompusOcupadas.Add(c);
+                l.listaCompusOcupadas.Add(c);
                 retorno = true;
             }
 
@@ -491,7 +495,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if (Local.AlmacenadoEnListaCompusOcupadas(l, c))
             {
-                l.ListaCompusOcupadas.Remove(c);
+                l.listaCompusOcupadas.Remove(c);
                 retorno = true;
             }
 
@@ -510,7 +514,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Computadora item in l.ListaCompusFinalizadas)
+            foreach (Computadora item in l.listaCompusFinalizadas)
             {
                 if (item == c)
                 {
@@ -534,7 +538,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaCompusFinalizadas(l, c)))
             {
-                l.ListaCompusFinalizadas.Add(c);
+                l.listaCompusFinalizadas.Add(c);
 
                 retorno = true;
             }
@@ -553,7 +557,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if (Local.AlmacenadoEnListaCompusFinalizadas(l, c))
             {
-                l.ListaCompusFinalizadas.Remove(c);
+                l.listaCompusFinalizadas.Remove(c);
                 retorno = true;
             }
 
@@ -573,7 +577,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Cabina item in l.ListaCabinasDisponibles)
+            foreach (Cabina item in l.listaCabinasDisponibles)
             {
                 if (item == c)
                 {
@@ -597,7 +601,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaCabinasDisponibles(l, c)))
             {
-                l.ListaCabinasDisponibles.Add(c);
+                l.listaCabinasDisponibles.Add(c);
                 retorno = true;
             }
 
@@ -615,7 +619,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if (Local.AlmacenadoEnListaCabinasDisponibles(l, c))
             {
-                l.ListaCabinasDisponibles.Remove(c);
+                l.listaCabinasDisponibles.Remove(c);
                 retorno = true;
             }
 
@@ -633,7 +637,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Cabina item in l.ListaCabinasOcupadas)
+            foreach (Cabina item in l.listaCabinasOcupadas)
             {
                 if (item == c)
                 {
@@ -657,7 +661,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaCabinasOcupadas(l, c)))
             {
-                l.ListaCabinasOcupadas.Add(c);
+                l.listaCabinasOcupadas.Add(c);
                 retorno = true;
             }
 
@@ -675,7 +679,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if (Local.AlmacenadoEnListaCabinasOcupadas(l, c))
             {
-                l.ListaCabinasOcupadas.Remove(c);
+                l.listaCabinasOcupadas.Remove(c);
                 retorno = true;
             }
 
@@ -695,7 +699,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Cabina item in l.ListaCabinasFinalizadas)
+            foreach (Cabina item in l.listaCabinasFinalizadas)
             {
                 if (item == c)
                 {
@@ -719,7 +723,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaCabinasFinalizadas(l, c)))
             {
-                l.ListaCabinasFinalizadas.Add(c);
+                l.listaCabinasFinalizadas.Add(c);
                 retorno = true;
             }
 
@@ -737,7 +741,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if (Local.AlmacenadoEnListaCabinasFinalizadas(l, c))
             {
-                l.ListaCabinasFinalizadas.Remove(c);
+                l.listaCabinasFinalizadas.Remove(c);
                 retorno = true;
             }
 
@@ -754,7 +758,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Cliente item in l.ListaClientes)
+            foreach (Cliente item in l.listaClientes)
             {
                 if (item == c)
                 {
@@ -778,7 +782,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnListaClientes(l, c)))
             {
-                l.ListaClientes.Add(c);
+                l.listaClientes.Add(c);
                 retorno = true;
             }
 
@@ -796,7 +800,7 @@ namespace Entidades.Clases_generales
             bool retorno = false;
             if (Local.AlmacenadoEnListaClientes(l, c))
             {
-                l.ListaClientes.Remove(c);
+                l.listaClientes.Remove(c);
                 retorno = true;
             }
 
@@ -815,7 +819,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            foreach (Cliente item in l.ColaClientes)
+            foreach (Cliente item in l.colaClientes)
             {
                 if (item == c)
                 {
@@ -839,7 +843,7 @@ namespace Entidades.Clases_generales
 
             if (!(Local.AlmacenadoEnColaClientes(l, c)))
             {
-                l.ColaClientes.Enqueue(c);
+                l.colaClientes.Enqueue(c);
                 retorno = true;
             }
 
@@ -860,7 +864,7 @@ namespace Entidades.Clases_generales
             //    l.ColaClientes.Dequeue();
             //    retorno = true;
             //}
-            l.Cola_Clientes.Dequeue();
+            l.ColaClientes.Dequeue();
             return retorno;
         }
 
@@ -885,24 +889,24 @@ namespace Entidades.Clases_generales
                 c.TiempoInicial = DateTime.Now;
                 c.Stopwacth.Start();
 
-                if(c.Peticiones.Lista_Sofware.Contains("office")) { l.ContadorSofwareOffice += 1; }
-                if (c.Peticiones.Lista_Sofware.Contains("messenger")) { l.ContadorSofwaremessenger += 1; }
-                if (c.Peticiones.Lista_Sofware.Contains("icq")) { l.ContadorSofwareicq += 1; }
-                if (c.Peticiones.Lista_Sofware.Contains("ares")) { l.ContadorSofwareares += 1; }
+                if(c.Peticiones.ListaSofware.Contains("office")) { l.ContadorSofwareOffice += 1; }
+                if (c.Peticiones.ListaSofware.Contains("messenger")) { l.ContadorSofwareMessenger += 1; }
+                if (c.Peticiones.ListaSofware.Contains("icq")) { l.ContadorSofwareIcq += 1; }
+                if (c.Peticiones.ListaSofware.Contains("ares")) { l.ContadorSofwareAres += 1; }
 
                 
 
 
-                if(c.Peticiones.Lista_Perifericos.Contains("camara")) { l.ContadorPeriféricosCamara += 1; }
-                if (c.Peticiones.Lista_Perifericos.Contains("auriculares")) { l.ContadorPeriféricosAuriculares += 1; }
-                if (c.Peticiones.Lista_Perifericos.Contains("microfono")) { l.ContadorPeriféricosMicrófono += 1; }
+                if(c.Peticiones.ListaPerifericos.Contains("camara")) { l.ContadorPerifericosCamara += 1; }
+                if (c.Peticiones.ListaPerifericos.Contains("auriculares")) { l.ContadorPerifericosAuriculares += 1; }
+                if (c.Peticiones.ListaPerifericos.Contains("microfono")) { l.ContadorPerifericosMicrofono += 1; }
 
             
 
-                if(c.Peticiones.Lista_Juegos.Contains("CounterStrike")) { l.ContadorJuegosCS += 1; }
-                if (c.Peticiones.Lista_Juegos.Contains("DiabloII")) { l.ContadorJuegosDiablo += 1; }
-                if (c.Peticiones.Lista_Juegos.Contains("MuOnline")) { l.ContadorJuegosMu += 1; }
-                if (c.Peticiones.Lista_Juegos.Contains("LineageII")) { l.ContadorJuegosLinege += 1; }
+                if(c.Peticiones.ListaJuegos.Contains("CounterStrike")) { l.ContadorJuegosCS += 1; }
+                if (c.Peticiones.ListaJuegos.Contains("DiabloII")) { l.ContadorJuegosDiablo += 1; }
+                if (c.Peticiones.ListaJuegos.Contains("MuOnline")) { l.ContadorJuegosMu += 1; }
+                if (c.Peticiones.ListaJuegos.Contains("LineageII")) { l.ContadorJuegosLinege += 1; }
 
              
 
@@ -946,7 +950,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static bool FinalizarTareaCompu(Local l, Computadora c)
+        public static bool FinalizarTarea(Local l, Computadora c)
         {
             bool retorno = false;
 
@@ -967,13 +971,14 @@ namespace Entidades.Clases_generales
             return retorno;
         }
 
+        
         /// <summary>
         /// finaliza la cabina y le asigna un tiempo final para calcular el costo
         /// </summary>
         /// <param name="l"></param>
         /// <param name="c"></param>
         /// <returns></returns>
-        public static bool FinalizarTareaCabina(Local l, Cabina c)
+        public static bool FinalizarTarea(Local l, Cabina c)
         {
             bool retorno = false;
 
@@ -1008,8 +1013,8 @@ namespace Entidades.Clases_generales
             List<string> retornosP = new List<string>();
             List<string> retornosJ = new List<string>();
 
-            int[] sofware = { ContadorSofwareOffice, ContadorSofwaremessenger, ContadorSofwareicq, ContadorSofwareares };
-            int[] Perisfericos = { ContadorPeriféricosCamara, ContadorPeriféricosAuriculares, ContadorPeriféricosMicrófono };
+            int[] sofware = { ContadorSofwareOffice, ContadorSofwareMessenger, ContadorSofwareIcq, ContadorSofwareAres };
+            int[] Perisfericos = { ContadorPerifericosCamara, ContadorPerifericosAuriculares, ContadorPerifericosMicrofono };
             int[] Juegos = { ContadorJuegosCS, ContadorJuegosDiablo, ContadorJuegosMu, ContadorJuegosLinege };
 
             int maxs = sofware[0];
@@ -1095,7 +1100,7 @@ namespace Entidades.Clases_generales
         {
            
 
-            IEnumerable<Computadora> ListaPCOrdenadas = this.ListaCompusFinalizadas.OrderByDescending(user => user.TiempoTotalDeUso);
+            IEnumerable<Computadora> ListaPCOrdenadas = this.listaCompusFinalizadas.OrderByDescending(user => user.TiempoTotalDeUso);
             StringBuilder sb = new StringBuilder();
             foreach (Computadora item in ListaPCOrdenadas)
             {
@@ -1118,7 +1123,7 @@ namespace Entidades.Clases_generales
         {
            
 
-            IEnumerable<Cabina> ListaCabinasOrdenadas = this.ListaCabinasFinalizadas.OrderByDescending(user => user.TiempoTotalDeUso);
+            IEnumerable<Cabina> ListaCabinasOrdenadas = this.listaCabinasFinalizadas.OrderByDescending(user => user.TiempoTotalDeUso);
             StringBuilder sb = new StringBuilder();
             foreach (Cabina item in ListaCabinasOrdenadas)
             {
@@ -1138,7 +1143,7 @@ namespace Entidades.Clases_generales
         {
 
 
-            IEnumerable<Computadora> ListaCompusOrdenadas = this.Lista_CompusFinalizadas.OrderByDescending(user => user.Recaudacion);
+            IEnumerable<Computadora> ListaCompusOrdenadas = this.ListaCompusFinalizadas.OrderByDescending(user => user.Recaudacion);
             StringBuilder sb = new StringBuilder();
 
             foreach (Computadora item in ListaCompusOrdenadas)
@@ -1159,7 +1164,7 @@ namespace Entidades.Clases_generales
         {
 
 
-            IEnumerable<Cabina> ListaCabinasFinalizadas = this.Lista_CabinasFinalizadas.OrderByDescending(user => user.Recaudacion);
+            IEnumerable<Cabina> ListaCabinasFinalizadas = this.ListaCabinasFinalizadas.OrderByDescending(user => user.Recaudacion);
             StringBuilder sb = new StringBuilder();
 
             foreach (Cabina item in ListaCabinasFinalizadas)
@@ -1193,7 +1198,7 @@ namespace Entidades.Clases_generales
         public double TiempoTotalCabinas()
         {
             double acum = 0;
-            foreach (Cabina item in this.ListaCabinasFinalizadas)
+            foreach (Cabina item in this.listaCabinasFinalizadas)
             {
                 acum += item.TiempoTotalDeUso;
             }
@@ -1216,10 +1221,10 @@ namespace Entidades.Clases_generales
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Ganancias de Computadoras: ");
-            sb.AppendLine(this.ContadorGananciasDelDiaPC.ToString());
+            sb.AppendLine((this.ContadorGananciasDelDiaPC * iva).ToString());
             sb.AppendLine();
             sb.AppendLine("Ganancias de Cabinas: ");
-            sb.AppendLine(this.ContadorGananciasDelDiaCabina.ToString());
+            sb.AppendLine((this.ContadorGananciasDelDiaCabina* iva).ToString());
 
             return sb.ToString();
         }
@@ -1238,7 +1243,7 @@ namespace Entidades.Clases_generales
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Nombre del que atiende: {this.nombreDelQueAtiende}");
             sb.AppendLine("Maquinas: ");
-            foreach (Computadora item in this.ListaCompusDisponibles)
+            foreach (Computadora item in this.listaCompusDisponibles)
             {
                 sb.AppendLine(item.Mostrar());
             }
@@ -1256,7 +1261,7 @@ namespace Entidades.Clases_generales
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Nombre del que atiende: {this.nombreDelQueAtiende}");
             sb.AppendLine("Maquinas: ");
-            foreach (Computadora item in this.ListaCompusOcupadas)
+            foreach (Computadora item in this.listaCompusOcupadas)
             {
                 sb.AppendLine(item.Mostrar());
             }
@@ -1273,7 +1278,7 @@ namespace Entidades.Clases_generales
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Nombre del que atiende: {this.nombreDelQueAtiende}");
             sb.AppendLine("Maquinas: ");
-            foreach (Cabina item in this.ListaCabinasDisponibles)
+            foreach (Cabina item in this.listaCabinasDisponibles)
             {
                 sb.AppendLine(item.Mostrar());
             }
@@ -1291,7 +1296,7 @@ namespace Entidades.Clases_generales
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Nombre del que atiende: {this.nombreDelQueAtiende}");
             sb.AppendLine("Maquinas: ");
-            foreach (Cabina item in this.ListaCabinasOcupadas)
+            foreach (Cabina item in this.listaCabinasOcupadas)
             {
                 sb.AppendLine(item.Mostrar());
             }
@@ -1307,7 +1312,7 @@ namespace Entidades.Clases_generales
         {
             StringBuilder sb = new StringBuilder();
           
-            foreach (Cliente item in this.ListaClientes)
+            foreach (Cliente item in this.listaClientes)
             {
                 sb.AppendLine(item.ToString());
             }
@@ -1323,7 +1328,7 @@ namespace Entidades.Clases_generales
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach (Cliente item in this.ColaClientes)
+            foreach (Cliente item in this.colaClientes)
             {
                 sb.AppendLine(item.ToString());
             }
@@ -1420,7 +1425,7 @@ namespace Entidades.Clases_generales
         public override bool Equals(object obj)
         {
             Local otroLocal = obj as Local;
-            return otroLocal != null && this == otroLocal;
+            return otroLocal is not null && this == otroLocal;
         }
 
         public override int GetHashCode()

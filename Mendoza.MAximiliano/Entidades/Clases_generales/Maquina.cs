@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Itenso.TimePeriod;
 
 
 namespace Entidades.Clases_generales
@@ -22,13 +23,14 @@ namespace Entidades.Clases_generales
         private DateTime tiempoInicial;
         private DateTime tiempoFinal;
         private  Stopwatch stopwacth = new Stopwatch();
-        private List<Bebida> ListaDeCocas=new List<Bebida>();
+        private List<Bebida> listaBebidas=new List<Bebida>();
 
-        public int cocasTotales = 0;
+        public int bebidasTotales = 0;
         public float recaudacion = 0;
-        private int cantidadDeCocasEnLista = 0;
+        private int cantidadDeBebidasEnLista = 0;
 
         private  const float precioBebida = 1.5f;
+        private float costoFinal;
         //--------------------Propiedades--------------------------------------
         /// <summary>
         /// indica el tiempo inicial desde que entra a la lista de disponibles
@@ -61,8 +63,8 @@ namespace Entidades.Clases_generales
 
         public List<Bebida>ListaBebidas
         {
-            get { return this.ListaDeCocas; }
-            set { this.ListaDeCocas = value; }
+            get { return this.listaBebidas; }
+            set { this.listaBebidas = value; }
         }
 
         /// <summary>
@@ -79,10 +81,10 @@ namespace Entidades.Clases_generales
         /// <summary>
         /// propiedad qu edevuelve las cocas totasles
         /// </summary>
-        public int CocasTotales
+        public int BebidasTotales
         {
-            get { return this.cocasTotales; }
-            set { this.cocasTotales = value; }
+            get { return this.bebidasTotales; }
+            set { this.bebidasTotales = value; }
         }
 
         /// <summary>
@@ -98,10 +100,10 @@ namespace Entidades.Clases_generales
         /// <summary>
         /// propiedad para saber la cantidad de cocas en la lista
         /// </summary>
-        public int CantidadDeCocasEnLista
+        public int CantidadDeBebidasEnLista
         {
-            get { return this.cantidadDeCocasEnLista; }
-            set { this.cantidadDeCocasEnLista = value; }
+            get { return this.cantidadDeBebidasEnLista; }
+            set { this.cantidadDeBebidasEnLista = value; }
         }
 
 
@@ -109,16 +111,35 @@ namespace Entidades.Clases_generales
         {
             get { return precioBebida; }
         }
+
+        public float CostoFinal
+        {
+            get { return this.costoFinal; }
+            set { this.costoFinal = value; }
+
+        }
+
+
+        /// <summary>
+        /// indica el tiempo de uso de la compu en la lista de compus ocupadas
+        /// </summary>
+        public int TiempoDeUsoNugget
+        {
+            get
+            {
+                DateDiff dateDiff = new DateDiff(this.TiempoInicial, this.TiempoFinal);
+                return dateDiff.Seconds;
+            }
+        }
+
         //---------------Propiedades Abstractas------------------------------
 
         public abstract Tipo TipoDeMaquina { get; }
-        public abstract double TiempoDeUso { get; }
         public abstract float CalcularCosto();
 
         //------------Metodos abstractos--------------------------
         public abstract bool AgregarBebida(Bebida c);
-        public abstract float CalcularCostoDeConsumoBebidas();
-
+        public abstract float ConsumoFinalIva();
         //--------------Constructores---------------------------------------
         /// <summary>
         /// Constructor sin parametros
@@ -138,6 +159,24 @@ namespace Entidades.Clases_generales
         }
 
         //-----------------Metodos------------------------------------------------------
+
+        /// <summary>
+        /// calcula el costo de consumo de las bebidas pedidas
+        /// </summary>
+        /// <returns></returns>
+        public float CalcularCostoDeConsumoBebidas()
+        {
+            float acum = 0; ;
+            foreach (Bebida item in this.ListaBebidas)
+            {
+                acum += item.Precio;
+            }
+            return acum;
+
+        }
+
+      
+
         /// <summary>
         /// Muestra tipo de maquina y su nombre
         /// </summary>
@@ -201,7 +240,7 @@ namespace Entidades.Clases_generales
         public override bool Equals(object obj)
         {
             Maquina otraMaquina = obj as Maquina;
-            return otraMaquina != null && this == otraMaquina;
+            return otraMaquina is not null && this == otraMaquina;
         }
 
         /// <summary>

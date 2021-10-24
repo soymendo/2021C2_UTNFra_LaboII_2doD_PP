@@ -20,7 +20,7 @@ namespace Entidades.Clases_especializadas
             set { this.precio=value; }
         }
 
-        public string MostrarCoca()
+        public string MostrarBebida()
         {
             return $"{this.Precio}";
         }
@@ -55,14 +55,14 @@ namespace Entidades.Clases_especializadas
 
         public override string ToString()
         {
-            return this.MostrarCoca();
+            return this.MostrarBebida();
         }
 
 
         public override bool Equals(object obj)
         {
             Bebida otraCoca = obj as Bebida;
-            return otraCoca != null && this == otraCoca;
+            return otraCoca is not null && this == otraCoca;
         }
 
         public override int GetHashCode()
