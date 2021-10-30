@@ -138,12 +138,11 @@ namespace Entidades.Clases_generales
         public abstract float CalcularCosto();
 
         //------------Metodos abstractos--------------------------
-        public abstract bool AgregarBebida(Bebida c);
+       // public abstract bool AgregarBebida(Bebida c);
         public abstract float ConsumoFinalIva();
         //--------------Constructores---------------------------------------
         /// <summary>
-        /// Constructor sin parametros
-        /// </summary>
+        /// Constructor sin parametros, si lo saco rompe en constructor Cabina(string numeroAMarcar)
         public Maquina()
         {
 
@@ -154,11 +153,38 @@ namespace Entidades.Clases_generales
         /// </summary>
         /// <param name="nombre"></param>
         public Maquina(string identificador)
+        
         {
             this.identificador = identificador;
         }
 
         //-----------------Metodos------------------------------------------------------
+
+
+        /// <summary>
+        /// agrega una bebida a la lista de bebidas de computadora
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public bool AgregarBebida(Bebida c)
+        {
+
+            bool retorno = false;
+            if (c is not null)
+            {
+                this.ListaBebidas.Add(c);
+                CantidadDeBebidasEnLista += 1;
+                BebidasTotales += 1;
+                retorno = true;
+            }
+
+            return retorno;
+        }
+
+
+
+
+
 
         /// <summary>
         /// calcula el costo de consumo de las bebidas pedidas

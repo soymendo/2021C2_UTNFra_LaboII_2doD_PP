@@ -205,6 +205,7 @@ namespace Formulario
                     }                                  
                 }
                 nupTiempo.Enabled = true;
+                nupTiempo.Value = 0;
                 rbtLibre.Enabled = true;
             }
         }
@@ -323,19 +324,19 @@ namespace Formulario
                 if (Local.FinalizarTarea(local, cab))
                 {
                     cab.CantidadDeBebidasEnLista = cocaAux;
-                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUsoNugget}\nDestino: {cab.Destino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}\nPrecio Final iva: {/*string.Format("{00:00.00}", cab.ConsumoFinalIva())*/cab.ConsumoFinalIva()}","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUsoNugget}\nDestino: {cab.DevolverDestino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}\nPrecio Final iva: {/*string.Format("{00:00.00}", cab.ConsumoFinalIva())*/cab.ConsumoFinalIva()}","", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cab.CantidadDeBebidasEnLista = cocaAux;
                   
                     cab.recaudacion += cab.CalcularCostoCabinaBebida();
-                    if(cab.Destino()==TipoLlamada.local.ToString())
+                    if(cab.DevolverDestino()==TipoLlamada.local.ToString())
                     {
                         local.TotalLocal += cab.CalcularCosto();
                     }
-                    if(cab.Destino()==TipoLlamada.largaDistancia.ToString())
+                    if(cab.DevolverDestino()==TipoLlamada.largaDistancia.ToString())
                     {
                         local.TotalLargaDistancia += cab.CalcularCosto();
                     }
-                    if(cab.Destino()==TipoLlamada.internacional.ToString())
+                    if(cab.DevolverDestino()==TipoLlamada.internacional.ToString())
                     {
                         local.TotalInterncaional += cab.CalcularCosto();
                     }
@@ -397,7 +398,7 @@ namespace Formulario
             {      
                 Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
                 cab.TiempoFinal = DateTime.Now;
-                MessageBox.Show($" tiempo de uso: {cab.TiempoDeUsoNugget} destino: {cab.Destino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($" tiempo de uso: {cab.TiempoDeUsoNugget} destino: {cab.DevolverDestino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

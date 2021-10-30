@@ -162,28 +162,6 @@ namespace Entidades.Clases_especializadas
             return retorno;
         }
 
-
-
-        /// <summary>
-        /// agrega una bebida a la lista de bebidas de computadora
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public override bool AgregarBebida(Bebida c)
-        {
-            
-            bool retorno = false;
-            if(c is not null)
-            {
-                this.ListaBebidas.Add(c);
-                CantidadDeBebidasEnLista += 1;
-                BebidasTotales += 1;
-                retorno = true;
-            }
-           
-            return retorno;
-        }
-
       
 
         /// <summary>
@@ -227,7 +205,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"Tiempo de uso pc: {this.TiempoTotalDeUso}");
             sb.AppendLine($"Cantidad de cocas: {this.BebidasTotales}");
-            sb.AppendLine($"Recaudacion:{Recaudacion*1.21}");
+            sb.AppendLine($"Recaudacion:  {string.Format("{0:0.00}", Recaudacion*1.21)}");
             return sb.ToString();
         }
 

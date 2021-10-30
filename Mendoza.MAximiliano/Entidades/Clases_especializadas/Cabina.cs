@@ -18,7 +18,7 @@ namespace Entidades.Clases_especializadas
     {
         public enum TipoTelefono
         {
-            ACuerda, ConTeclado
+            ADisco, ConTeclado
         }
 
         //------------Atributos-----------
@@ -175,49 +175,7 @@ namespace Entidades.Clases_especializadas
             return retorno;
         }
 
-        /// <summary>
-        /// agrega una bebida a la lista de bebidas de cabina
-        /// </summary>
-        /// <param name="c"></param>
-        /// <returns></returns>
-        public override bool AgregarBebida(Bebida c)
-        {
-
-           
-
-            bool retorno = false;
-            if (c is not null)
-            {
-                this.ListaBebidas.Add(c);
-                CantidadDeBebidasEnLista += 1;
-                BebidasTotales += 1;
-                retorno = true;
-            }
-            return retorno;
-        }
-
-        /// <summary>
-        /// calcula el costo de consumo de las bebidas pedidas
-        /// </summary>
-        /// <returns></returns>
-        //public override float CalcularCostoDeConsumoBebidas()
-        //{
-
-        //    float acum = 0; ;
-        //    foreach (Bebida item in this.ListaBebidas)
-        //    {
-        //        acum += item.Precio;
-        //    }
-        //    return acum;
-        //}
-
-
-
-
-
-
-
-
+       
         // <summary>
         /// calcula el costo de todas las llamas hechas
         /// </summary>
@@ -225,9 +183,9 @@ namespace Entidades.Clases_especializadas
         public override float CalcularCosto()
         {
             float retorno = 0;
-            if (Destino() ==TipoLlamada.local.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 1; }
-            if (Destino() == TipoLlamada.largaDistancia.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 2.5f; }
-            if (Destino() == TipoLlamada.internacional.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 5; }
+            if (DevolverDestino() ==TipoLlamada.local.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 1; }
+            if (DevolverDestino() == TipoLlamada.largaDistancia.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 2.5f; }
+            if (DevolverDestino() == TipoLlamada.internacional.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 5; }
             return retorno;
         }
 
@@ -239,9 +197,9 @@ namespace Entidades.Clases_especializadas
         /// define si es local, larga llamada o internacional
         /// </summary>
         /// <returns></returns>
-        public string Destino()
+        public string DevolverDestino()
         {
-            string retono = "hola";
+            string retono = "";
            
 
             string larga_distancia = string.Concat(this.NumeroAMarcar[2], this.NumeroAMarcar[3], this.NumeroAMarcar[4]);
@@ -274,7 +232,7 @@ namespace Entidades.Clases_especializadas
         public float CostoLocal()
         {
             float retorno = 0;
-            if (Destino() == TipoLlamada.local.ToString() ){ retorno = (float)this.TiempoDeUsoNugget * 1; }
+            if (DevolverDestino() == TipoLlamada.local.ToString() ){ retorno = (float)this.TiempoDeUsoNugget * 1; }
             return retorno;
         }
 
@@ -285,7 +243,7 @@ namespace Entidades.Clases_especializadas
         public float CostoLargaDistancia()
         {
             float retorno = 0;
-            if (Destino() == TipoLlamada.largaDistancia.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 2.5f; }
+            if (DevolverDestino() == TipoLlamada.largaDistancia.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 2.5f; }
             return retorno;
         }
 
@@ -296,7 +254,7 @@ namespace Entidades.Clases_especializadas
         public float CostoInternacional()
         {
             float retorno = 0;
-            if (Destino() ==  TipoLlamada.internacional.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 5; }
+            if (DevolverDestino() ==  TipoLlamada.internacional.ToString()) { retorno = (float)this.TiempoDeUsoNugget * 5; }
             return retorno;
         }
 
@@ -382,7 +340,7 @@ namespace Entidades.Clases_especializadas
             sb.AppendLine($"{base.Mostrar()}");
             sb.AppendLine($"Tiempo de uso cabina: {this.TiempoTotalDeUso}");
             sb.AppendLine($"Cantidad de cocas: {this.BebidasTotales}");
-            sb.AppendLine($"Recaudacion: {this.Recaudacion*1.21}");
+            sb.AppendLine($"Recaudacion:  {string.Format("{0:0.00}", Recaudacion * 1.21)}");
             return sb.ToString();
         }
         /// <summary>

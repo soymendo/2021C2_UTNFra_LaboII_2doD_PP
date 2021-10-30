@@ -48,8 +48,7 @@ namespace Formulario
             // 
             // btnEstadisticas
             // 
-            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEstadisticas.Location = new System.Drawing.Point(235, 226);
             this.btnEstadisticas.Name = "btnEstadisticas";

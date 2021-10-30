@@ -329,6 +329,7 @@ namespace Formulario
             // txtNumero
             // 
             this.txtNumero.Location = new System.Drawing.Point(204, 36);
+            this.txtNumero.MaxLength = 8;
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(70, 23);
             this.txtNumero.TabIndex = 27;
@@ -346,6 +347,7 @@ namespace Formulario
             // txtLocal
             // 
             this.txtLocal.Location = new System.Drawing.Point(151, 36);
+            this.txtLocal.MaxLength = 3;
             this.txtLocal.Name = "txtLocal";
             this.txtLocal.Size = new System.Drawing.Size(29, 23);
             this.txtLocal.TabIndex = 26;
@@ -354,6 +356,7 @@ namespace Formulario
             // txtArea
             // 
             this.txtArea.Location = new System.Drawing.Point(101, 36);
+            this.txtArea.MaxLength = 3;
             this.txtArea.Name = "txtArea";
             this.txtArea.Size = new System.Drawing.Size(26, 23);
             this.txtArea.TabIndex = 25;

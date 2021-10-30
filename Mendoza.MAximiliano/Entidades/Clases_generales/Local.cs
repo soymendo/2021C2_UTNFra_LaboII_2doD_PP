@@ -254,8 +254,8 @@ namespace Entidades.Clases_generales
 
             this.listaCompusDisponibles = new List<Computadora>()
             {
-          
-          
+
+
 
             new Computadora("C01",new List<string>(){"office","messenger" },new List<string>(){"camara","auriculares" },new List<string>(){"CounterStrike","DiabloII","MuOnline","LineageII" },new List<string>(){"Procesador :i3\nRam:4gb\nPlaca de video: gts 250" }),
             new Computadora("C02",new List<string>(){"office","messenger","icq" },new List<string>(){"auriculares","microfono" },new List<string>(){"CounterStrike", "MuOnline", "LineageII"},new List<string>(){"Procesador :i5\nRam:4gb\nPlaca de video: gts 650" }),
@@ -301,15 +301,15 @@ namespace Entidades.Clases_generales
             this.listaCabinasDisponibles = new List<Cabina>()
             {
                 new Cabina("T01",Cabina.TipoTelefono.ConTeclado,"Panasonic"),
-                new Cabina("T02",Cabina.TipoTelefono.ACuerda,"Siemens"),
+                new Cabina("T02",Cabina.TipoTelefono.ADisco,"Siemens"),
                 new Cabina("T03",Cabina.TipoTelefono.ConTeclado,"Panasonic"),
-                new Cabina("T04",Cabina.TipoTelefono.ACuerda,"Siemens"),
+                new Cabina("T04",Cabina.TipoTelefono.ADisco,"Siemens"),
                 new Cabina("T05",Cabina.TipoTelefono.ConTeclado,"Panasonic"),
-                new Cabina("T06",Cabina.TipoTelefono.ACuerda,"Siemens"),
+                new Cabina("T06",Cabina.TipoTelefono.ADisco,"Siemens"),
                 new Cabina("T07",Cabina.TipoTelefono.ConTeclado,"Panasonic"),
-                new Cabina("T08",Cabina.TipoTelefono.ACuerda,"Siemens"),
+                new Cabina("T08",Cabina.TipoTelefono.ADisco,"Siemens"),
                 new Cabina("T09",Cabina.TipoTelefono.ConTeclado,"Panasonic"),
-                new Cabina("T10",Cabina.TipoTelefono.ACuerda,"Siemens")
+                new Cabina("T10",Cabina.TipoTelefono.ADisco,"Siemens")
             };
 
 
@@ -389,7 +389,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaCompusDisponibles(Local l, Computadora c)
+        public static bool VerificarListaCompusDisponibles(Local l, Computadora c)
         {
             bool retorno = false;
 
@@ -415,7 +415,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCompusDisponibles(l, c)))
+            if (!(Local.VerificarListaCompusDisponibles(l, c)))
             {
                 l.listaCompusDisponibles.Add(c);
                 retorno = true;
@@ -433,7 +433,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarCompuEnListaCompusDisponibles(Local l, Computadora c)
         {
             bool retorno = false;
-            if(Local.AlmacenadoEnListaCompusDisponibles(l,c))
+            if(Local.VerificarListaCompusDisponibles(l,c))
             {
                 l.listaCompusDisponibles.Remove(c);
                 retorno = true;
@@ -449,7 +449,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaCompusOcupadas(Local l, Computadora c)
+        public static bool VerificarListaCompusOcupadas(Local l, Computadora c)
         {
             bool retorno = false;
 
@@ -475,7 +475,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCompusOcupadas(l, c)))
+            if (!(Local.VerificarListaCompusOcupadas(l, c)))
             {
                 l.listaCompusOcupadas.Add(c);
                 retorno = true;
@@ -493,7 +493,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarCompuEnListaCompusOcupadas(Local l, Computadora c)
         {
             bool retorno = false;
-            if (Local.AlmacenadoEnListaCompusOcupadas(l, c))
+            if (Local.VerificarListaCompusOcupadas(l, c))
             {
                 l.listaCompusOcupadas.Remove(c);
                 retorno = true;
@@ -510,7 +510,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaCompusFinalizadas(Local l, Computadora c)
+        public static bool VerificarListaCompusFinalizadas(Local l, Computadora c)
         {
             bool retorno = false;
 
@@ -536,7 +536,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCompusFinalizadas(l, c)))
+            if (!(Local.VerificarListaCompusFinalizadas(l, c)))
             {
                 l.listaCompusFinalizadas.Add(c);
 
@@ -555,7 +555,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarCompuEnListaCompusFinalizadas(Local l, Computadora c)
         {
             bool retorno = false;
-            if (Local.AlmacenadoEnListaCompusFinalizadas(l, c))
+            if (Local.VerificarListaCompusFinalizadas(l, c))
             {
                 l.listaCompusFinalizadas.Remove(c);
                 retorno = true;
@@ -573,7 +573,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaCabinasDisponibles(Local l, Cabina c)
+        public static bool VerificarListaCabinasDisponibles(Local l, Cabina c)
         {
             bool retorno = false;
 
@@ -599,7 +599,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCabinasDisponibles(l, c)))
+            if (!(Local.VerificarListaCabinasDisponibles(l, c)))
             {
                 l.listaCabinasDisponibles.Add(c);
                 retorno = true;
@@ -617,7 +617,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarCabinaEnListaCabinasDisponibles(Local l, Cabina c)
         {
             bool retorno = false;
-            if (Local.AlmacenadoEnListaCabinasDisponibles(l, c))
+            if (Local.VerificarListaCabinasDisponibles(l, c))
             {
                 l.listaCabinasDisponibles.Remove(c);
                 retorno = true;
@@ -633,7 +633,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaCabinasOcupadas(Local l, Cabina c)
+        public static bool VerificarListaCabinasOcupadas(Local l, Cabina c)
         {
             bool retorno = false;
 
@@ -659,7 +659,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCabinasOcupadas(l, c)))
+            if (!(Local.VerificarListaCabinasOcupadas(l, c)))
             {
                 l.listaCabinasOcupadas.Add(c);
                 retorno = true;
@@ -677,7 +677,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarCabinaEnListaCabinasOcupadas(Local l, Cabina c)
         {
             bool retorno = false;
-            if (Local.AlmacenadoEnListaCabinasOcupadas(l, c))
+            if (Local.VerificarListaCabinasOcupadas(l, c))
             {
                 l.listaCabinasOcupadas.Remove(c);
                 retorno = true;
@@ -695,7 +695,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaCabinasFinalizadas(Local l, Cabina c)
+        public static bool VerificarListaCabinasFinalizadas(Local l, Cabina c)
         {
             bool retorno = false;
 
@@ -721,7 +721,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaCabinasFinalizadas(l, c)))
+            if (!(Local.VerificarListaCabinasFinalizadas(l, c)))
             {
                 l.listaCabinasFinalizadas.Add(c);
                 retorno = true;
@@ -739,7 +739,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarCabinaEnListaCabinasFinalizadas(Local l, Cabina c)
         {
             bool retorno = false;
-            if (Local.AlmacenadoEnListaCabinasFinalizadas(l, c))
+            if (Local.VerificarListaCabinasFinalizadas(l, c))
             {
                 l.listaCabinasFinalizadas.Remove(c);
                 retorno = true;
@@ -754,7 +754,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnListaClientes(Local l, Cliente c)
+        public static bool VerificarListaClientes(Local l, Cliente c)
         {
             bool retorno = false;
 
@@ -780,7 +780,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnListaClientes(l, c)))
+            if (!(Local.VerificarListaClientes(l, c)))
             {
                 l.listaClientes.Add(c);
                 retorno = true;
@@ -798,7 +798,7 @@ namespace Entidades.Clases_generales
         public static bool EliminarClienteEnListaClientes(Local l, Cliente c)
         {
             bool retorno = false;
-            if (Local.AlmacenadoEnListaClientes(l, c))
+            if (Local.VerificarListaClientes(l, c))
             {
                 l.listaClientes.Remove(c);
                 retorno = true;
@@ -815,7 +815,7 @@ namespace Entidades.Clases_generales
         /// <param name="l"></param>
         /// <param name="m"></param>
         /// <returns></returns>
-        public static bool AlmacenadoEnColaClientes(Local l, Cliente c)
+        public static bool VerificarColaClientes(Local l, Cliente c)
         {
             bool retorno = false;
 
@@ -841,7 +841,7 @@ namespace Entidades.Clases_generales
 
             bool retorno = false;
 
-            if (!(Local.AlmacenadoEnColaClientes(l, c)))
+            if (!(Local.VerificarColaClientes(l, c)))
             {
                 l.colaClientes.Enqueue(c);
                 retorno = true;
@@ -880,7 +880,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            if(Local.AlmacenadoEnListaCompusDisponibles(l,c))
+            if(Local.VerificarListaCompusDisponibles(l,c))
             {
                 Local.EliminarCompuEnListaCompusDisponibles(l, c);
                 Local.GuardarCompuEnListaCompusOcupadas(l, c);
@@ -928,7 +928,7 @@ namespace Entidades.Clases_generales
         public static bool AsignarCabinaAlCliente(Local l, Cabina c)
         {
             bool retorno = false;
-            if(Local.AlmacenadoEnListaCabinasDisponibles(l,c))
+            if(Local.VerificarListaCabinasDisponibles(l,c))
             {
                 Local.EliminarCabinaEnListaCabinasDisponibles(l, c);
                 Local.GuardarCabinaEnListaCabinasOcupadas(l, c);
@@ -954,7 +954,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            if(AlmacenadoEnListaCompusOcupadas(l,c))
+            if(VerificarListaCompusOcupadas(l,c))
             {
                 Local.EliminarCompuEnListaCompusOcupadas(l, c);           
                 Local.GuardarCompuEnListaCompusDisponibles(l, c);
@@ -982,7 +982,7 @@ namespace Entidades.Clases_generales
         {
             bool retorno = false;
 
-            if (AlmacenadoEnListaCabinasOcupadas(l, c))
+            if (VerificarListaCabinasOcupadas(l, c))
             {
                 Local.EliminarCabinaEnListaCabinasOcupadas(l, c);
                 Local.GuardarCabinaEnListaCabinasDisponibles(l, c);
@@ -1221,11 +1221,10 @@ namespace Entidades.Clases_generales
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Ganancias de Computadoras: ");
-            sb.AppendLine((this.ContadorGananciasDelDiaPC * iva).ToString());
+            sb.AppendLine($"{string.Format("{0:0.00}", this.contadorGananciasDelDiaPC * iva)}");
             sb.AppendLine();
             sb.AppendLine("Ganancias de Cabinas: ");
-            sb.AppendLine((this.ContadorGananciasDelDiaCabina* iva).ToString());
-
+            sb.AppendLine($"{string.Format("{0:0.00}", this.ContadorGananciasDelDiaCabina* iva)}");
             return sb.ToString();
         }
 
