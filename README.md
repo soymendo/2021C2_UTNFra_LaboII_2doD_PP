@@ -13,7 +13,7 @@
 1°. Asigne los datos del cliente (nombre,apellido,edad,dni) dependiendo lo que quiera usar, marque computadora o cabina, se habilitara las opciones correspondiente a las necesidades del cliente.Una vez cargado todos los datos, oprima el boto 'OK'"        
 2°. El boton 'Asignar' le asignara una maquina al cliente , dichos clientes se pueden observar en la 'lista de clientes'.         
 3°. Se podran observar las maquinas en sus respectivas listas tanto disponibles como ocupadas, el boton 'FinalizarTarea' terminará con la tarea que esté realizando la maquina y proporcionará datos de tiempos y costos correspondientes.
-4°. Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
+>4°. Al hacer doble clic en cualquiera de las listas se le brindará los datos correspondientes de dicha maquina y se vera reflejado en el formulario");
 
 # Diagrama de clases
 ![Diagrama](https://user-images.githubusercontent.com/29763406/139609320-0ac5ff34-02ea-407e-b060-97f82fc12003.png)
@@ -39,4 +39,4 @@
  Se agregan dos nuevas estadisticas que brindan una lista con las recaudaciones totales de cada maquina en el dia.
 
 # Paquete Nugget agregado
->[TimePeriodLibrary.NET](https://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) , usado para calcular diferencias entre laapsos de tiempo, las usé para calcular el tiempo en que las maquinas estaban ocupadas
+>[TimePeriodLibrary.NET](https://www.codeproject.com/Articles/168662/Time-Period-Library-for-NET) , usado para calcular diferencias entre lapsos de tiempo, las usé para calcular el tiempo en que las maquinas estaban ocupadas
