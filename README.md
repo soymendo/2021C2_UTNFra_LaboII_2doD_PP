@@ -35,7 +35,7 @@
 
 
 # Propuesta de valor agregado
--La nueva funcionalidad implica cargarle una bebida al cliente ya sea que esté en una computadora o una cabina.Al finalizar la tarea de cualquier maquina , el valor total a pagar sera la tarifa de la computadora o cabina usada más las bebidas consumidas.
+- La nueva funcionalidad implica cargarle una bebida al cliente ya sea que esté en una computadora o una cabina.Al finalizar la tarea de cualquier maquina , el valor total a pagar sera la tarifa de la computadora o cabina usada más las bebidas consumidas.
  Se agregan dos nuevas estadisticas que brindan una lista con las recaudaciones totales de cada maquina en el dia.
 
 # Paquete Nugget agregado
