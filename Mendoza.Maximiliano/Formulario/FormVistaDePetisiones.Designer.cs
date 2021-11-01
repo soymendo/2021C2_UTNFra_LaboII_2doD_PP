@@ -64,6 +64,7 @@ namespace Formulario
             this.ClientSize = new System.Drawing.Size(245, 272);
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.rtbPeticiones);
+            this.MaximumSize = new System.Drawing.Size(500, 500);
             this.MinimumSize = new System.Drawing.Size(261, 311);
             this.Name = "FormVistaDePetisiones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

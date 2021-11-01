@@ -207,6 +207,7 @@ namespace Formulario
                 nupTiempo.Enabled = true;
                 nupTiempo.Value = 0;
                 rbtLibre.Enabled = true;
+                this.compuDePeticiones = null;
             }
         }
 
