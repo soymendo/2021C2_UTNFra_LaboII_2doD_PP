@@ -335,7 +335,7 @@ namespace Formulario
                 if (Local.FinalizarTarea(local, cab))
                 {
                     cab.CantidadDeBebidasEnLista = cocaAux;
-                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUsoNugget}\nDestino: {cab.DevolverDestino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}\nPrecio Final iva: {/*string.Format("{00:00.00}", cab.ConsumoFinalIva())*/cab.ConsumoFinalIva()}","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUsoNugget}\nDestino: {cab.DevolverDestino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}\nPrecio Final iva: {string.Format("{0:0.00}", cab.ConsumoFinalIva())}","", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     cab.CantidadDeBebidasEnLista = cocaAux;
                   
                     cab.recaudacion += cab.CalcularCostoCabinaBebida();
