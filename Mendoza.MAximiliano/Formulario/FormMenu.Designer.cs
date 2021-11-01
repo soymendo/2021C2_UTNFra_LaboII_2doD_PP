@@ -36,7 +36,7 @@ namespace Formulario
             // 
             // btnLocal
             // 
-            this.btnLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnLocal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLocal.Location = new System.Drawing.Point(235, 99);
             this.btnLocal.Name = "btnLocal";
@@ -48,8 +48,7 @@ namespace Formulario
             // 
             // btnEstadisticas
             // 
-            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEstadisticas.Location = new System.Drawing.Point(235, 226);
             this.btnEstadisticas.Name = "btnEstadisticas";
@@ -61,8 +60,7 @@ namespace Formulario
             // 
             // btnAyuda
             // 
-            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAyuda.Location = new System.Drawing.Point(485, 413);
             this.btnAyuda.Name = "btnAyuda";
@@ -81,7 +79,7 @@ namespace Formulario
             this.Controls.Add(this.btnAyuda);
             this.Controls.Add(this.btnEstadisticas);
             this.Controls.Add(this.btnLocal);
-            this.MaximumSize = new System.Drawing.Size(1000, 1000);
+            this.MaximumSize = new System.Drawing.Size(1000, 800);
             this.MinimumSize = new System.Drawing.Size(700, 500);
             this.Name = "FormMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

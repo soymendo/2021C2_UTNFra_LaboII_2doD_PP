@@ -971,7 +971,7 @@ namespace Entidades.Clases_generales
             return retorno;
         }
 
-        
+       
         /// <summary>
         /// finaliza la cabina y le asigna un tiempo final para calcular el costo
         /// </summary>

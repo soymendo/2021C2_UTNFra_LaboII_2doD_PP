@@ -47,11 +47,12 @@ namespace Formulario
                 if (MessageBox.Show($"No hay pc con esos requisitos , desea asigar igualmente una pc? \nElija una desde las pc disponibles...\n(SI , elige pc)\n(NO, elimina el cliente de la cola)", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     lsbListaDeCompusCompatibles.DataSource = null;
-                    lsbListaDeCompusCompatibles.DataSource = local.Lista_CompusDisponibles;
+                    lsbListaDeCompusCompatibles.DataSource = local.ListaCompusDisponibles;
+                    //rtbPeticiones.Text = $"{local.Cola_Clientes.Peek()}\n Peticiones: \n {((Cliente)local.Cola_Clientes.Peek()).TiempoAsignado}";
                 }
                 else
                 {
-                    Cliente cli = local.Cola_Clientes.Peek();
+                    Cliente cli = local.ColaClientes.Peek();
                     if (Local.EliminarClienteEnColaClientes(local)) { }
                     if (Local.EliminarClienteEnListaClientes(local, cli)) { }
                 }
@@ -59,7 +60,8 @@ namespace Formulario
             else
             {             
                 lsbListaDeCompusCompatibles.DataSource = ListaUnica;
-                rtbPeticiones.Text = $"{local.Cola_Clientes.Peek()}\n Peticiones: \n {c.Peticiones.ToString()}";
+                rtbPeticiones.Text = $"{local.ColaClientes.Peek()}\n Peticiones: \n {c.Peticiones.ToString()}";
+               
             }           
         }
 
@@ -108,7 +110,7 @@ namespace Formulario
         {
             bool retorno = false;
 
-            foreach (Computadora item in l.Lista_CompusDisponibles)
+            foreach (Computadora item in l.ListaCompusDisponibles)
             {
                 if (item.Peticiones == c.Peticiones)
                 {
@@ -158,13 +160,11 @@ namespace Formulario
         /// </summary>
         private void Asignar()
         {
-            Cliente cli = local.Cola_Clientes.Peek();
+            Cliente cli = local.ColaClientes.Peek();
 
             Computadora c = (Computadora)lsbListaDeCompusCompatibles.SelectedItem;
-            //Computadora auxCli = new Computadora (c.Identificador,cli.Peticiones.Lista_Sofware,cli.Peticiones.Lista_Perifericos,cli.Peticiones.Lista_Juegos);
-            //auxCli.Stopwacth = c.Stopwacth;
-            ////auxCli.Recaudacion += c.Recaudacion;
-            ////auxCli.CocasTotales += c.CocasTotales;
+            c.TiempoAsignado = cli.TiempoAsignado;
+           
 
             if (MessageBox.Show($"¿Seguro de querer asignar la computadora a\n  { local[0]} ?", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -176,12 +176,14 @@ namespace Formulario
                 MessageBox.Show("Asignado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
              
                 btnAsignar.Text = "Cerrar";
-                
+
+                lsbListaDeCompusCompatibles.DataSource = null;
+                lsbListaDeCompusCompatibles.DataSource = ListaUnica;
+                rtbPeticiones.Text = null;
+
             }
 
-            lsbListaDeCompusCompatibles.DataSource = null;
-            lsbListaDeCompusCompatibles.DataSource = ListaUnica;
-            rtbPeticiones.Text = null;
+           
         }
 
         private void btnAyuda_Click(object sender, EventArgs e)

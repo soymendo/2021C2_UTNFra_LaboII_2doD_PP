@@ -1,59 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Entidades.Clases_generales.Maquinas">
-    <Position X="3.75" Y="0.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAABAIQAAEAEgAAAAACBAQQAgJEAAAAQgAAAAiI=</HashCode>
-      <FileName>Clases_generales\Maquinas.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Entidades.Clases_generales.Petisiones">
-    <Position X="8" Y="0.75" Width="2.25" />
-    <NestedTypes>
-      <Enum Name="Entidades.Clases_generales.Petisiones.SoftwareInstalado" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Clases_generales\Petisiones.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Enum Name="Entidades.Clases_generales.Petisiones.PeriféricosDisponibles" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Clases_generales\Petisiones.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-      <Enum Name="Entidades.Clases_generales.Petisiones.JuegosDisponibles" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>Clases_generales\Petisiones.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
-    <TypeIdentifier>
-      <HashCode>CAMAAAAAAAAgAAAEoAAAAAAAAAAAAIAAAAAIAAAAAiA=</HashCode>
-      <FileName>Clases_generales\Petisiones.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Entidades.Clases_generales.Local">
-    <Position X="10.5" Y="0.75" Width="3.5" />
+    <Position X="12" Y="0.75" Width="2.75" />
     <TypeIdentifier>
-      <HashCode>wQDAAGpUARCKEIJ0zY0PPBCDQCsFUpgiEZHGsojQHiA=</HashCode>
+      <HashCode>wSTMMMsAALCKGAB0yQkPJBAEwCEDkpgiATFCosJQPiQ=</HashCode>
       <FileName>Clases_generales\Local.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Entidades.Clases_especializadas.Coca_cola">
-    <Position X="14.25" Y="4" Width="2.5" />
+  <Class Name="Entidades.Clases_generales.Maquina">
+    <Position X="5" Y="0.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AQACAAAAAAAAAAAEgQAAAAAQAAAAEIAAAAAAAAAAAiA=</HashCode>
-      <FileName>Clases_especializadas\Coca_cola.cs</FileName>
+      <HashCode>AEgQAAABAIQAAEEFgABBgACBQIQAgIAAAAAQ4ABIAmE=</HashCode>
+      <FileName>Clases_generales\Maquina.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Entidades.Clases_especializadas.Cliente">
-    <Position X="0.5" Y="0.5" Width="2.5" />
+  <Class Name="Entidades.Clases_generales.Peticion">
+    <Position X="10" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAEAAAABAAQAACCEgEACgAAAAAAAAoAEAAIAAAAAIiA=</HashCode>
-      <FileName>Clases_especializadas\Cliente.cs</FileName>
+      <HashCode>AAAAAAIAAAAAQAEEgEABAABAAAAAAIAAAAAAAAAAAqA=</HashCode>
+      <FileName>Clases_generales\Peticion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Clases_especializadas.Bebida">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAQAAAAAAAEgQAAAAAQAAAAEIAAAAAAAAAAAiA=</HashCode>
+      <FileName>Clases_especializadas\Bebida.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Clases_especializadas.Cabina">
-    <Position X="7" Y="7" Width="2.5" />
+    <Position X="8.5" Y="9" Width="2" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
@@ -65,26 +41,33 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAQBAQAAQQEGkEgAAhAhAAAAaAgMAEAAgQAgAAIiI=</HashCode>
+      <HashCode>AAAAQBAAAAQQACgEgAAgABAAAACAgMAAAAgQIAAAYiA=</HashCode>
       <FileName>Clases_especializadas\Cabina.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Entidades.Clases_especializadas.Computadora">
-    <Position X="0.5" Y="7.25" Width="2.5" />
+  <Class Name="Entidades.Clases_especializadas.Cliente">
+    <Position X="2.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAQAEEEEgEADAgAAAAaAAIAEAAgQAAAAAiI=</HashCode>
+      <HashCode>AAEAAAABABQAACCEgAAAgAAAAAAAAoAEAAIAkAAAIqA=</HashCode>
+      <FileName>Clases_especializadas\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Clases_especializadas.Computadora">
+    <Position X="2.25" Y="9" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABQAAAAEgAAAAAAAgACAAIAAAAgQsAAAAqA=</HashCode>
       <FileName>Clases_especializadas\Computadora.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Entidades.Clases_generales.Tipo">
-    <Position X="14.5" Y="2.5" Width="1.5" />
+    <Position X="7.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
-      <FileName>Clases_generales\Maquinas.cs</FileName>
+      <FileName>Clases_generales\Maquina.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Entidades.Clases_especializadas.TipoLlamada">
-    <Position X="14.5" Y="1" Width="1.5" />
+    <Position X="8.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIAAAAAAEAA=</HashCode>
       <FileName>Clases_especializadas\Cabina.cs</FileName>

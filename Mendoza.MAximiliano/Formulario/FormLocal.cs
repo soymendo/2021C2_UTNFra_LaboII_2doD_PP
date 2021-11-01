@@ -44,15 +44,15 @@ namespace Formulario
 
             
 
-            lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
-            lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+            lsbCompusDisponibles.DataSource = local.ListaCompusDisponibles;
+            lsbCabinasDisponibles.DataSource = local.ListacCabinasDisponibles;
 
-            lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
-            lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+            lsbCompusOcupadas.DataSource = local.ListaCompusOcupadas;
+            lsbCasbinasOcupadas.DataSource = local.ListaCabinasOcupadas;
 
             lsbListaClientes.DataSource = null;
-            local.Lista_Clientes = local.Cola_Clientes.ToList<Cliente>();
-            lsbListaClientes.DataSource = local.Lista_Clientes;
+            local.ListaClientes = local.ColaClientes.ToList<Cliente>();
+            lsbListaClientes.DataSource = local.ListaClientes;
 
 
 
@@ -82,8 +82,8 @@ namespace Formulario
                 txtLocal.Enabled = false;
                 txtNumero.Enabled = false;
 
-
-              
+                nupTiempo.Enabled = true;
+                rbtLibre.Enabled = true;
 
                 btnPeticiones.Enabled = true;
                
@@ -128,18 +128,29 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
+           
 
-            if ((rbtComputadora.Checked == false && rbtCabina.Checked == false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "" || this.compuDePeticiones is null)
+            if ((rbtComputadora.Checked == false && rbtCabina.Checked == false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "")
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (rbtComputadora.Checked)
+                if (rbtComputadora.Checked  && this.compuDePeticiones is not null)
                 {
                   
 
-                    Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text),compuDePeticiones.Peticiones.Lista_Sofware,compuDePeticiones.Peticiones.Lista_Perifericos,compuDePeticiones.Peticiones.Lista_Juegos);
+                    Cliente clienteCompu = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text),compuDePeticiones.Peticiones.ListaSofware,compuDePeticiones.Peticiones.ListaPerifericos,compuDePeticiones.Peticiones.ListaJuegos);
+                  
+                    if(nupTiempo.Enabled is true)
+                    {
+                        clienteCompu.TiempoAsignado = nupTiempo.Value.ToString();
+                    }
+                    if(rbtLibre.Enabled is true)
+                    {
+                        clienteCompu.TiempoAsignado = "Libre";
+                    }
+                   
 
                     if (Local.GuardarClienteEnListaClientes(local, clienteCompu))
                     {
@@ -152,10 +163,16 @@ namespace Formulario
                     if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
 
                     lsbListaClientes.DataSource = null;
-                    lsbListaClientes.DataSource = local.Lista_Clientes;
+                    lsbListaClientes.DataSource = local.ListaClientes;
+                   
                 }
+                else if (rbtComputadora.Checked && this.compuDePeticiones is null)
+                {
+                    MessageBox.Show("Falta cargar petisiones", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+              
 
-                if( rbtCabina.Checked)
+                if ( rbtCabina.Checked)
                 {
                     this.numeroDeTelefono = string.Concat(txtArea.Text,txtLocal.Text,txtNumero.Text);
                     this.area = txtArea.Text;
@@ -167,11 +184,19 @@ namespace Formulario
                        
                             Cliente clienteCabina = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDni.Text), int.Parse(txtEdad.Text), this.numeroDeTelefono);
 
-                            if (Local.GuardarClienteEnListaClientes(local, clienteCabina)) { MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
-                            if (Local.GuardarClienteEnColaClientes(local, clienteCabina)) { }
+                        if (Local.GuardarClienteEnColaClientes(local, clienteCabina)) 
+                        {
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ya esta agregado!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        if (Local.GuardarClienteEnListaClientes(local, clienteCabina)) { MessageBox.Show("Agregado con exito!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                          
 
                             lsbListaClientes.DataSource = null;
-                            lsbListaClientes.DataSource = local.Lista_Clientes;
+                            lsbListaClientes.DataSource = local.ListaClientes;
           
                     }
                     else
@@ -179,6 +204,10 @@ namespace Formulario
                         MessageBox.Show("Numero incorrecto!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }                                  
                 }
+                nupTiempo.Enabled = true;
+                nupTiempo.Value = 0;
+                rbtLibre.Enabled = true;
+                this.compuDePeticiones = null;
             }
         }
 
@@ -193,13 +222,13 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnAsignar_Click(object sender, EventArgs e)
         {
-            if (local.Cola_Clientes.Count == 0)
+            if (local.ColaClientes.Count == 0)
             {
                 MessageBox.Show("Lista vacia de clientes, debe agregar clientes primero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                Cliente cliente = local.Cola_Clientes.Peek();
+                Cliente cliente = local.ColaClientes.Peek();
 
                 if (!(cliente.NumeroAMarcar is null))
                 {
@@ -210,28 +239,31 @@ namespace Formulario
                 }
                 else
                 {
-                    compAux = new Computadora(cliente.Peticiones.Lista_Sofware,cliente.Peticiones.Lista_Perifericos,cliente.Peticiones.Lista_Juegos);
+
+                    compAux = new Computadora(cliente.Peticiones.ListaSofware,cliente.Peticiones.ListaPerifericos,cliente.Peticiones.ListaJuegos);
+                    compAux.TiempoAsignado = cliente.TiempoAsignado;
+
                     FormBuscarCompuCompatible buscaCompu = new FormBuscarCompuCompatible(local, compAux);
                     buscaCompu.ShowDialog();
                 }
 
                 lsbCompusDisponibles.DataSource = null;
-                lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
+                lsbCompusDisponibles.DataSource = local.ListaCompusDisponibles;
 
                 lsbCompusOcupadas.DataSource = null;
-                lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
+                lsbCompusOcupadas.DataSource = local.ListaCompusOcupadas;
 
 
                 lsbCabinasDisponibles.DataSource = null;
-                lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+                lsbCabinasDisponibles.DataSource = local.ListacCabinasDisponibles;
 
 
                 lsbCasbinasOcupadas.DataSource = null;
-                lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+                lsbCasbinasOcupadas.DataSource = local.ListaCabinasOcupadas;
 
 
                 lsbListaClientes.DataSource = null;
-                lsbListaClientes.DataSource = local.Lista_Clientes;
+                lsbListaClientes.DataSource = local.ListaClientes;
 
             }
         }
@@ -253,23 +285,25 @@ namespace Formulario
             else
             {
                 Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
-                cocaAux = comp.CantidadDeCocasEnLista;
-                if (Local.FinalizarTareaCompu(local, comp))
+                cocaAux = comp.CantidadDeBebidasEnLista;
+
+                if (Local.FinalizarTarea(local, comp))
                 {
-                    comp.CantidadDeCocasEnLista = cocaAux;
-                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {comp.TiempoDeUso} Costo de Consumo (pc+bebidas): {comp.CalcularCostoCompuBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    comp.CantidadDeCocasEnLista = cocaAux;
+                    comp.CantidadDeBebidasEnLista = cocaAux;
+                    
+                    MessageBox.Show($"Finalizado con exito!! tiempo de uso: {comp.TiempoDeUsoNugget} Costo de Consumo (pc+bebidas): {comp.CalcularCostoCompuBebida()}\nPrecio Final iva: {string.Format("{0:0.00}", comp.ConsumoFinalIva())}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    comp.CantidadDeBebidasEnLista = cocaAux;
+                  
                     comp.Recaudacion += comp.CalcularCostoCompuBebida();
                 }
 
                 lsbCompusDisponibles.DataSource = null;
-                lsbCompusDisponibles.DataSource = local.Lista_CompusDisponibles;
+                lsbCompusDisponibles.DataSource = local.ListaCompusDisponibles;
 
                 lsbCompusOcupadas.DataSource = null;
-                lsbCompusOcupadas.DataSource = local.Lista_CompusOcupadas;
+                lsbCompusOcupadas.DataSource = local.ListaCompusOcupadas;
             }
         }
-
 
         /// <summary>
         /// finaliza la tarea de la cabina seleccionada
@@ -287,23 +321,23 @@ namespace Formulario
             else
             {
                 Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
-                cocaAux = cab.CantidadDeCocasEnLista;
-                if (Local.FinalizarTareaCabina(local, cab))
+                cocaAux = cab.CantidadDeBebidasEnLista;
+                if (Local.FinalizarTarea(local, cab))
                 {
-                    cab.CantidadDeCocasEnLista = cocaAux;
-                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUso}\nDestino: {cab.Destino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cab.CantidadDeCocasEnLista = cocaAux;
+                    cab.CantidadDeBebidasEnLista = cocaAux;
+                    MessageBox.Show($"Finalizado con exito!!\nTiempo de uso: {cab.TiempoDeUsoNugget}\nDestino: {cab.DevolverDestino()}\nCosto de Consumo (cabina+bebidas): { cab.CalcularCostoCabinaBebida()}\nPrecio Final iva: {/*string.Format("{00:00.00}", cab.ConsumoFinalIva())*/cab.ConsumoFinalIva()}","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cab.CantidadDeBebidasEnLista = cocaAux;
+                  
                     cab.recaudacion += cab.CalcularCostoCabinaBebida();
-
-                    if(cab.Destino()==TipoLlamada.local.ToString())
+                    if(cab.DevolverDestino()==TipoLlamada.local.ToString())
                     {
                         local.TotalLocal += cab.CalcularCosto();
                     }
-                    if(cab.Destino()==TipoLlamada.largaDistancia.ToString())
+                    if(cab.DevolverDestino()==TipoLlamada.largaDistancia.ToString())
                     {
                         local.TotalLargaDistancia += cab.CalcularCosto();
                     }
-                    if(cab.Destino()==TipoLlamada.internacional.ToString())
+                    if(cab.DevolverDestino()==TipoLlamada.internacional.ToString())
                     {
                         local.TotalInterncaional += cab.CalcularCosto();
                     }
@@ -311,14 +345,14 @@ namespace Formulario
                 }
                 else
                 {
-                    MessageBox.Show($"No funca!! tiempo de uso: {cab.TiempoDeUso} Costo de uso: {cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"No funca!! tiempo de uso: {cab.TiempoDeUsoNugget} Costo de uso: {cab.CalcularCostoCabinaBebida()}", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
                 lsbCabinasDisponibles.DataSource = null;
-                lsbCabinasDisponibles.DataSource = local.Lista_cabinas_disponibles;
+                lsbCabinasDisponibles.DataSource = local.ListacCabinasDisponibles;
 
                 lsbCasbinasOcupadas.DataSource = null;
-                lsbCasbinasOcupadas.DataSource = local.Lista_cabinas_ocupadas;
+                lsbCasbinasOcupadas.DataSource = local.ListaCabinasOcupadas;
 
             }               
         }
@@ -342,7 +376,7 @@ namespace Formulario
                 Computadora comp = (Computadora)lsbCompusOcupadas.SelectedItem;
 
                 comp.TiempoFinal = DateTime.Now;
-                MessageBox.Show($" tiempo de uso: {comp.TiempoDeUso/*TiempoActualDeUso*/} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($" tiempo de uso: {comp.TiempoDeUsoNugget} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
 
@@ -365,7 +399,7 @@ namespace Formulario
             {      
                 Cabina cab = (Cabina)lsbCasbinasOcupadas.SelectedItem;
                 cab.TiempoFinal = DateTime.Now;
-                MessageBox.Show($" tiempo de uso: {cab.TiempoDeUso} destino: {cab.Destino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($" tiempo de uso: {cab.TiempoDeUsoNugget} destino: {cab.DevolverDestino()} ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -384,14 +418,14 @@ namespace Formulario
 
                 if (MessageBox.Show($"Agregar bebida? ", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if(local.Stock_DeBebidas.Count == 0)
+                    if(local.StockDeBebidas.Count == 0)
                     {
                         MessageBox.Show($" no hay stock ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
 
-                        comp.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
+                        comp.AgregarBebida(local.StockDeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
                         MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     }                
@@ -415,13 +449,13 @@ namespace Formulario
 
                 if (MessageBox.Show($"Agregar bebida? ", "Salir", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (local.Stock_DeBebidas.Count == 0)
+                    if (local.StockDeBebidas.Count == 0)
                     {
                         MessageBox.Show($" no hay stock ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        cab.AgregarBebida(local.Stock_DeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
+                        cab.AgregarBebida(local.StockDeBebidas.Dequeue());// agrego la primera bebida del stock a la lista de bebidas de la computadora y se elimina del stock
                         MessageBox.Show($" Bebida agregada ", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
@@ -685,9 +719,14 @@ namespace Formulario
             }
         }
 
+        private void rbtLibre_CheckedChanged(object sender, EventArgs e)
+        {
+            nupTiempo.Enabled = false;
+        }
 
-       
-
-      
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            rbtLibre.Enabled = false;
+        }
     }
 }
