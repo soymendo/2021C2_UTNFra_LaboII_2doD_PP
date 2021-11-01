@@ -128,8 +128,7 @@ namespace Formulario
         /// <param name="e"></param>
         private void btnOk_Click(object sender, EventArgs e)
         {
-           
-
+ 
             if ((rbtComputadora.Checked == false && rbtCabina.Checked == false) || txtNombre.Text == "" || txtApellido.Text == "" || txtDni.Text == "" || txtEdad.Text == "")
             {
                 MessageBox.Show("Se deben completar todos los campos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -159,7 +158,7 @@ namespace Formulario
                     else
                     {
                         MessageBox.Show("La persona ya esta registrada", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                     }
                     if (Local.GuardarClienteEnColaClientes(local, clienteCompu)) { }
 
                     lsbListaClientes.DataSource = null;
@@ -170,9 +169,9 @@ namespace Formulario
                 {
                     MessageBox.Show("Falta cargar petisiones", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-              
+                
 
-                if ( rbtCabina.Checked)
+                    if ( rbtCabina.Checked)
                 {
                     this.numeroDeTelefono = string.Concat(txtArea.Text,txtLocal.Text,txtNumero.Text);
                     this.area = txtArea.Text;
@@ -204,10 +203,21 @@ namespace Formulario
                         MessageBox.Show("Numero incorrecto!!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }                                  
                 }
+
                 nupTiempo.Enabled = true;
                 nupTiempo.Value = 0;
                 rbtLibre.Enabled = true;
+                if(compuDePeticiones is not null)
+                {
+                    txtApellido.Text = null;
+                    txtNombre.Text = null;
+                    txtEdad.Text = null;
+                    txtDni.Text = null;
+                }
+              
                 this.compuDePeticiones = null;
+
+                
             }
         }
 
